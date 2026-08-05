@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-05T00:00:00Z",
+  "generatedAt": "2026-08-05T11:00:00Z",
   "title": "Design System: Inspection Record",
   "extensions": {
     "colorMeta": {
@@ -61,7 +61,7 @@
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "The name only. Condensed Archivo (wdth 74 / wght 800) struck in slate on the red tag; narrows to wdth 68 under 24rem." },
-      "headline": { "displayName": "Section Heading", "purpose": "Uppercase section headings under a 2px slate rule." },
+      "headline": { "displayName": "Section Heading", "purpose": "Uppercase section headings under a 3px signal-red stock edge with a punched eyelet." },
       "title": { "displayName": "Record Title", "purpose": "Work record names, role titles, capability cluster terms." },
       "lead": { "displayName": "Lead", "purpose": "Hero thesis (46ch) and sign-off lead (48ch)." },
       "body": { "displayName": "Body", "purpose": "All record and experience prose, capped at the 68ch measure." },

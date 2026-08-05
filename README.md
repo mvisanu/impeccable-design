@@ -56,8 +56,23 @@ Rules that matter when generating:
 - Because `/public/assets/*` is served `immutable`, **a changed asset needs a changed
   filename** or browsers will keep the stale one.
 
-`public/assets/og-image.png` was composited in build from the page's own tokens rather than
-generated. Regenerate it at 1200×630 if the visual world changes.
+`public/assets/og-image.png` is composited in build from the page's own tokens rather than
+generated. Its source is `tools/og-card.html`. Regenerate after any change to the visual
+world:
+
+```bash
+npm i playwright                                # only dependency, only for this script
+python -m http.server 8899 --bind 127.0.0.1     # or any static server
+node tools/render-og.mjs http://127.0.0.1:8899/tools/og-card.html public/assets/og-image.png
+```
+
+Serve it over HTTP rather than opening the file directly — the self-hosted fonts will not
+load over `file://`.
+
+`tools/og-card.html` links the site's own `styles.css` and reuses its real classes rather
+than restating the world in parallel values, so the card cannot drift from the page. It is a
+fixed 1200×630 raster, so the whole rem ramp is scaled from the root
+(`--og-canvas-scale`) instead of any individual size being overridden.
 
 ## Deploys
 

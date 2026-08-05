@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG card source — 1200×630</title>
+<!-- Reuses the page's own stylesheet and classes rather than reimplementing
+     the world in parallel values, so the card cannot drift from the site.
+     Scaling happens on the root font size; every type step still comes from
+     the DESIGN.md ramp. -->
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Canvas scale, not a type step: the card is a fixed 1200x630 raster viewed
+     small, so the whole rem ramp is scaled up from the root rather than any
+     individual size being overridden. */
+  :root { --og-canvas-scale: 21px; }
+  html { font-size: var(--og-canvas-scale); }
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+  }
+  .tag {
+    width: 1200px;
+    height: 630px;
+    padding: var(--s6) var(--s5) var(--s4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .tag__body { max-width: none; margin: 0; }
+  .name { margin-bottom: var(--s3); }
+  .titles { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .stamps { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<header class="tag">
+  <div class="tag__punch" aria-hidden="true"><span class="tag__eyelet"></span></div>
+  <div class="tag__body">
+    <p class="field field--head">
+      <span class="field__label">Inspection record</span>
+      <span class="field__rule"></span>
+    </p>
+    <h1 class="name">Visanu<br>Mongsaithong</h1>
+    <ul class="titles">
+      <li class="titles__item">AI/ML Engineer</li>
+      <li class="titles__item">Cloud Solution Architect</li>
+      <li class="titles__item">Senior Software Engineer</li>
+    </ul>
+  </div>
+  <ul class="stamps">
+    <li class="stamp">DoD TS/SCI<br><b>Cleared</b></li>
+    <li class="stamp stamp--tilt">AWS<br><b>GovCloud</b></li>
+    <li class="stamp">Regulated<br><b>HIPAA</b></li>
+  </ul>
+</header>
+</body>
+</html>
