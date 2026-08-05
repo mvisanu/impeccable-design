@@ -13,3 +13,6 @@ Thumbs.db
 
 .vercel
 .env*
+./prompt.md
+./goal.md
+./document.md

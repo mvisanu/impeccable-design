@@ -1,32 +1,595 @@
-/* Deploy skeleton only. The real token system is defined in DESIGN.md
-   during Phase 2 and implemented here in Phase 4. */
+/* ============================================================
+   Visanu Mongsaithong — inspection record
+   World: signal-red tag stock on cool galvanized steel.
+   Tokens live here; DESIGN.md is written from what shipped.
+   ============================================================ */
 
 :root {
-  color-scheme: dark;
+  /* Ground and stock */
+  --steel:        #E4E4E1;  /* galvanized bench, page ground */
+  --steel-deep:   #CBCAC4;  /* rule lines, hairlines */
+  --paper:        #F2F1ED;  /* record stock */
+  --tag:          #D93A1E;  /* signal-red tag stock — the committed field */
+  --tag-deep:     #A82A12;  /* punched edge, pressed state */
+  --ink:          #16222B;  /* slate stamp ink */
+  --ink-soft:     #3E4B54;  /* secondary ink on light stock */
+  --stamp:        #2E6B4F;  /* conformance green — verified states only */
+
+  /* On the red field: white is the only body-safe foreground (4.59:1).
+     Slate clears 3:1, so it is reserved for display sizes. */
+  --on-tag:       #FFFFFF;
+  --on-tag-quiet: #F6D9D2;
+
+  /* Type */
+  --display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
+  --body:    'Archivo', system-ui, -apple-system, sans-serif;
+  --mono:    'Courier Prime', ui-monospace, 'Courier New', monospace;
+
+  /* Spacing scale */
+  --s1: 0.35rem;
+  --s2: 0.7rem;
+  --s3: 1.1rem;
+  --s4: 1.8rem;
+  --s5: 2.8rem;
+  --s6: 4.4rem;
+  --s7: 7rem;
+
+  --rule: 1px solid var(--steel-deep);
+  --measure: 68ch;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-* { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  background: var(--steel);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  line-height: 1.6;
+  font-variation-settings: 'wdth' 100, 'wght' 400;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul, ol, dl { margin: 0; padding: 0; list-style: none; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--steel);
+  padding: var(--s2) var(--s3);
+  font-family: var(--mono);
+  z-index: 20;
+}
+.skip:focus { left: 0; }
+
+/* ---------- Shared field vernacular ---------- */
+
+.field__label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-right: var(--s2);
+}
+
+/* ============================================================
+   HERO — the tag itself
+   ============================================================ */
+
+.tag {
+  position: relative;
+  background: var(--tag);
+  color: var(--on-tag);
+  padding: var(--s7) var(--s4) var(--s6);
+  clip-path: polygon(0 4.5rem, 3.2rem 0, 100% 0, 100% 100%, 0 100%);
+  overflow: hidden;
+}
+
+/* Punched shoulder + reinforcing eyelet */
+.tag__punch {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.3rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background: var(--steel);
+  box-shadow: inset 0 1px 3px rgba(22, 34, 43, 0.45);
+}
+.tag__eyelet {
+  position: absolute;
+  inset: -0.42rem;
+  border: 2px solid var(--tag-deep);
+  border-radius: 50%;
+}
+
+.tag__body {
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.field--head {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin-bottom: var(--s4);
+}
+.field--head .field__label { color: var(--on-tag-quiet); margin: 0; }
+.field__rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.name {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 74, 'wght' 800;
+  font-size: clamp(3.4rem, 13vw, 6rem);
+  line-height: 0.87;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: var(--s4);
+}
+
+.titles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  padding-block: var(--s3);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: var(--s4);
+}
+.titles__item {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 88, 'wght' 600;
+  font-size: 1.02rem;
+}
+.titles .field__label { color: var(--on-tag-quiet); display: block; }
+
+.thesis {
+  max-width: 46ch;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
+  line-height: 1.45;
+  margin-bottom: var(--s5);
+  text-wrap: pretty;
+}
+
+/* Struck stamps — patch of stock, double-ruled, ink slightly off-square */
+.stamps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  margin-bottom: var(--s5);
+}
+.stamp {
+  background: var(--steel);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  line-height: 1.35;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: var(--s2) var(--s3);
+  border: 2px solid var(--ink);
+  box-shadow: 0 0 0 1px var(--steel), 0 0 0 3px var(--ink);
+  transform: rotate(-1.4deg);
+}
+.stamp b {
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+}
+.stamp--tilt { transform: rotate(1.1deg); }
+
+.disposition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-top: var(--s4);
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+}
+.disposition__loc { font-family: var(--mono); font-size: 0.82rem; }
+.disposition__loc .field__label { color: var(--on-tag-quiet); display: block; }
+.disposition__acts { display: flex; flex-wrap: wrap; gap: var(--s3); }
+
+/* Actions */
+.act {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: var(--s2) var(--s4);
+  border: 2px solid currentColor;
+  text-decoration: none;
+  transition: background-color 0.18s var(--ease), color 0.18s var(--ease);
+}
+.act:hover { background: var(--on-tag); color: var(--tag); }
+.act--primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--steel);
+}
+.act--primary:hover { background: var(--steel); color: var(--ink); }
+.act[aria-disabled='true'] { opacity: 0.62; cursor: not-allowed; }
+
+/* ============================================================
+   Sections
+   ============================================================ */
+
+main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
+
+.section-h {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 78, 'wght' 700;
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  padding-top: var(--s7);
+  margin-bottom: var(--s4);
+  border-top: 2px solid var(--ink);
+}
+
+/* ---------- Role lens ---------- */
+
+.lens { padding-top: var(--s6); }
+.lens__h {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 86, 'wght' 600;
+  font-size: 1.15rem;
+  margin-bottom: var(--s1);
+}
+.lens__sub { color: var(--ink-soft); max-width: var(--measure); margin-bottom: var(--s3); }
+
+.lens__controls { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.lens__btn {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: var(--s2) var(--s3);
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: background-color 0.16s var(--ease), color 0.16s var(--ease);
+}
+.lens__btn:hover { background: var(--paper); }
+.lens__btn[aria-pressed='true'] {
+  background: var(--stamp);
+  border-color: var(--stamp);
+  color: #FFFFFF;
+}
+.lens__btn--clear[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.lens__status {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+  margin-top: var(--s2);
+  min-height: 1.2em;
+}
+
+/* Dimming is a foregrounding device, never a filter: nothing is removed. */
+.is-dimmed { opacity: 0.34; }
+[data-lens] { transition: opacity 0.28s var(--ease); }
+
+/* ---------- Verify strip ---------- */
+
+.verify { padding-top: var(--s6); }
+.verify__h {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--s2);
+}
+.verify__list { border-top: var(--rule); }
+.verify__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s1) var(--s3);
+  padding: var(--s2) 0;
+  border-bottom: var(--rule);
+}
+.verify__row a {
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  color: var(--stamp);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.verify__row a:hover { color: var(--ink); }
+.verify__note { color: var(--ink-soft); font-size: 0.88rem; }
+
+/* ---------- Work records ---------- */
+
+/* The record is a tag: stock edge along the punched top, not a side stripe. */
+.rec {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--steel-deep);
+  border-top: 3px solid var(--tag);
+  margin-bottom: var(--s4);
+  box-shadow: 0 1px 2px rgba(22, 34, 43, 0.07), 0 6px 18px -8px rgba(22, 34, 43, 0.18);
+}
+.rec__inner { padding: var(--s5) var(--s4) var(--s4); }
+
+/* Eyelet punched through the stock edge, as on a real tag shoulder. */
+.rec__punch {
+  position: absolute;
+  top: -0.55rem;
+  left: var(--s4);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--steel);
+  border: 2px solid var(--tag);
+}
+
+.rec__name {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 84, 'wght' 700;
+  font-size: clamp(1.16rem, 1rem + 0.6vw, 1.5rem);
+  letter-spacing: -0.015em;
+  margin-bottom: var(--s2);
+}
+.rec__thesis { max-width: var(--measure); margin-bottom: var(--s2); }
+.rec__so {
+  max-width: var(--measure);
+  color: var(--stamp);
+  font-variation-settings: 'wdth' 100, 'wght' 600;
+  padding-left: var(--s3);
+  border-left: 1px solid var(--stamp);
+  margin-bottom: var(--s3);
+}
+.rec__points { margin-bottom: var(--s3); }
+.rec__points li {
+  position: relative;
+  padding-left: var(--s3);
+  max-width: var(--measure);
+  margin-bottom: var(--s1);
+  color: var(--ink-soft);
+}
+.rec__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 1px;
+  background: var(--ink-soft);
+}
+.stack {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  padding-top: var(--s2);
+  border-top: var(--rule);
+}
+.rec--also { background: transparent; box-shadow: none; border-top-color: var(--steel-deep); }
+
+/* ---------- Experience ---------- */
+
+.summary {
+  max-width: var(--measure);
+  font-size: 1.06rem;
+  margin-bottom: var(--s5);
+}
+.role {
+  padding-top: var(--s4);
+  margin-bottom: var(--s4);
+  border-top: var(--rule);
+}
+.role__title {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 84, 'wght' 700;
+  font-size: 1.22rem;
+}
+.role__org {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: var(--s2);
+}
+.role__points li {
+  position: relative;
+  padding-left: var(--s3);
+  max-width: var(--measure);
+  margin-bottom: var(--s1);
+}
+.role__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 1px;
+  background: var(--ink-soft);
+}
+
+/* ---------- Capabilities ---------- */
+
+.caps__grid {
   display: grid;
-  place-items: center;
-  padding: 2rem;
-  background: #101314;
-  color: #e6e8e6;
-  font: 16px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--s4);
+}
+.caps__cluster { padding-top: var(--s2); border-top: 2px solid var(--ink); }
+.caps__cluster dt {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 84, 'wght' 700;
+  font-size: 0.94rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--s1);
+}
+.caps__cluster dd { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* ---------- Education ---------- */
+
+.cred__cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--s4);
+}
+.cred__list li {
+  padding: var(--s2) 0;
+  border-bottom: var(--rule);
+  color: var(--ink-soft);
+}
+.cred__list b { color: var(--ink); font-variation-settings: 'wght' 700; }
+
+/* ---------- Contact — the tag returns ---------- */
+
+.contact {
+  position: relative;
+  background: var(--tag);
+  color: var(--on-tag);
+  margin-top: var(--s7);
+  padding: var(--s6) var(--s4) var(--s5);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.4rem), calc(100% - 3rem) 100%, 0 100%);
+}
+.contact__punch {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--steel);
+  box-shadow: inset 0 1px 3px rgba(22, 34, 43, 0.45);
+}
+.contact__h {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 76, 'wght' 800;
+  font-size: clamp(2rem, 1.4rem + 3vw, 3.2rem);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: var(--s3);
+}
+.contact__lead { max-width: 48ch; margin-bottom: var(--s5); }
+.contact__rows { margin-bottom: var(--s5); }
+.contact__rows li {
+  padding: var(--s2) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.contact__rows .field__label { color: var(--on-tag-quiet); }
+.contact__link {
+  font-family: var(--mono);
+  font-size: 1.02rem;
+  color: var(--on-tag);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.contact__link:hover { color: var(--ink); }
+.contact__plain { font-family: var(--mono); font-size: 1.02rem; }
+.contact__resumes { display: flex; flex-wrap: wrap; gap: var(--s3); }
+
+.foot {
+  padding: var(--s4);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-align: center;
 }
 
-main { max-width: 48rem; }
+/* ============================================================
+   Motion — one authored moment: records settle like a tag on a wire
+   ============================================================ */
 
-h1 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.75rem, 6vw, 3rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+@media (prefers-reduced-motion: no-preference) {
+  .rec {
+    transform-origin: 8% 0;
+    animation: settle 0.9s var(--ease) both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 46%;
+  }
+  @keyframes settle {
+    from { transform: rotate(-1.6deg) translateY(1.1rem); }
+    to   { transform: rotate(0deg) translateY(0); }
+  }
 }
 
-p { margin: 0 0 0.5rem; }
+/* ============================================================
+   Narrow screens
+   ============================================================ */
 
-.note { opacity: 0.55; }
+@media (max-width: 40rem) {
+  .tag { padding: var(--s6) var(--s3) var(--s5); }
+  .tag__body { max-width: none; }
+  main { padding: 0 var(--s3); }
+  .rec__inner { padding: var(--s3) var(--s3) var(--s3) var(--s4); }
+  .rec__punch { display: none; }
+  .disposition { align-items: flex-start; }
+  .disposition__acts .act { padding-inline: var(--s3); }
+  .contact { padding: var(--s5) var(--s3) var(--s4); }
+}
+
+/* ============================================================
+   Print — one clean page, no tag stock, no wasted ink
+   ============================================================ */
+
+@media print {
+  :root { --steel: #FFF; --paper: #FFF; }
+  body { background: #FFF; color: #000; font-size: 10.5pt; line-height: 1.35; }
+  .tag, .contact {
+    background: #FFF;
+    color: #000;
+    clip-path: none;
+    padding: 0 0 12pt;
+    border-bottom: 1.5pt solid #000;
+  }
+  .name, .contact__h { color: #000; font-size: 26pt; margin-bottom: 6pt; }
+  .tag__punch, .tag__eyelet, .rec__punch, .contact__punch,
+  .lens, .skip, .foot, .field__rule { display: none; }
+  .titles, .disposition, .contact__rows li { border-color: #000; }
+  .field__label, .titles .field__label, .disposition__loc .field__label,
+  .contact__rows .field__label { color: #000; }
+  .thesis, .contact__lead { font-size: 11pt; }
+  .stamp { border-width: 1pt; box-shadow: none; transform: none; background: #FFF; }
+  .act { border: 1pt solid #000; color: #000; background: #FFF; }
+  .rec {
+    border: none;
+    border-top: 1pt solid #000;
+    box-shadow: none;
+    break-inside: avoid;
+    margin-bottom: 8pt;
+    animation: none;
+  }
+  .rec__inner { padding: 6pt 0 0; }
+  .rec__so { color: #000; border-left-color: #000; }
+  .rec__points li, .role__points li, .caps__cluster dd, .cred__list li,
+  .rec__thesis, .stack, .verify__note { color: #000; }
+  .verify__row a { color: #000; }
+  .section-h { padding-top: 14pt; font-size: 13pt; border-top: 1pt solid #000; }
+  .role, .caps__cluster, .cred__list li { break-inside: avoid; }
+  .is-dimmed { opacity: 1; }
+  a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 8pt; }
+}
