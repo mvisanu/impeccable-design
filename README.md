@@ -2,7 +2,19 @@
 
 Single-page static profile site. Plain HTML + CSS + minimal vanilla JS, deployed on Vercel.
 
-**Live URL:** _pending Phase 1 deploy_
+**Live URL:** https://visanu-dev.vercel.app
+
+## Deploys
+
+Vercel project `visanu-dev`, connected to this GitHub repo. Pushes to `main` deploy to
+production; every pull request gets its own preview URL. No build step — Vercel serves the
+repo root as static.
+
+`vercel.json` pins `outputDirectory` to `.`. This is load-bearing: Vercel's zero-config
+static detection treats an existing `public/` directory as the output root, which would
+stop `index.html` from being served. The `Cache-Control` header targets
+`/public/assets/(.*)` to match where the imagery actually lives. Because that cache is
+`immutable`, **asset filenames must change when their content changes.**
 
 ## Repo layout
 
