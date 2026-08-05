@@ -1,44 +1,100 @@
 # Visanu Mongsaithong — profile landing page
 
-Single-page static profile site. Plain HTML + CSS + minimal vanilla JS, deployed on Vercel.
+Single-page static profile site. Plain HTML, CSS, and ~40 lines of vanilla JS. No build step.
 
-**Live URL:** https://visanu-dev.vercel.app
+**Live:** https://visanu-dev.vercel.app
+
+## Fill these in
+
+Everything below is deliberately absent rather than guessed. The brief forbids fabricated
+URLs and metrics, so each of these is a real gap only the owner can close.
+
+**Highest value first — the "Verify it" strip is the single biggest conversion lever on the page.**
+
+| What | Where it goes | Status |
+| --- | --- | --- |
+| **RAG vs. GraphRAG paper** | New row in the `.verify__list` in `index.html` | Missing. The strongest artifact on the page. A URL, or drop the PDF in `public/assets/` and link it. |
+| **LinkedIn URL** | New row in `.verify__list`, and add to `sameAs` in the JSON-LD block | Missing. Not listed on the GitHub profile, so it could not be sourced. |
+| **Two resume PDFs** | Replace the two `<p class="pending">` elements in the sign-off | Currently render as "On request, by email" placeholders, not as links. |
+| **Per-record source links** | Inside each `<article class="rec">` | None wired. See "Open question" below. |
+| **Three `[METRIC: …]` figures** | Experience bullets in `index.html` | Owner confirmed no real figures exist. Sentences render numberless by design — do not add numbers that cannot survive a reference check. |
+| **Higgsfield imagery** | `public/assets/` | Not generated. See below. |
+
+**Also worth doing, outside this repo:** `prompt.md` §4 notes the GitHub profile needs its
+pinned set curated before that link converts — pin the substantial work, give every pin a
+one-line description, unpin forks and empty-description repos. `nextgenai-rag` currently has
+no description at all.
+
+### Open question for the owner
+
+No work record links to a source, because no mapping could be verified. `document.md`
+describes `nextgenai-rag` as "RAG pipeline behind my trading research app", which is not
+obviously the same artifact as the aerospace/clinical comparative study in work record 1.
+Wiring them together would assert something the evidence does not support. Confirm the
+mapping and the links go in.
+
+## Regenerating imagery
+
+The page currently ships **no** Higgsfield imagery — the CLI is installed but not
+authenticated, so `prompt.md` §7's asset list is unfulfilled and the world is carried
+entirely by CSS fill, geometry, and type.
+
+```bash
+higgsfield auth login          # browser OAuth; must be done by the account owner
+higgsfield generate --help
+```
+
+Rules that matter when generating:
+
+- Pull palette hex values from `DESIGN.md`, not from memory, and name them in every prompt.
+- Batch `work-01` … `work-06` in a single pass so lighting and palette stay consistent.
+- Generate large, then downscale. Never upscale.
+- Blanket negatives: no text or lettering, no logos, no identifiable people, no real
+  aircraft liveries, no stock-photo staging, no glossy 3D-render clichés.
+- **Never generate a synthetic face.** A portrait requires owner-supplied source photos via
+  the `soul` skill; otherwise the page ships without one.
+- Because `/public/assets/*` is served `immutable`, **a changed asset needs a changed
+  filename** or browsers will keep the stale one.
+
+`public/assets/og-image.png` was composited in build from the page's own tokens rather than
+generated. Regenerate it at 1200×630 if the visual world changes.
 
 ## Deploys
 
-Vercel project `visanu-dev`, connected to this GitHub repo. Pushes to `main` deploy to
-production; every pull request gets its own preview URL. No build step — Vercel serves the
-repo root as static.
+Vercel project `visanu-dev`, connected to this repo. Pushes to `main` deploy to production;
+every pull request gets its own preview URL.
 
 `vercel.json` pins `outputDirectory` to `.`. This is load-bearing: Vercel's zero-config
-static detection treats an existing `public/` directory as the output root, which would
-stop `index.html` from being served. The `Cache-Control` header targets
-`/public/assets/(.*)` to match where the imagery actually lives. Because that cache is
-`immutable`, **asset filenames must change when their content changes.**
+static detection treats an existing `public/` directory as the output root, which would stop
+`index.html` from being served at all. The `Cache-Control` header targets
+`/public/assets/(.*)` to match where the imagery actually lives; the `/assets/(.*)` pattern
+never matched anything.
+
+## Measured state
+
+Lighthouse against the live deploy: **performance 98, accessibility 100, best practices 100,
+SEO 100.** FCP 1.0s, LCP 1.6s, CLS 0. `npx impeccable detect` returns zero findings.
+
+Fonts (Archivo variable, Courier Prime) are self-hosted latin subsets under
+`public/assets/fonts/`, both SIL Open Font License 1.1. They were moved off Google Fonts
+because the third-party stylesheet was render-blocking and cost ~2.3s.
 
 ## Repo layout
 
 | Path | What it is |
 | --- | --- |
-| `index.html` · `styles.css` | The page. One stylesheet, CSS custom properties for the token system. |
-| `public/assets/` | Higgsfield-generated imagery. |
-| `prompt.md` | The full build brief — positioning, content, design constraints, ship checklist. |
-| `goal.md` | Build sequencing and deployment. |
-| `DESIGN.md` · `PRODUCT.md` | Impeccable design context. DESIGN.md is the source of truth for tokens. |
+| `index.html` · `styles.css` · `main.js` | The page. The direction contract is an HTML comment at the top of `<body>`. |
+| `public/assets/` | Imagery and self-hosted fonts. |
+| `PRODUCT.md` | Durable product truth — users, positioning, hard constraints, evidence on hand. |
+| `DESIGN.md` | The visual system as built. Source of truth for tokens. |
+| `prompt.md` · `goal.md` | The original brief and build sequencing. |
 | `CLAUDE.md` | Guidance for Claude Code working in this repo. |
 
-## Status
+## Constraints that must survive future edits
 
-Phase 1 (deploy skeleton) in progress. The designed page has not been built yet.
-
-## Fill these in
-
-Tracked in full once the page is built. Open placeholders so far, from `prompt.md`:
-
-- `[LINK: paper — arXiv / IEEE / PDF]` — RAG vs. GraphRAG paper. **The #1 conversion lever on the page.**
-- `[LINK: live demo]` — NextGen Trading
-- `[LINK: linkedin.com/in/…]`
-- `[LINK]` — Google Scholar / ORCID, only if it exists
-- `[METRIC: …]` ×3 in the experience section — render numberless until real figures are supplied
-- `[AVAILABILITY: …]` — "open to remote / relocation", only if confirmed
-- Two resume PDFs (AI/ML Engineer · Senior Software Engineer / Platform) — currently stub anchors
+- **No dates anywhere.** Grep the output for four-digit numbers before shipping; the only
+  legitimate hits are the phone number, an `og:image` pixel dimension, and hex values.
+- **No invented metrics** and **no invented URLs.**
+- The role lens dims, never filters, and the page must read in full with JavaScript off.
+- On the tag red, only white clears 4.5:1 for small text. Secondary text there separates by
+  scale and tracking, never by tone.
