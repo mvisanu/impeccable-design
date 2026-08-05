@@ -174,7 +174,7 @@ a { color: inherit; }
 .name {
   font-family: var(--display);
   font-variation-settings: 'wdth' 74, 'wght' 800;
-  font-size: clamp(3.4rem, 13vw, 6rem);
+  font-size: clamp(2.6rem, 12.4vw, 6rem);
   line-height: 0.87;
   letter-spacing: -0.035em;
   text-transform: uppercase;
@@ -362,27 +362,34 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
 
 /* ---------- Work records ---------- */
 
-/* The record is a tag: stock edge along the punched top, not a side stripe. */
+/* Each record is a tag in its own right: the hero's clipped shoulder and
+   stock edge repeat here, so the world holds through the middle of the page
+   instead of only at the bookends. */
 .rec {
   position: relative;
   background: var(--paper);
-  border: 1px solid var(--steel-deep);
   border-top: 3px solid var(--tag);
   margin-bottom: var(--s4);
-  box-shadow: 0 1px 2px rgba(22, 34, 43, 0.07), 0 6px 18px -8px rgba(22, 34, 43, 0.18);
+  clip-path: polygon(0 1.6rem, 1.6rem 0, 100% 0, 100% 100%, 0 100%);
 }
-.rec__inner { padding: var(--s5) var(--s4) var(--s4); }
+.rec__inner { padding: var(--s4) var(--s4) var(--s4) var(--s5); }
 
-/* Eyelet punched through the stock edge, as on a real tag shoulder. */
+/* Eyelet punched through the shoulder, as on the hero tag. */
 .rec__punch {
   position: absolute;
-  top: -0.55rem;
-  left: var(--s4);
-  width: 1rem;
-  height: 1rem;
+  top: 1.5rem;
+  left: 0.85rem;
+  width: 0.95rem;
+  height: 0.95rem;
   border-radius: 50%;
   background: var(--steel);
-  border: 2px solid var(--tag);
+  box-shadow: inset 0 1px 2px rgba(22, 34, 43, 0.4);
+}
+.rec__eyelet {
+  position: absolute;
+  inset: -0.28rem;
+  border: 1.5px solid var(--tag);
+  border-radius: 50%;
 }
 
 .rec__name {
@@ -393,12 +400,13 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
   margin-bottom: var(--s2);
 }
 .rec__thesis { max-width: var(--measure); margin-bottom: var(--s2); }
+/* Ink, not stamp. The one conformance stamp is struck in the sign-off. */
 .rec__so {
   max-width: var(--measure);
-  color: var(--stamp);
+  color: var(--ink);
   font-variation-settings: 'wdth' 100, 'wght' 600;
   padding-left: var(--s3);
-  border-left: 1px solid var(--stamp);
+  border-left: 1px solid var(--ink);
   margin-bottom: var(--s3);
 }
 .rec__points { margin-bottom: var(--s3); }
@@ -425,7 +433,7 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
   padding-top: var(--s2);
   border-top: var(--rule);
 }
-.rec--also { background: transparent; box-shadow: none; border-top-color: var(--steel-deep); }
+.rec--also { background: transparent; border-top-color: var(--steel-deep); clip-path: none; }
 
 /* ---------- Experience ---------- */
 
@@ -527,7 +535,37 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
   color: var(--ink);
   margin-bottom: var(--s3);
 }
+/* The one green conformance stamp, struck. It carries a real fact rather
+   than a decorative claim. */
+.stamp--conform {
+  display: inline-block;
+  color: var(--stamp);
+  border-color: var(--stamp);
+  box-shadow: 0 0 0 1px var(--steel), 0 0 0 3px var(--stamp);
+  transform: rotate(-2.2deg);
+  margin-bottom: var(--s4);
+}
+
 .contact__lead { max-width: 48ch; margin-bottom: var(--s5); }
+
+/* Not a control: the PDFs do not exist yet, so this must not look clickable. */
+.pending {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-tag);
+  padding: var(--s2) var(--s3);
+  border: 1px dashed rgba(255, 255, 255, 0.65);
+}
+.pending b {
+  display: block;
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  opacity: 0.9;
+}
 .contact__rows { margin-bottom: var(--s5); }
 .contact__rows li {
   padding: var(--s2) 0;
@@ -574,15 +612,39 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
    Narrow screens
    ============================================================ */
 
+/* Narrow: the first viewport must still reach the contact action, so the
+   hero is compressed rather than allowed to push the CTA below the fold. */
 @media (max-width: 40rem) {
-  .tag { padding: var(--s6) var(--s3) var(--s5); }
+  .tag { padding: 4.2rem var(--s3) var(--s4); }
   .tag__body { max-width: none; }
+  .field--head { margin-bottom: var(--s3); }
+  .name { margin-bottom: var(--s3); }
+
+  /* Three ruled fields become one, so the labels stop costing three lines. */
+  .titles { gap: var(--s1) var(--s3); padding-block: var(--s2); margin-bottom: var(--s3); }
+  .titles .field__label { display: none; }
+  .titles__item { font-size: 0.94rem; }
+  .titles__item:not(:last-child)::after {
+    content: ' ·';
+    opacity: 0.7;
+  }
+
+  .thesis { font-size: 1rem; line-height: 1.4; margin-bottom: var(--s4); }
+  .stamps { gap: var(--s2); margin-bottom: var(--s4); }
+  .stamp { padding: 0.3rem var(--s2); font-size: 0.62rem; }
+  .stamp b { font-size: 0.74rem; }
+
+  .disposition { align-items: flex-start; gap: var(--s3); padding-top: var(--s3); }
+  .disposition__acts { width: 100%; }
+  .disposition__acts .act { flex: 1; text-align: center; padding-inline: var(--s2); }
+
   main { padding: 0 var(--s3); }
   .rec__inner { padding: var(--s3) var(--s3) var(--s3) var(--s4); }
-  .rec__punch { display: none; }
-  .disposition { align-items: flex-start; }
-  .disposition__acts .act { padding-inline: var(--s3); }
   .contact { padding: var(--s5) var(--s3) var(--s4); }
+}
+
+@media (max-width: 24rem) {
+  .name { font-variation-settings: 'wdth' 68, 'wght' 800; }
 }
 
 /* ============================================================
@@ -612,10 +674,13 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
     border: none;
     border-top: 1pt solid #000;
     box-shadow: none;
+    clip-path: none;
     break-inside: avoid;
     margin-bottom: 8pt;
     animation: none;
   }
+  .stamp--conform { color: #000; border-color: #000; margin-bottom: 8pt; }
+  .pending { color: #000; border: 1pt dashed #000; }
   .rec__inner { padding: 6pt 0 0; }
   .rec__so { color: #000; border-left-color: #000; }
   .rec__points li, .role__points li, .caps__cluster dd, .cred__list li,

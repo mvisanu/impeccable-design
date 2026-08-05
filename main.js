@@ -22,7 +22,11 @@
   var status = document.getElementById('lens-status');
   if (!controls) return;
 
-  var targets = Array.prototype.slice.call(document.querySelectorAll('[data-lens]'));
+  /* Scoped to content only. A bare [data-lens] sweep also matches the lens
+     buttons, which would dim the reader's way back to "Show all". */
+  var targets = Array.prototype.slice.call(
+    document.querySelectorAll('.rec[data-lens], .role[data-lens], .caps__cluster[data-lens]')
+  );
   if (!targets.length) return;
 
   var buttons = Array.prototype.slice.call(controls.querySelectorAll('.lens__btn'));
