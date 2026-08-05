@@ -90,9 +90,16 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
+/* Generated stock grain. Blended OVER the token colour rather than replacing
+   it, so --steel and --tag stay the authority and the contrast ratios the
+   palette depends on do not move. */
 body {
   margin: 0;
-  background: var(--steel);
+  background-color: var(--steel);
+  background-image: url('public/assets/texture-substrate.webp');
+  background-size: 520px auto;
+  background-repeat: repeat;
+  background-blend-mode: soft-light;
   color: var(--ink);
   font-family: var(--body);
   font-size: var(--d-body);
@@ -142,7 +149,10 @@ a { color: inherit; }
 
 .tag {
   position: relative;
-  background: var(--tag);
+  background-color: var(--tag);
+  background-image: url('public/assets/texture-tagstock.webp');
+  background-size: cover;
+  background-blend-mode: soft-light;
   color: var(--on-tag);
   padding: var(--s7) var(--s4) var(--s6);
   clip-path: polygon(0 4.5rem, 3.2rem 0, 100% 0, 100% 100%, 0 100%);
@@ -547,7 +557,10 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
 
 .contact {
   position: relative;
-  background: var(--tag);
+  background-color: var(--tag);
+  background-image: url('public/assets/texture-tagstock.webp');
+  background-size: cover;
+  background-blend-mode: soft-light;
   color: var(--on-tag);
   margin-top: var(--s7);
   padding: var(--s6) var(--s4) var(--s5);
@@ -701,7 +714,14 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
     --s4: 6pt; --s5: 8pt; --s6: 10pt; --s7: 12pt;
     --measure: 100%;
   }
-  body { background: #FFF; color: var(--print-ink); font-size: 9pt; line-height: 1.3; }
+  body {
+    background: #FFF;
+    background-image: none;
+    color: var(--print-ink);
+    font-size: 9pt;
+    line-height: 1.3;
+  }
+  .tag, .contact { background-image: none; }
   main { max-width: none; padding: 0; }
   .tag, .contact {
     background: #FFF;
