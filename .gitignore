@@ -1,0 +1,12 @@
+node_modules/
+.vercel
+
+# Impeccable installs these per-machine with absolute paths
+.claude/settings.local.json
+.codex/
+
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
