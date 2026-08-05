@@ -4,6 +4,31 @@
    Tokens live here; DESIGN.md is written from what shipped.
    ============================================================ */
 
+/* Self-hosted so the faces are not render-blocking on a third-party origin.
+   Archivo and Courier Prime are both SIL Open Font License 1.1. */
+@font-face {
+  font-family: 'Archivo';
+  src: url('public/assets/fonts/archivo-var-latin.woff2') format('woff2-variations');
+  font-weight: 400 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('public/assets/fonts/courier-prime-400-latin.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Courier Prime';
+  src: url('public/assets/fonts/courier-prime-700-latin.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Ground and stock */
   --steel:        #E4E4E1;  /* galvanized bench, page ground */
@@ -15,10 +40,12 @@
   --ink-soft:     #3E4B54;  /* secondary ink on light stock */
   --stamp:        #2E6B4F;  /* conformance green — verified states only */
 
-  /* On the red field: white is the only body-safe foreground (4.59:1).
-     Slate clears 3:1, so it is reserved for display sizes. */
+  /* On the red field, white is the only small-text foreground that clears
+     4.5:1 (4.59:1). A tint of the hue tops out near 3.4:1, so secondary
+     text on the tag separates by scale and tracking, never by tone.
+     Slate clears 3:1 and is therefore reserved for display sizes. */
   --on-tag:       #FFFFFF;
-  --on-tag-quiet: #F6D9D2;
+  --on-tag-quiet: #FFFFFF;
 
   /* Type */
   --display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
@@ -130,6 +157,12 @@ a { color: inherit; }
   align-items: center;
   gap: var(--s3);
   margin-bottom: var(--s4);
+}
+/* On the tag, labels recede by size and tracking rather than by colour. */
+.tag .field__label,
+.contact .field__label {
+  color: var(--on-tag-quiet);
+  letter-spacing: 0.22em;
 }
 .field--head .field__label { color: var(--on-tag-quiet); margin: 0; }
 .field__rule {
