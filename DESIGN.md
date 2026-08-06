@@ -235,6 +235,33 @@ Borders are structural and carry meaning by weight: 3px red = a record's top edg
 
 **The Three-Scale Shoulder Rule.** The cut corner is the world's signature and appears at exactly three scales. A new panel either takes one of those three cuts or stays square. The "also-ran" record variant (`.rec--also`) proves the inverse: dropping the clip and the red edge is how a record is demoted.
 
+## Imagery
+
+Two kinds, and they do different jobs. Neither is decoration.
+
+**Stock grain (generated).** `texture-substrate.webp` on the page ground and
+`texture-tagstock.webp` on the two red panels, both Higgsfield-generated photographs of
+blank card stock. They are applied as `background-image` blended with `soft-light` over
+`background-color`, never as the background itself.
+
+**The White-On-Tag Rule extends to imagery.** The generated red stock is lighter than
+`--tag`, and white small text clears 4.5:1 on `#D93A1E` by only 0.09. Letting a texture
+become the background would fail the contrast audit. The token colour stays the authority;
+grain is layered over it, and the computed background must remain `rgb(217, 58, 30)`.
+Textures are dropped entirely in print.
+
+**Record plates (authored SVG).** Each work record carries a figure diagramming that
+project's mechanism, drawn inline in the page's own tokens: `.ink` 1.4px slate strokes,
+`.hair` 1px `--steel-deep` for guides and scales, `.mark` 2px `--tag` for the one thing
+being traced, `.ok` 1.8px `--stamp` for a verified state. Uniform stroke weight across the
+series, a 240×160 viewBox, a measurement scale along one edge, and a `<title>` carrying
+real alt text. The plate floats right at ≥54rem and leads the record below it.
+
+**The Authored-Plate Rule.** A new figure is drawn, not generated, and uses only these four
+stroke classes. Generation was tried and rejected on evidence: the available model could not
+hold the palette, defaulted to centred starbursts, and inserted stray lettering into work
+whose whole argument is that nothing is fabricated. Anything with type in it is authored.
+
 ## Components
 
 ### Buttons (Actions)

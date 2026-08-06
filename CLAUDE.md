@@ -76,10 +76,14 @@ The only legitimate four-digit hits are the phone number (`1429`, `9241`, `1850`
 
 ## Known-open work
 
-- **No Higgsfield imagery exists.** The CLI is installed but unauthenticated; only the owner
-  can complete that browser OAuth (`higgsfield auth login`). `prompt.md` §7's asset list is
-  entirely unfulfilled and the world is carried by CSS fill, geometry, and type.
-  `og-image.png` was composited in build from page tokens, not generated.
+- **Imagery is partly generated, partly authored.** The two stock-grain textures are
+  Higgsfield-generated; the six record plates are authored SVG, with the owner's agreement,
+  because the free-plan model could not hold the palette and inserted stray lettering
+  (recorded in README and DESIGN.md). `og-image.png` is composited in build from page tokens.
+  Textures blend `soft-light` over the token colour and must never replace it — the computed
+  tag background has to stay `rgb(217, 58, 30)` or the contrast audit fails.
+  Higgsfield is authenticated; the account is on the free plan with limited credits, and
+  `seedream_v4_5`/`nano_banana` (which accept palette reference images) need a paid plan.
 - LinkedIn URL, RAG paper URL, two resume PDFs, and per-record source links — all pending
   owner input. Tracked in README.md under "Fill these in".
 - The print stylesheet produces 4 clean pages, not the one-pager `prompt.md` §8 asks for. A
