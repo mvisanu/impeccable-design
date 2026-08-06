@@ -419,7 +419,36 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
   margin-bottom: var(--s4);
   clip-path: polygon(0 1.6rem, 1.6rem 0, 100% 0, 100% 100%, 0 100%);
 }
-.rec__inner { padding: var(--s4) var(--s4) var(--s4) var(--s5); }
+/* The plate floats so the record's prose sets its own rhythm; a grid column
+   spanning the text rows stretches them and opens a gap under the name. */
+.rec__inner {
+  padding: var(--s4) var(--s4) var(--s4) var(--s5);
+}
+.rec__inner::after { content: ''; display: block; clear: both; }
+.rec__inner > .plate {
+  float: right;
+  width: 15rem;
+  margin: 0 0 var(--s3) var(--s4);
+}
+
+/* The attached figure: a drafted plate on the record, in the same ink and
+   stock as everything else. Authored rather than generated so the palette is
+   exact and no stray lettering appears. */
+.plate {
+  margin: 0.35rem 0 0;
+  padding: var(--s2);
+  background: var(--steel);
+  border: 1px solid var(--steel-deep);
+}
+.plate svg { display: block; width: 100%; height: auto; }
+.plate .ink   { stroke: var(--ink);       stroke-width: 1.4; fill: none; }
+.plate .hair  { stroke: var(--steel-deep); stroke-width: 1;  fill: none; }
+.plate .dot   { fill: var(--ink); }
+.plate .mark  { stroke: var(--tag);  stroke-width: 2; fill: none; }
+.plate .markf { fill: var(--tag); }
+.plate .ok    { stroke: var(--stamp); stroke-width: 1.8; fill: none; }
+.plate .okf   { fill: var(--stamp); }
+.plate .soft  { fill: var(--ink-soft); }
 
 /* Eyelet punched through the shoulder, as on the hero tag. */
 .rec__punch {
@@ -481,6 +510,18 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
   border-top: var(--rule);
 }
 .rec--also { background: transparent; border-top-color: var(--steel-deep); clip-path: none; }
+.rec--also .rec__inner { display: block; }
+
+/* Below the two-column threshold the plate leads the record instead of
+   sitting beside it, so it never squeezes the prose measure. */
+@media (max-width: 54rem) {
+  .rec__inner > .plate {
+    float: none;
+    width: auto;
+    max-width: 20rem;
+    margin: 0 0 var(--s3);
+  }
+}
 
 /* ---------- Experience ---------- */
 
@@ -656,6 +697,14 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
     from { transform: rotate(-1.6deg) translateY(1.1rem); }
     to   { transform: rotate(0deg) translateY(0); }
   }
+  /* Narrow viewports have no room for the swing: the rotated paint box would
+     be clipped by the horizontal overflow guard mid-animation. */
+  @media (max-width: 40rem) {
+    @keyframes settle {
+      from { transform: translateY(0.9rem); }
+      to   { transform: translateY(0); }
+    }
+  }
 }
 
 /* ============================================================
@@ -694,6 +743,7 @@ main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
   main { padding: 0 var(--s3); }
   .rec__inner { padding: var(--s3) var(--s3) var(--s3) var(--s4); }
   .contact { padding: var(--s5) var(--s3) var(--s4); }
+
 }
 
 @media (max-width: 24rem) {

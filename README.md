@@ -35,9 +35,20 @@ mapping and the links go in.
 
 ## Regenerating imagery
 
-The page currently ships **no** Higgsfield imagery — the CLI is installed but not
-authenticated, so `prompt.md` §7's asset list is unfulfilled and the world is carried
-entirely by CSS fill, geometry, and type.
+Two of `prompt.md` §7's assets are Higgsfield-generated and in place:
+`texture-substrate.webp` (page ground) and `texture-tagstock.webp` (the red tag panels).
+Both are blended over the token colours with `soft-light` rather than replacing them —
+that is load-bearing, because the generated red is lighter than `#D93A1E` and white body
+text clears 4.5:1 on that red by only 0.09.
+
+**Deviation from §7, owner-approved:** the six project-card figures are *authored SVG*, not
+generated. Across four test generations the available free-plan model rendered pure
+`#FF0000` instead of the palette red, defaulted to centred starbursts regardless of
+instruction, and inserted stray numerals despite the blanket "no lettering" negative. The
+models that accept a palette reference image (`seedream_v4_5`) require a paid plan. Drafted
+linework is native to SVG, so the plates are exactly on-palette, carry no stray text, and
+each one diagrams that project's actual mechanism. They live inline in `index.html` and are
+styled by the `.plate` classes in `styles.css`.
 
 ```bash
 higgsfield auth login          # browser OAuth; must be done by the account owner
