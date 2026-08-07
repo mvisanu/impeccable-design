@@ -5,6 +5,9 @@ node_modules/
 .claude/settings.local.json
 .codex/
 
+# Transient decision-page state from a single session, not project truth
+.impeccable/questions/
+
 .DS_Store
 Thumbs.db
 *.log

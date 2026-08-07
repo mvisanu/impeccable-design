@@ -18,7 +18,7 @@ URLs and metrics, so each of these is a real gap only the owner can close.
 | **Two resume PDFs** | Replace the two `<p class="pending">` elements in the sign-off | Currently render as "On request, by email" placeholders, not as links. |
 | **Per-record source links** | Inside each `<article class="rec">` | None wired. See "Open question" below. |
 | **Three `[METRIC: …]` figures** | Experience bullets in `index.html` | Owner confirmed no real figures exist. Sentences render numberless by design — do not add numbers that cannot survive a reference check. |
-| **Higgsfield imagery** | `public/assets/` | Not generated. See below. |
+| **Photography or portrait** | `public/assets/` | None. The page carries its world on fill, geometry and type. A portrait needs owner-supplied source photos; no synthetic face will be generated. |
 
 **Also worth doing, outside this repo:** `prompt.md` §4 notes the GitHub profile needs its
 pinned set curated before that link converts — pin the substantial work, give every pin a
@@ -33,52 +33,44 @@ obviously the same artifact as the aerospace/clinical comparative study in work 
 Wiring them together would assert something the evidence does not support. Confirm the
 mapping and the links go in.
 
-## Regenerating imagery
+## Imagery
 
-Two of `prompt.md` §7's assets are Higgsfield-generated and in place:
-`texture-substrate.webp` (page ground) and `texture-tagstock.webp` (the red tag panels).
-Both are blended over the token colours with `soft-light` rather than replacing them —
-that is load-bearing, because the generated red is lighter than `#D93A1E` and white body
-text clears 4.5:1 on that red by only 0.09.
+The page ships **no raster imagery** except the Open Graph card. The favicon is SVG and the
+world is carried entirely by fill, geometry and type. Image is an addition here, never a
+rescue.
 
-**Deviation from §7, owner-approved:** the six project-card figures are *authored SVG*, not
-generated. Across four test generations the available free-plan model rendered pure
-`#FF0000` instead of the palette red, defaulted to centred starbursts regardless of
-instruction, and inserted stray numerals despite the blanket "no lettering" negative. The
-models that accept a palette reference image (`seedream_v4_5`) require a paid plan. Drafted
-linework is native to SVG, so the plates are exactly on-palette, carry no stray text, and
-each one diagrams that project's actual mechanism. They live inline in `index.html` and are
-styled by the `.plate` classes in `styles.css`.
+The six project figures are *authored SVG*, not generated, and live inline in `index.html`
+styled by the `.plate` classes in `styles.css`. Generation was tried and rejected on
+evidence: across four test passes the available free-plan model would not hold the palette,
+defaulted to centred starbursts regardless of instruction, and inserted stray numerals
+despite a blanket "no lettering" negative — unacceptable in work whose whole argument is
+that nothing on the page is fabricated. The models that accept a palette reference image
+(`seedream_v4_5`, `nano_banana`) require a paid plan. Anything with type in it is authored.
 
-```bash
-higgsfield auth login          # browser OAuth; must be done by the account owner
-higgsfield generate --help
-```
+Each plate uses four stroke classes and no others: `.ink` (1.4px near-black structure),
+`.hair` (1px guides and scales), `.mark`/`.markf` (2px ultramarine — the one thing being
+traced), `.ok`/`.okf` (a verified state). Uniform stroke weight across the series, a 240×160
+viewBox, and a `<title>` carrying real alt text.
 
-Rules that matter when generating:
+### Regenerating the Open Graph card
 
-- Pull palette hex values from `DESIGN.md`, not from memory, and name them in every prompt.
-- Batch `work-01` … `work-06` in a single pass so lighting and palette stay consistent.
-- Generate large, then downscale. Never upscale.
-- Blanket negatives: no text or lettering, no logos, no identifiable people, no real
-  aircraft liveries, no stock-photo staging, no glossy 3D-render clichés.
-- **Never generate a synthetic face.** A portrait requires owner-supplied source photos via
-  the `soul` skill; otherwise the page ships without one.
-- Because `/public/assets/*` is served `immutable`, **a changed asset needs a changed
-  filename** or browsers will keep the stale one.
-
-`public/assets/og-image.png` is composited in build from the page's own tokens rather than
-generated. Its source is `tools/og-card.html`. Regenerate after any change to the visual
-world:
+`public/assets/og-image-v2.png` is composited from the page's own tokens rather than
+generated. Its source is `tools/og-card.html`, which links the site's real `styles.css` and
+reuses its real classes, so the card cannot drift from the page. It is a fixed 1200×630
+raster, so the whole rem ramp is scaled from the root (`--og-canvas-scale`) instead of any
+individual size being overridden.
 
 ```bash
-npm i playwright                                # only dependency, only for this script
 python -m http.server 8899 --bind 127.0.0.1     # or any static server
-node tools/render-og.mjs http://127.0.0.1:8899/tools/og-card.html public/assets/og-image.png
+npx playwright screenshot --viewport-size="1200,630" \
+  http://127.0.0.1:8899/tools/og-card.html public/assets/og-image-v2.png
 ```
 
 Serve it over HTTP rather than opening the file directly — the self-hosted fonts will not
-load over `file://`.
+load over `file://`. Because `/public/assets/*` is served `immutable`, **a changed asset
+needs a changed filename** or browsers will keep the stale one; that is why the card carries
+a `-v2` suffix. Bump it again on the next change and update both `og:image` and
+`twitter:image` in `index.html`.
 
 `tools/og-card.html` links the site's own `styles.css` and reuses its real classes rather
 than restating the world in parallel values, so the card cannot drift from the page. It is a
@@ -98,12 +90,19 @@ never matched anything.
 
 ## Measured state
 
-Lighthouse against the live deploy: **performance 98, accessibility 100, best practices 100,
-SEO 100.** FCP 1.0s, LCP 1.6s, CLS 0. `npx impeccable detect` returns zero findings.
+The design gate (`impeccable detect`) returns **zero findings**. The print stylesheet
+produces **5 pages**. Zero dead links, zero date leaks.
 
-Fonts (Archivo variable, Courier Prime) are self-hosted latin subsets under
-`public/assets/fonts/`, both SIL Open Font License 1.1. They were moved off Google Fonts
-because the third-party stylesheet was render-blocking and cost ~2.3s.
+**Lighthouse has not been re-run since the visual world was replaced.** The previous build
+measured performance 98, accessibility 100, best practices 100, SEO 100, with FCP 1.0s,
+LCP 1.6s, CLS 0. The font budget is unchanged at ~101KB, so those numbers should hold, but
+treat them as stale until someone measures the current deploy.
+
+Fonts (Bricolage Grotesque variable for display, Public Sans variable for body and UI) are
+self-hosted latin subsets under `public/assets/fonts/`, both SIL Open Font License 1.1, both
+preloaded. They are self-hosted rather than pulled from Google Fonts because the third-party
+stylesheet was render-blocking and cost ~2.3s. The Bricolage subset carries the `opsz` and
+`wght` axes only — the width axis was dropped to hold the file at 75KB.
 
 ## Repo layout
 
@@ -122,5 +121,10 @@ because the third-party stylesheet was render-blocking and cost ~2.3s.
   legitimate hits are the phone number, an `og:image` pixel dimension, and hex values.
 - **No invented metrics** and **no invented URLs.**
 - The role lens dims, never filters, and the page must read in full with JavaScript off.
-- On the tag red, only white clears 4.5:1 for small text. Secondary text there separates by
-  scale and tracking, never by tone.
+- **One drenched region.** White page, one full-bleed ultramarine field opening the document.
+  Outside it, colour survives only as link colour, the 3px section tick, and one traced
+  stroke per figure. A second full-bleed coloured band breaks the design.
+- Only white goes on the field. White on `#1B2ECF` is 9.0:1; ink on it is 2.1:1. There is no
+  second foreground on ultramarine.
+- No component takes a thick coloured border down one side — it is the most recognizable
+  tell of a generated interface. In-prose emphasis comes from scale, weight and space.

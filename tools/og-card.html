@@ -10,49 +10,63 @@
 <link rel="stylesheet" href="../styles.css">
 <style>
   /* Canvas scale, not a type step: the card is a fixed 1200x630 raster viewed
-     small, so the whole rem ramp is scaled up from the root rather than any
-     individual size being overridden. */
-  :root { --og-canvas-scale: 21px; }
+     small, so the whole rem ramp is scaled from the root rather than any
+     individual size being overridden. --d-name is re-pointed, not bypassed:
+     the card has a fixed width, so the page's viewport-fluid step has nothing
+     to respond to. */
+  :root {
+    --og-canvas-scale: 21px;
+    --d-name: 7.6rem;
+    --lede-top: var(--s5);
+  }
+
   html { font-size: var(--og-canvas-scale); }
+
   body {
     width: 1200px;
     height: 630px;
     overflow: hidden;
   }
-  .tag {
+
+  .lede {
     width: 1200px;
     height: 630px;
-    padding: var(--s6) var(--s5) var(--s4);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
-  .tag__body { max-width: none; margin: 0; }
-  .name { margin-bottom: var(--s3); }
-  .titles { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .stamps { margin-bottom: 0; }
+
+  /* No page-load moment in a still. */
+  .lede::before { animation: none; }
+
+  .lede__inner {
+    max-width: none;
+    padding-inline: var(--s5);
+  }
+
+  .lede__field {
+    padding-bottom: 0;
+    padding-top: var(--s4);
+  }
+
+  .titles { border-bottom: none; padding-bottom: 0; margin-bottom: var(--s4); }
+  .creds { margin-bottom: 0; }
 </style>
 </head>
 <body>
-<header class="tag">
-  <div class="tag__punch" aria-hidden="true"><span class="tag__eyelet"></span></div>
-  <div class="tag__body">
-    <p class="field field--head">
-      <span class="field__label">Inspection record</span>
-      <span class="field__rule"></span>
-    </p>
-    <h1 class="name">Visanu<br>Mongsaithong</h1>
-    <ul class="titles">
-      <li class="titles__item">AI/ML Engineer</li>
-      <li class="titles__item">Cloud Solution Architect</li>
-      <li class="titles__item">Senior Software Engineer</li>
-    </ul>
+<header class="lede">
+  <div class="lede__inner">
+    <h1 class="name"><span>Visanu</span><span>Mongsaithong</span></h1>
+    <div class="lede__field">
+      <ul class="titles">
+        <li class="titles__item">AI/ML Engineer</li>
+        <li class="titles__item">Cloud Solution Architect</li>
+        <li class="titles__item">Senior Software Engineer</li>
+      </ul>
+      <ul class="creds">
+        <li class="cred-chip">DoD TS/SCI<b>Cleared</b></li>
+        <li class="cred-chip">AWS<b>GovCloud</b></li>
+        <li class="cred-chip">Regulated<b>HIPAA</b></li>
+      </ul>
+    </div>
   </div>
-  <ul class="stamps">
-    <li class="stamp">DoD TS/SCI<br><b>Cleared</b></li>
-    <li class="stamp stamp--tilt">AWS<br><b>GovCloud</b></li>
-    <li class="stamp">Regulated<br><b>HIPAA</b></li>
-  </ul>
 </header>
 </body>
 </html>

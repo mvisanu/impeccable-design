@@ -1,78 +1,68 @@
-/* ============================================================
-   Visanu Mongsaithong — inspection record
-   World: signal-red tag stock on cool galvanized steel.
-   Tokens live here; DESIGN.md is written from what shipped.
-   ============================================================ */
+/* ==========================================================================
+   Visanu Mongsaithong — white page, one drenched field.
 
-/* Self-hosted so the faces are not render-blocking on a third-party origin.
-   Archivo and Courier Prime are both SIL Open Font License 1.1. */
+   The world: a single continuous document on white, cut once by a full-bleed
+   ultramarine field that the name itself crosses. Colour survives outside that
+   field only as links, a 3px section tick, and one traced stroke per figure.
+   Two families: Bricolage Grotesque cut large, Public Sans for everything read.
+   ========================================================================== */
+
+/* ---- Fonts ------------------------------------------------------------- */
+
 @font-face {
-  font-family: 'Archivo';
-  src: url('public/assets/fonts/archivo-var-latin.woff2') format('woff2-variations');
-  font-weight: 400 900;
-  font-stretch: 62% 125%;
+  font-family: 'Bricolage Grotesque';
+  src: url('public/assets/fonts/bricolage-var-latin.woff2') format('woff2');
+  font-weight: 400 800;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
-  font-family: 'Courier Prime';
-  src: url('public/assets/fonts/courier-prime-400-latin.woff2') format('woff2');
-  font-weight: 400;
+  font-family: 'Public Sans';
+  src: url('public/assets/fonts/public-sans-var-latin.woff2') format('woff2');
+  font-weight: 300 800;
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Courier Prime';
-  src: url('public/assets/fonts/courier-prime-700-latin.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+
+/* ---- Tokens ------------------------------------------------------------ */
 
 :root {
-  /* Ground and stock */
-  --steel:        #E4E4E1;  /* galvanized bench, page ground */
-  --steel-deep:   #CBCAC4;  /* rule lines, hairlines */
-  --paper:        #F2F1ED;  /* record stock */
-  --tag:          #D93A1E;  /* signal-red tag stock — the committed field */
-  --tag-deep:     #A82A12;  /* punched edge, pressed state */
-  --ink:          #16222B;  /* slate stamp ink */
-  --ink-soft:     #3E4B54;  /* secondary ink on light stock */
-  --stamp:        #2E6B4F;  /* conformance green — verified states only */
+  /* Colour. One saturated field, one ink, hairlines, and a tint. */
+  --paper: #FFFFFF;
+  --ink: #0C1017;
+  --ink-2: #3D4855;
+  --rule: #DCE1E8;
+  --rule-2: #C2CAD4;
+  --tint: #F2F5F9;
+  --tint-2: #DFE6EF;
+  --field: #1B2ECF;
+  --field-deep: #1424A6;
+  --on-field: #FFFFFF;
+  --on-field-rule: rgba(255, 255, 255, 0.34);
 
-  /* On the red field, white is the only small-text foreground that clears
-     4.5:1 (4.59:1). A tint of the hue tops out near 3.4:1, so secondary
-     text on the tag separates by scale and tracking, never by tone.
-     Slate clears 3:1 and is therefore reserved for display sizes. */
-  --on-tag:       #FFFFFF;
-  --on-tag-quiet: #FFFFFF;
+  /* Type families. There is no third face. */
+  --f-display: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+  --f-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* Type ramp. Every non-display size on the page is one of these steps. */
-  --t-3xs:  0.62rem;   /* narrow-screen stamp labels */
-  --t-2xs:  0.66rem;   /* field labels, struck stamp labels */
-  --t-xs:   0.74rem;   /* mono UI: lens controls, status, pending */
-  --t-s:    0.78rem;   /* actions, stack strips, footer */
-  --t-sm:   0.88rem;   /* secondary body, notes, capability lists */
-  --t-base: 0.95rem;   /* capability values, narrow title fields */
-  --t-md:   1.06rem;   /* summary, contact values, title fields */
-  --t-lg:   1.22rem;   /* role titles */
+  /* Fixed type steps. */
+  --t-3xs: 0.70rem;
+  --t-2xs: 0.78rem;
+  --t-xs: 0.86rem;
+  --t-sm: 0.92rem;
+  --t-md: 1rem;
+  --t-lg: 1.12rem;
 
-  /* Fluid display steps, tokenized so the ramp lives in one place. */
-  --d-name:    clamp(2.6rem, 12.4vw, 6rem);
-  --d-signoff: clamp(2.6rem, 1.4rem + 3vw, 3.2rem);
-  --d-section: clamp(1.5rem, 1.2rem + 1.4vw, 2.2rem);
-  --d-record:  clamp(1.16rem, 1rem + 0.6vw, 1.5rem);
-  --d-lead:    clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
-  --d-body:    clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  /* Fluid type steps. */
+  --d-name: clamp(2.55rem, 11.6vw, 8.2rem);
+  --d-section: clamp(1.85rem, 1.35rem + 2.1vw, 3.05rem);
+  --d-record: clamp(1.3rem, 1.12rem + 0.9vw, 1.8rem);
+  --d-record-lead: clamp(1.55rem, 1.28rem + 1.3vw, 2.35rem);
+  --d-title: clamp(1.05rem, 0.99rem + 0.36vw, 1.28rem);
+  --d-lead: clamp(1.16rem, 1.04rem + 0.6vw, 1.5rem);
+  --d-body: clamp(1rem, 0.97rem + 0.18vw, 1.08rem);
 
-  --print-ink: #000;
-
-  /* Type */
-  --display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
-  --body:    'Archivo', system-ui, -apple-system, sans-serif;
-  --mono:    'Courier Prime', ui-monospace, 'Courier New', monospace;
-
-  /* Spacing scale */
+  /* Space, ~1.6 ratio. */
   --s1: 0.35rem;
   --s2: 0.7rem;
   --s3: 1.1rem;
@@ -81,38 +71,43 @@
   --s6: 4.4rem;
   --s7: 7rem;
 
-  --rule: 1px solid var(--steel-deep);
-  --measure: 68ch;
+  /* Shape. Square by default; controls take the one small radius. */
+  --r-0: 0;
+  --r-1: 6px;
+
+  /* Structure. */
+  --wrap: 64rem;
+  --gut: var(--s4);
+  --measure: 66ch;
+  --name-lh: 0.86;
+  --name-line: calc(var(--d-name) * var(--name-lh));
+  --lede-top: var(--s6);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+/* ---- Base -------------------------------------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; }
 
-/* Generated stock grain. Blended OVER the token colour rather than replacing
-   it, so --steel and --tag stay the authority and the contrast ratios the
-   palette depends on do not move. */
 body {
   margin: 0;
-  background-color: var(--steel);
-  background-image: url('public/assets/texture-substrate.webp');
-  background-size: 520px auto;
-  background-repeat: repeat;
-  background-blend-mode: soft-light;
+  background: var(--paper);
   color: var(--ink);
-  font-family: var(--body);
+  font-family: var(--f-body);
   font-size: var(--d-body);
   line-height: 1.6;
-  font-variation-settings: 'wdth' 100, 'wght' 400;
-  overflow-x: hidden;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3 { margin: 0; text-wrap: balance; }
-p { margin: 0; }
-ul, ol, dl { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
 
-a { color: inherit; }
+a { color: var(--field); }
 
 :focus-visible {
   outline: 3px solid var(--ink);
@@ -122,705 +117,855 @@ a { color: inherit; }
 .skip {
   position: absolute;
   left: -9999px;
-  top: 0;
+  top: var(--s2);
+  z-index: 10;
   background: var(--ink);
-  color: var(--steel);
+  color: var(--paper);
+  font-size: var(--t-xs);
+  font-weight: 600;
   padding: var(--s2) var(--s3);
-  font-family: var(--mono);
-  z-index: 20;
+  border-radius: var(--r-1);
+  text-decoration: none;
 }
-.skip:focus { left: 0; }
 
-/* ---------- Shared field vernacular ---------- */
+.skip:focus { left: var(--s3); }
 
-.field__label {
-  display: inline-block;
-  font-family: var(--mono);
+/* Small uppercase field label. Public Sans, never a mono costume. */
+.lbl {
+  display: block;
   font-size: var(--t-2xs);
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-right: var(--s2);
+  color: var(--ink-2);
+  line-height: 1.4;
 }
 
-/* ============================================================
-   HERO — the tag itself
-   ============================================================ */
+/* ==========================================================================
+   The lede — white above the cut, ultramarine below it
+   ========================================================================== */
 
-.tag {
+.lede {
   position: relative;
-  background-color: var(--tag);
-  background-image: url('public/assets/texture-tagstock.webp');
-  background-size: cover;
-  background-blend-mode: soft-light;
-  color: var(--on-tag);
-  padding: var(--s7) var(--s4) var(--s6);
-  clip-path: polygon(0 4.5rem, 3.2rem 0, 100% 0, 100% 100%, 0 100%);
-  overflow: hidden;
+  padding-top: var(--lede-top);
+  isolation: isolate;
 }
 
-/* Punched shoulder + reinforcing eyelet */
-.tag__punch {
+/* The drenched field. Its top edge lands exactly on the boundary between the
+   name's two lines, so the name is split by it: line one ink on white above,
+   line two white on field below. `--name-line` is what keeps that exact. */
+.lede::before {
+  content: "";
   position: absolute;
-  top: 1.5rem;
-  left: 1.3rem;
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
-  background: var(--steel);
-  box-shadow: inset 0 1px 3px rgba(22, 34, 43, 0.45);
-}
-.tag__eyelet {
-  position: absolute;
-  inset: -0.42rem;
-  border: 2px solid var(--tag-deep);
-  border-radius: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: calc(var(--lede-top) + var(--name-line));
+  background: var(--field);
+  z-index: -1;
 }
 
-.tag__body {
-  max-width: 62rem;
-  margin: 0 auto;
-}
-
-.field--head {
-  display: flex;
-  align-items: center;
-  gap: var(--s3);
-  margin-bottom: var(--s4);
-}
-/* On the tag, labels recede by size and tracking rather than by colour. */
-.tag .field__label,
-.contact .field__label {
-  color: var(--on-tag-quiet);
-  letter-spacing: 0.22em;
-}
-.field--head .field__label { color: var(--on-tag-quiet); margin: 0; }
-.field__rule {
-  flex: 1;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.45);
+.lede__inner {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gut);
 }
 
 .name {
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 74, 'wght' 800;
+  font-family: var(--f-display);
   font-size: var(--d-name);
-  line-height: 0.87;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
-  color: var(--ink);
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96, 'wght' 800;
+  line-height: var(--name-lh);
+  letter-spacing: -0.045em;
+  white-space: nowrap;
   margin-bottom: var(--s4);
+  color: var(--ink);
+}
+
+/* Two solid lines, each its own colour. Deliberately flat fill: an earlier pass
+   painted the split through the glyphs themselves so the edge severed the
+   letters, and it was dropped for solid colour on review. */
+.name span { display: block; }
+.name span:first-child { color: var(--ink); }
+.name span:last-child { color: var(--on-field); }
+
+.lede__field {
+  padding-bottom: var(--s6);
+  color: var(--on-field);
+}
+
+.thesis {
+  font-size: var(--d-lead);
+  line-height: 1.42;
+  font-weight: 400;
+  max-width: 46ch;
+  margin-bottom: var(--s5);
+  text-wrap: pretty;
 }
 
 .titles {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s2) var(--s5);
-  padding-block: var(--s3);
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  gap: var(--s2) var(--s4);
+  padding-bottom: var(--s4);
+  border-bottom: 1px solid var(--on-field-rule);
   margin-bottom: var(--s4);
 }
+
 .titles__item {
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 88, 'wght' 600;
-  font-size: var(--t-md);
-}
-.titles .field__label { color: var(--on-tag-quiet); display: block; }
-
-.thesis {
-  max-width: 46ch;
-  font-size: var(--d-lead);
-  line-height: 1.45;
-  margin-bottom: var(--s5);
-  text-wrap: pretty;
+  font-family: var(--f-display);
+  font-size: var(--d-title);
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
-/* Struck stamps — patch of stock, double-ruled, ink slightly off-square */
-.stamps {
+.creds {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s3);
   margin-bottom: var(--s5);
 }
-.stamp {
-  background: var(--steel);
-  color: var(--ink);
-  font-family: var(--mono);
+
+.cred-chip {
+  border: 1.5px solid var(--on-field-rule);
+  border-radius: var(--r-1);
+  padding: var(--s2) var(--s3);
   font-size: var(--t-2xs);
-  line-height: 1.35;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: var(--s2) var(--s3);
-  border: 2px solid var(--ink);
-  box-shadow: 0 0 0 1px var(--steel), 0 0 0 3px var(--ink);
-  transform: rotate(-1.4deg);
+  line-height: 1.35;
 }
-/* Block, so a stamp without a <br> between label and value still reads as
-   two struck lines rather than one run-together string. */
-.stamp b {
-  display: block;
-  font-weight: 700;
-  font-size: var(--t-sm);
-  letter-spacing: 0.06em;
-}
-.stamp--tilt { transform: rotate(1.1deg); }
 
-.disposition {
+.cred-chip b {
+  display: block;
+  font-family: var(--f-display);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.lede__foot {
   display: flex;
   flex-wrap: wrap;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: var(--s4);
-  padding-top: var(--s4);
-  border-top: 2px solid rgba(255, 255, 255, 0.5);
 }
-.disposition__loc { font-family: var(--mono); font-size: var(--t-s); }
-.disposition__loc .field__label { color: var(--on-tag-quiet); display: block; }
-.disposition__acts { display: flex; flex-wrap: wrap; gap: var(--s3); }
 
-/* Actions */
+.lede__loc { font-size: var(--t-sm); }
+.lede__loc .lbl { color: var(--on-field); opacity: 0.82; }
+
+.lede__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+/* ---- Actions ----------------------------------------------------------- */
+
 .act {
   display: inline-block;
-  font-family: var(--mono);
-  font-size: var(--t-s);
-  letter-spacing: 0.12em;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  text-decoration: none;
   padding: var(--s2) var(--s4);
   border: 2px solid currentColor;
-  text-decoration: none;
+  border-radius: var(--r-1);
+  color: var(--on-field);
   transition: background-color 0.18s var(--ease), color 0.18s var(--ease);
 }
-.act:hover { background: var(--on-tag); color: var(--tag); }
+
+.act:hover,
+.act:focus-visible {
+  background: var(--on-field);
+  color: var(--field);
+}
+
 .act--primary {
+  background: var(--on-field);
+  color: var(--field);
+}
+
+.act--primary:hover,
+.act--primary:focus-visible {
   background: var(--ink);
   border-color: var(--ink);
-  color: var(--steel);
+  color: var(--paper);
 }
-.act--primary:hover { background: var(--steel); color: var(--ink); }
-.act[aria-disabled='true'] { opacity: 0.62; cursor: not-allowed; }
 
-/* ============================================================
+.lede :focus-visible { outline-color: var(--on-field); }
+
+/* ==========================================================================
    Sections
-   ============================================================ */
+   ========================================================================== */
 
-main { max-width: 62rem; margin: 0 auto; padding: 0 var(--s4); }
+main {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
 
-/* The stock edge repeats at section scale, so the tag world runs the whole
-   spine instead of thinning out below the record stack. */
-.section-h {
+main > section {
   position: relative;
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 78, 'wght' 700;
-  font-size: var(--d-section);
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  padding-top: var(--s7);
-  margin-bottom: var(--s4);
-  border-top: 3px solid var(--tag);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s5);
+  margin-top: var(--s6);
 }
-.section-h::before {
-  content: '';
+
+/* The one mark of colour outside the field: a tick sitting on the hairline. */
+main > section::before {
+  content: "";
   position: absolute;
-  top: calc(-3px - 0.4rem);
+  top: -2px;
   left: 0;
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 50%;
-  background: var(--steel);
-  box-shadow: 0 0 0 1.5px var(--tag);
+  width: 3.2rem;
+  height: 3px;
+  background: var(--field);
 }
 
-/* ---------- Role lens ---------- */
+.section-h {
+  font-family: var(--f-display);
+  font-size: var(--d-section);
+  font-weight: 700;
+  font-variation-settings: 'opsz' 40, 'wght' 700;
+  line-height: 1.02;
+  letter-spacing: -0.038em;
+  margin-bottom: var(--s5);
+  text-wrap: balance;
+}
 
-.lens { padding-top: var(--s6); }
+/* ---- Role lens --------------------------------------------------------- */
+
 .lens__h {
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 86, 'wght' 600;
-  font-size: 1.15rem;
-  margin-bottom: var(--s1);
+  font-family: var(--f-display);
+  font-size: var(--d-record);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: var(--s2);
+  max-width: 28ch;
 }
-.lens__sub { color: var(--ink-soft); max-width: var(--measure); margin-bottom: var(--s3); }
 
-.lens__controls { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.lens__sub {
+  font-size: var(--d-body);
+  color: var(--ink-2);
+  max-width: 52ch;
+  margin-bottom: var(--s4);
+}
+
+.lens__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
 .lens__btn {
-  font-family: var(--mono);
+  font-family: var(--f-body);
   font-size: var(--t-xs);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: var(--s2) var(--s3);
-  background: transparent;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   color: var(--ink);
-  border: 1px solid var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--rule-2);
+  border-radius: var(--r-1);
+  padding: var(--s2) var(--s3);
   cursor: pointer;
-  transition: background-color 0.16s var(--ease), color 0.16s var(--ease);
+  transition: background-color 0.18s var(--ease), color 0.18s var(--ease),
+              border-color 0.18s var(--ease);
 }
-.lens__btn:hover { background: var(--paper); }
-.lens__btn[aria-pressed='true'] {
-  background: var(--stamp);
-  border-color: var(--stamp);
-  color: #FFFFFF;
+
+.lens__btn:hover { background: var(--tint); border-color: var(--ink-2); }
+
+.lens__btn[aria-pressed="true"] {
+  background: var(--field);
+  border-color: var(--field);
+  color: var(--on-field);
 }
-.lens__btn--clear[aria-pressed='true'] {
+
+.lens__btn--clear[aria-pressed="true"] {
   background: var(--ink);
   border-color: var(--ink);
 }
+
 .lens__status {
-  font-family: var(--mono);
-  font-size: var(--t-xs);
-  color: var(--ink-soft);
-  margin-top: var(--s2);
-  min-height: 1.2em;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  margin-top: var(--s3);
+  min-height: 1.5em;
 }
 
-/* Dimming is a foregrounding device, never a filter: nothing is removed. */
-.is-dimmed { opacity: 0.34; }
-[data-lens] { transition: opacity 0.28s var(--ease); }
+/* De-emphasis, not removal: dimmed copy has to stay readable, so this sits
+   well above the point where ink on white stops being legible. */
+.is-dimmed { opacity: 0.55; }
 
-/* ---------- Verify strip ---------- */
+.rec,
+.role,
+.caps__cluster { transition: opacity 0.28s var(--ease); }
 
-.verify { padding-top: var(--s6); }
-.verify__h {
-  font-family: var(--mono);
-  font-size: var(--t-xs);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: var(--s2);
+/* ---- Verify ------------------------------------------------------------ */
+
+.verify__list {
+  border-top: 1px solid var(--rule);
 }
-.verify__list { border-top: var(--rule); }
+
 .verify__row {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--s1) var(--s3);
-  padding: var(--s2) 0;
-  border-bottom: var(--rule);
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--rule);
 }
+
 .verify__row a {
-  font-family: var(--mono);
-  font-size: var(--t-sm);
-  color: var(--stamp);
+  font-family: var(--f-display);
+  font-size: var(--d-title);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
+  transition: color 0.18s var(--ease);
 }
+
 .verify__row a:hover { color: var(--ink); }
-.verify__note { color: var(--ink-soft); font-size: var(--t-sm); }
 
-/* ---------- Work records ---------- */
-
-/* Each record is a tag in its own right: the hero's clipped shoulder and
-   stock edge repeat here, so the world holds through the middle of the page
-   instead of only at the bookends. */
-.rec {
-  position: relative;
-  background: var(--paper);
-  border-top: 3px solid var(--tag);
-  margin-bottom: var(--s4);
-  clip-path: polygon(0 1.6rem, 1.6rem 0, 100% 0, 100% 100%, 0 100%);
-}
-/* The plate floats so the record's prose sets its own rhythm; a grid column
-   spanning the text rows stretches them and opens a gap under the name. */
-.rec__inner {
-  padding: var(--s4) var(--s4) var(--s4) var(--s5);
-}
-.rec__inner::after { content: ''; display: block; clear: both; }
-.rec__inner > .plate {
-  float: right;
-  width: 15rem;
-  margin: 0 0 var(--s3) var(--s4);
+.verify__note {
+  font-size: var(--t-sm);
+  color: var(--ink-2);
 }
 
-/* The attached figure: a drafted plate on the record, in the same ink and
-   stock as everything else. Authored rather than generated so the palette is
-   exact and no stray lettering appears. */
-.plate {
-  margin: 0.35rem 0 0;
-  padding: var(--s2);
-  background: var(--steel);
-  border: 1px solid var(--steel-deep);
-}
-.plate svg { display: block; width: 100%; height: auto; }
-.plate .ink   { stroke: var(--ink);       stroke-width: 1.4; fill: none; }
-.plate .hair  { stroke: var(--steel-deep); stroke-width: 1;  fill: none; }
-.plate .dot   { fill: var(--ink); }
-.plate .mark  { stroke: var(--tag);  stroke-width: 2; fill: none; }
-.plate .markf { fill: var(--tag); }
-.plate .ok    { stroke: var(--stamp); stroke-width: 1.8; fill: none; }
-.plate .okf   { fill: var(--stamp); }
-.plate .soft  { fill: var(--ink-soft); }
+/* ---- Selected work ----------------------------------------------------- */
 
-/* Eyelet punched through the shoulder, as on the hero tag. */
-.rec__punch {
-  position: absolute;
-  top: 1.5rem;
-  left: 0.85rem;
-  width: 0.95rem;
-  height: 0.95rem;
-  border-radius: 50%;
-  background: var(--steel);
-  box-shadow: inset 0 1px 2px rgba(22, 34, 43, 0.4);
+.rec + .rec {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s5);
+  margin-top: var(--s5);
 }
-.rec__eyelet {
-  position: absolute;
-  inset: -0.28rem;
-  border: 1.5px solid var(--tag);
-  border-radius: 50%;
+
+.rec__inner::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .rec__name {
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 84, 'wght' 700;
+  font-family: var(--f-display);
   font-size: var(--d-record);
-  letter-spacing: -0.015em;
-  margin-bottom: var(--s2);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--s3);
+  text-wrap: balance;
 }
-.rec__thesis { max-width: var(--measure); margin-bottom: var(--s2); }
-/* Ink, not stamp. The one conformance stamp is struck in the sign-off. */
-.rec__so {
+
+.plate {
+  float: right;
+  width: 15.5rem;
+  margin: 0 0 var(--s3) var(--s4);
+  background: var(--tint);
+  border-radius: var(--r-1);
+  padding: var(--s3);
+}
+
+.plate svg { display: block; width: 100%; height: auto; }
+
+.plate .ink { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.plate .hair { fill: none; stroke: var(--rule-2); stroke-width: 1; }
+.plate .dot { fill: var(--ink-2); stroke: none; }
+.plate .soft { fill: var(--tint-2); stroke: var(--ink-2); stroke-width: 1; }
+.plate .mark { fill: none; stroke: var(--field); stroke-width: 2; }
+.plate .markf { fill: var(--field); stroke: none; }
+.plate .ok { fill: none; stroke: var(--field); stroke-width: 1.8; }
+.plate .okf { fill: var(--field); stroke: none; }
+
+.rec__thesis {
+  font-size: var(--d-body);
   max-width: var(--measure);
-  color: var(--ink);
-  font-variation-settings: 'wdth' 100, 'wght' 600;
-  padding-left: var(--s3);
-  border-left: 1px solid var(--ink);
   margin-bottom: var(--s3);
 }
-.rec__points { margin-bottom: var(--s3); }
+
+/* The so-what line is the record's argument. It earns its emphasis from scale
+   and weight against the prose around it — not from a coloured bar down one
+   side, which is the single most recognizable tell of a generated interface. */
+.rec__so {
+  font-size: var(--t-lg);
+  font-weight: 600;
+  line-height: 1.45;
+  max-width: var(--measure);
+  margin-block: var(--s4) var(--s4);
+  text-wrap: pretty;
+}
+
+.rec__points { max-width: var(--measure); }
+
 .rec__points li {
   position: relative;
+  font-size: var(--d-body);
+  color: var(--ink-2);
   padding-left: var(--s3);
-  max-width: var(--measure);
-  margin-bottom: var(--s1);
-  color: var(--ink-soft);
-}
-.rec__points li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.68em;
-  width: 6px;
-  height: 1px;
-  background: var(--ink-soft);
-}
-.stack {
-  font-family: var(--mono);
-  font-size: var(--t-s);
-  color: var(--ink-soft);
-  padding-top: var(--s2);
-  border-top: var(--rule);
-}
-.rec--also { background: transparent; border-top-color: var(--steel-deep); clip-path: none; }
-.rec--also .rec__inner { display: block; }
-
-/* Below the two-column threshold the plate leads the record instead of
-   sitting beside it, so it never squeezes the prose measure. */
-@media (max-width: 54rem) {
-  .rec__inner > .plate {
-    float: none;
-    width: auto;
-    max-width: 20rem;
-    margin: 0 0 var(--s3);
-  }
-}
-
-/* ---------- Experience ---------- */
-
-.summary {
-  max-width: var(--measure);
-  font-size: var(--t-md);
-  margin-bottom: var(--s5);
-}
-.role {
-  padding-top: var(--s4);
-  margin-bottom: var(--s4);
-  border-top: var(--rule);
-}
-.role__title {
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 84, 'wght' 700;
-  font-size: var(--t-lg);
-}
-.role__org {
-  font-family: var(--mono);
-  font-size: var(--t-s);
-  color: var(--ink-soft);
   margin-bottom: var(--s2);
 }
-.role__points li {
-  position: relative;
-  padding-left: var(--s3);
-  max-width: var(--measure);
-  margin-bottom: var(--s1);
-}
-.role__points li::before {
-  content: '';
+
+.rec__points li::before {
+  content: "";
   position: absolute;
   left: 0;
-  top: 0.68em;
-  width: 6px;
-  height: 1px;
-  background: var(--ink-soft);
+  top: 0.72em;
+  width: 0.55rem;
+  height: 1.5px;
+  background: var(--rule-2);
 }
 
-/* ---------- Capabilities ---------- */
+.stack {
+  font-size: var(--t-2xs);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s2);
+  margin-top: var(--s3);
+}
+
+.stack .lbl { margin-bottom: var(--s1); }
+
+/* The lead proof carries the section. One event in the middle of the page
+   stops six records reading as one repeated block. */
+.work .rec:first-of-type .rec__name {
+  font-size: var(--d-record-lead);
+  font-variation-settings: 'opsz' 32, 'wght' 700;
+  margin-bottom: var(--s4);
+}
+
+.work .rec:first-of-type .plate { width: 21rem; }
+.work .rec:first-of-type { padding-bottom: var(--s3); }
+
+/* A demoted record: no figure, quieter name, no colour rule. */
+.rec--also .rec__name { font-size: var(--d-title); }
+.rec--also .rec__so { font-weight: 500; }
+
+/* ---- Experience -------------------------------------------------------- */
+
+.summary {
+  font-size: var(--d-body);
+  max-width: var(--measure);
+  color: var(--ink-2);
+  margin-bottom: var(--s6);
+}
+
+.role + .role {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--s4);
+  margin-top: var(--s4);
+}
+
+.role__title {
+  font-family: var(--f-display);
+  font-size: var(--d-title);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.role__org {
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+  margin-bottom: var(--s2);
+}
+
+.role__points { max-width: var(--measure); }
+
+.role__points li {
+  position: relative;
+  font-size: var(--d-body);
+  padding-left: var(--s3);
+  margin-bottom: var(--s1);
+}
+
+.role__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.55rem;
+  height: 1.5px;
+  background: var(--rule-2);
+}
+
+/* ---- Capabilities ------------------------------------------------------ */
 
 .caps__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: var(--s4);
 }
-.caps__cluster { padding-top: var(--s2); border-top: 2px solid var(--ink); }
+
+.caps__cluster {
+  border-top: 2px solid var(--ink);
+  padding-top: var(--s2);
+}
+
 .caps__cluster dt {
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 84, 'wght' 700;
-  font-size: var(--t-base);
+  font-family: var(--f-display);
+  font-size: var(--t-2xs);
+  font-weight: 700;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
   margin-bottom: var(--s1);
 }
-.caps__cluster dd { margin: 0; color: var(--ink-soft); font-size: var(--t-base); }
 
-/* ---------- Education ---------- */
+.caps__cluster dd {
+  font-size: var(--t-sm);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+/* ---- Education & standing ---------------------------------------------- */
 
 .cred__cols {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: var(--s4);
 }
+
 .cred__list li {
+  font-size: var(--t-sm);
+  color: var(--ink-2);
   padding: var(--s2) 0;
-  border-bottom: var(--rule);
-  color: var(--ink-soft);
-}
-.cred__list b { color: var(--ink); font-variation-settings: 'wght' 700; }
-
-/* ---------- Contact — the tag returns ---------- */
-
-.contact {
-  position: relative;
-  background-color: var(--tag);
-  background-image: url('public/assets/texture-tagstock.webp');
-  background-size: cover;
-  background-blend-mode: soft-light;
-  color: var(--on-tag);
-  margin-top: var(--s7);
-  padding: var(--s6) var(--s4) var(--s5);
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3.4rem), calc(100% - 3rem) 100%, 0 100%);
-}
-.contact__punch {
-  position: absolute;
-  top: 1.4rem;
-  right: 1.4rem;
-  width: 1.6rem;
-  height: 1.6rem;
-  border-radius: 50%;
-  background: var(--steel);
-  box-shadow: inset 0 1px 3px rgba(22, 34, 43, 0.45);
-}
-.contact__h {
-  font-family: var(--display);
-  font-variation-settings: 'wdth' 76, 'wght' 800;
-  font-size: var(--d-signoff);
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: var(--ink);
-  margin-bottom: var(--s3);
-}
-/* The one green conformance stamp, struck. It carries a real fact rather
-   than a decorative claim. */
-.stamp--conform {
-  display: inline-block;
-  color: var(--stamp);
-  border-color: var(--stamp);
-  box-shadow: 0 0 0 1px var(--steel), 0 0 0 3px var(--stamp);
-  transform: rotate(-2.2deg);
-  margin-bottom: var(--s4);
+  border-bottom: 1px solid var(--rule);
 }
 
-.contact__lead { max-width: 48ch; margin-bottom: var(--s5); }
-
-/* Not a control: the PDFs do not exist yet, so this must not look clickable. */
-.pending {
-  font-family: var(--mono);
-  font-size: var(--t-s);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--on-tag);
-  padding: var(--s2) var(--s3);
-  border: 1px dashed rgba(255, 255, 255, 0.65);
-}
-.pending b {
+.cred__list b {
   display: block;
-  font-weight: 400;
-  font-size: var(--t-xs);
-  letter-spacing: 0.06em;
-  text-transform: none;
-  opacity: 0.9;
-}
-.contact__rows { margin-bottom: var(--s5); }
-.contact__rows li {
-  padding: var(--s2) 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-}
-.contact__rows .field__label { color: var(--on-tag-quiet); }
-.contact__link {
-  font-family: var(--mono);
   font-size: var(--t-md);
-  color: var(--on-tag);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* The <b> already breaks the line; the markup's <br> would break it twice. */
+.cred__list br { display: none; }
+
+/* ---- Sign off ---------------------------------------------------------- */
+
+.status {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s2);
+  border: 1.5px solid var(--field);
+  border-radius: var(--r-1);
+  padding: var(--s1) var(--s3);
+  margin-bottom: var(--s4);
+  font-size: var(--t-2xs);
+}
+
+.status .lbl { display: inline; color: var(--field); }
+
+.status b {
+  font-family: var(--f-display);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--field);
+}
+
+.contact__lead {
+  font-size: var(--d-lead);
+  line-height: 1.42;
+  max-width: 48ch;
+  margin-bottom: var(--s5);
+  text-wrap: pretty;
+}
+
+.contact__rows { border-top: 1px solid var(--rule); }
+
+.contact__rows li {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: var(--s2);
+  align-items: baseline;
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* The document closes on a heavier edge than it separates on — the opening
+   cut answered in ink, which costs the page no second region of colour. */
+main > section.contact { border-top: 3px solid var(--ink); }
+
+/* No tick here. The heavier ink rule is the marker; a 3px blue segment sitting
+   inside a 3px black one just reads as a smudge. */
+main > section.contact::before { display: none; }
+
+.contact__link,
+.contact__plain {
+  font-family: var(--f-display);
+  font-size: var(--d-record);
+  font-variation-settings: 'opsz' 24, 'wght' 700;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  word-break: break-word;
+}
+
+.contact__plain { color: var(--ink); }
+
+.contact__link {
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
+  transition: color 0.18s var(--ease);
 }
+
 .contact__link:hover { color: var(--ink); }
-.contact__plain { font-family: var(--mono); font-size: var(--t-md); }
-.contact__resumes { display: flex; flex-wrap: wrap; gap: var(--s3); }
+
+.contact__resumes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  margin-top: var(--s4);
+}
+
+/* Deliberately not a control: no href, no pointer, no hover. */
+.pending {
+  border: 1px dashed var(--rule-2);
+  border-radius: var(--r-1);
+  padding: var(--s2) var(--s3);
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.pending b {
+  display: block;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink);
+}
+
+/* ---- Footer ------------------------------------------------------------ */
 
 .foot {
-  padding: var(--s4);
-  font-family: var(--mono);
-  font-size: var(--t-s);
-  color: var(--ink-soft);
-  text-align: center;
+  max-width: var(--wrap);
+  margin: var(--s6) auto 0;
+  padding: var(--s3) var(--gut) var(--s5);
+  border-top: 1px solid var(--rule);
+  font-size: var(--t-2xs);
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
 }
 
-/* ============================================================
-   Motion — one authored moment: records settle like a tag on a wire
-   ============================================================ */
+/* ==========================================================================
+   Motion — one authored moment
+   ========================================================================== */
 
 @media (prefers-reduced-motion: no-preference) {
-  .rec {
-    transform-origin: 8% 0;
-    animation: settle 0.9s var(--ease) both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 46%;
-  }
-  @keyframes settle {
-    from { transform: rotate(-1.6deg) translateY(1.1rem); }
-    to   { transform: rotate(0deg) translateY(0); }
-  }
-  /* Narrow viewports have no room for the swing: the rotated paint box would
-     be clipped by the horizontal overflow guard mid-animation. */
-  @media (max-width: 40rem) {
-    @keyframes settle {
-      from { transform: translateY(0.9rem); }
-      to   { transform: translateY(0); }
-    }
+  .lede::before {
+    animation: field-wipe 0.72s var(--ease) 0.08s both;
   }
 }
 
-/* ============================================================
-   Narrow screens
-   ============================================================ */
+/* The field falls past the name; the second line appears as it passes. */
+@keyframes field-wipe {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
 
-/* Narrow: the first viewport must still reach the contact action, so the
-   hero is compressed rather than allowed to push the CTA below the fold. */
+/* ==========================================================================
+   Narrow widths
+   ========================================================================== */
+
+@media (max-width: 54rem) {
+  .plate {
+    float: none;
+    width: 100%;
+    max-width: 21rem;
+    margin: 0 0 var(--s4);
+  }
+}
+
 @media (max-width: 40rem) {
-  .tag { padding: 4.2rem var(--s3) var(--s4); }
-  .tag__body { max-width: none; }
-  .field--head { margin-bottom: var(--s3); }
-  .name { margin-bottom: var(--s3); }
-
-  /* Three ruled fields become one, so the labels stop costing three lines. */
-  .titles { gap: var(--s1) var(--s3); padding-block: var(--s2); margin-bottom: var(--s3); }
-  .titles .field__label { display: none; }
-  .titles__item { font-size: var(--t-base); }
-  /* Margin, not a leading space — source whitespace between the list items
-     renders unevenly on either side of the separator. */
-  .titles__item:not(:last-child)::after {
-    content: '·';
-    margin-left: 0.45em;
-    opacity: 0.7;
+  :root {
+    --gut: var(--s3);
+    --lede-top: var(--s5);
   }
 
-  .thesis { font-size: 1rem; line-height: 1.4; margin-bottom: var(--s4); }
-  .stamps { gap: var(--s2); margin-bottom: var(--s4); }
-  .stamp { padding: 0.3rem var(--s2); font-size: var(--t-3xs); }
-  .stamp b { font-size: var(--t-xs); }
+  .lede__field { padding-bottom: var(--s5); }
+  .thesis { margin-bottom: var(--s4); }
+  .creds { gap: var(--s2); }
+  .titles { gap: var(--s1) var(--s3); }
 
-  .disposition { align-items: flex-start; gap: var(--s3); padding-top: var(--s3); }
-  .disposition__acts { width: 100%; }
-  .disposition__acts .act { flex: 1; text-align: center; padding-inline: var(--s2); }
+  .lede__foot {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--s3);
+  }
 
-  main { padding: 0 var(--s3); }
-  .rec__inner { padding: var(--s3) var(--s3) var(--s3) var(--s4); }
-  .contact { padding: var(--s5) var(--s3) var(--s4); }
+  .lede__acts { display: grid; grid-template-columns: 1fr 1fr; }
+  .act { text-align: center; padding-inline: var(--s2); }
 
+  main > section { padding-top: var(--s4); margin-top: var(--s5); }
+  .section-h { margin-bottom: var(--s4); }
+  .contact__rows li { grid-template-columns: 1fr; gap: var(--s1); }
+  .foot { margin-top: var(--s5); }
 }
 
+/* The actions stack here, so the hero pays for the extra row out of its own
+   budget rather than pushing the contact action past the fold. */
 @media (max-width: 24rem) {
-  .name { font-variation-settings: 'wdth' 68, 'wght' 800; }
+  .lede__acts { grid-template-columns: 1fr; }
+  .thesis { margin-bottom: var(--s4); }
+  .creds { margin-bottom: var(--s4); }
+  .lede__field { padding-bottom: var(--s4); }
 }
 
-/* ============================================================
-   Print — one clean page, no tag stock, no wasted ink
-   ============================================================ */
+/* ==========================================================================
+   Forced colours — transparent display type must not vanish
+   ========================================================================== */
+
+@media (forced-colors: active) {
+  .name span { color: CanvasText; }
+
+  .lede::before { display: none; }
+  .lede__field { color: CanvasText; }
+  .act { color: LinkText; }
+}
+
+/* ==========================================================================
+   Print — a real deliverable, not an afterthought
+   ========================================================================== */
 
 @media print {
-  /* The screen spacing scale is built for a scrolling page; carried into
-     print it costs several sheets of whitespace. Collapse it. */
   :root {
-    --steel: #FFF;
-    --paper: #FFF;
-    --s1: 1pt; --s2: 2.5pt; --s3: 4pt;
-    --s4: 6pt; --s5: 8pt; --s6: 10pt; --s7: 12pt;
-    --measure: 100%;
+    --paper: #FFFFFF;
+    --ink: #000000;
+    --ink-2: #333333;
+    --rule: #BBBBBB;
+    --rule-2: #999999;
+    --tint: #FFFFFF;
+    --tint-2: #EEEEEE;
+    --field: #000000;
+    --on-field: #000000;
+    --on-field-rule: #999999;
+
+    /* The screen ramp is viewport-fluid; paper has no viewport. Re-point every
+       step at a paper size so the document sets to five pages, not ten. */
+    --t-3xs: 7pt;
+    --t-2xs: 7.5pt;
+    --t-xs: 8pt;
+    --t-sm: 8.5pt;
+    --t-md: 9.5pt;
+    --t-lg: 10pt;
+    --d-section: 14pt;
+    --d-record: 12pt;
+    --d-title: 11pt;
+    --d-lead: 11pt;
+    --d-body: 9.5pt;
+
+    --s1: 2pt;
+    --s2: 4pt;
+    --s3: 6pt;
+    --s4: 9pt;
+    --s5: 12pt;
+    --s6: 16pt;
+    --s7: 20pt;
   }
+
+  @page { margin: 12mm 14mm; }
+
   body {
-    background: #FFF;
-    background-image: none;
-    color: var(--print-ink);
-    font-size: 9pt;
-    line-height: 1.3;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    color: #000;
   }
-  .tag, .contact { background-image: none; }
-  main { max-width: none; padding: 0; }
-  .tag, .contact {
-    background: #FFF;
-    color: var(--print-ink);
-    clip-path: none;
-    padding: 0 0 12pt;
-    border-bottom: 1.5pt solid var(--print-ink);
-  }
-  .name, .contact__h { color: var(--print-ink); font-size: 22pt; margin-bottom: 4pt; line-height: 0.95; }
-  .titles { padding-block: 3pt; margin-bottom: 4pt; gap: 2pt 10pt; }
-  .summary { margin-bottom: 6pt; font-size: 9pt; }
-  .stamps { gap: 6pt; margin-bottom: 5pt; }
-  .disposition { padding-top: 4pt; gap: 8pt; }
-  .rec__points li, .role__points li { margin-bottom: 0.5pt; }
-  .rec__so { margin-bottom: 3pt; padding-left: 6pt; }
-  .rec__thesis { margin-bottom: 2pt; }
-  .role { padding-top: 5pt; margin-bottom: 5pt; }
-  .caps__grid, .cred__cols { gap: 6pt; }
-  .stack { padding-top: 2pt; font-size: 7.5pt; }
-  .verify { padding-top: 8pt; }
-  .contact__lead { margin-bottom: 6pt; }
-  .contact__rows { margin-bottom: 6pt; }
-  .contact__rows li { padding: 1.5pt 0; }
-  .tag__punch, .tag__eyelet, .rec__punch, .contact__punch,
-  .lens, .skip, .foot, .field__rule { display: none; }
-  .titles, .disposition, .contact__rows li { border-color: var(--print-ink); }
-  .field__label, .titles .field__label, .disposition__loc .field__label,
-  .contact__rows .field__label { color: var(--print-ink); }
-  .thesis, .contact__lead { font-size: 11pt; }
-  .stamp { border-width: 1pt; box-shadow: none; transform: none; background: #FFF; }
-  .act { border: 1pt solid var(--print-ink); color: var(--print-ink); background: #FFF; }
-  .rec {
-    border: none;
-    border-top: 1pt solid var(--print-ink);
-    box-shadow: none;
-    clip-path: none;
-    break-inside: avoid;
+
+  .skip,
+  .lens__controls,
+  .lens__status,
+  .foot { display: none; }
+
+  .lede { padding-top: 0; }
+  .lede::before { display: none; animation: none; }
+
+  .name {
+    font-size: 26pt;
     margin-bottom: 8pt;
-    animation: none;
   }
-  .stamp--conform { color: var(--print-ink); border-color: var(--print-ink); margin-bottom: 8pt; }
-  .pending { color: var(--print-ink); border: 1pt dashed var(--print-ink); }
-  .rec__inner { padding: 6pt 0 0; }
-  .rec__so { color: var(--print-ink); border-left-color: var(--print-ink); }
-  .rec__points li, .role__points li, .caps__cluster dd, .cred__list li,
-  .rec__thesis, .stack, .verify__note { color: var(--print-ink); }
-  .verify__row a { color: var(--print-ink); }
-  .section-h { padding-top: 14pt; font-size: 13pt; border-top: 1pt solid var(--print-ink); }
-  .role, .caps__cluster, .cred__list li { break-inside: avoid; }
-  .is-dimmed { opacity: 1; }
-  a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 8pt; }
+
+  .name span { color: #000; }
+
+  .lede__field { color: #000; padding-bottom: 10pt; }
+  .lede__inner { padding-inline: 0; }
+
+  .thesis,
+  .contact__lead { font-size: 11pt; max-width: none; }
+
+  .titles { border-bottom: 1pt solid #000; }
+  .titles__item { font-size: 11pt; }
+
+  .cred-chip,
+  .status,
+  .pending { border-color: #000; color: #000; }
+
+  .act {
+    border-width: 1pt;
+    color: #000;
+    padding: 2pt 6pt;
+  }
+
+  .act--primary { background: none; }
+
+  main { padding-inline: 0; max-width: none; }
+
+  main > section {
+    padding-top: 12pt;
+    margin-top: 14pt;
+    border-top: 1pt solid #000;
+    break-inside: auto;
+  }
+
+  main > section::before { display: none; }
+
+  .section-h { font-size: 15pt; margin-bottom: 8pt; }
+
+  .rec,
+  .role,
+  .caps__cluster {
+    break-inside: avoid;
+    opacity: 1 !important;
+  }
+
+  .plate,
+  .work .rec:first-of-type .plate { width: 28mm; padding: 3pt; }
+
+  /* Screen hierarchy costs paper. On the page the lead record and the contact
+     rows set back down to the ramp. */
+  .work .rec:first-of-type .rec__name { font-size: 12pt; margin-bottom: 5pt; }
+  .contact__link,
+  .contact__plain { font-size: 11pt; }
+  main > section.contact { border-top-width: 1pt; }
+
+  .rec__so { font-size: 9.5pt; margin-block: 5pt; }
+
+  .rec + .rec { padding-top: 7pt; margin-top: 7pt; }
+  .role + .role { padding-top: 5pt; margin-top: 5pt; }
+  .rec__points li,
+  .role__points li { margin-bottom: 2pt; }
+  .summary { margin-bottom: 9pt; }
+  .verify__row { padding: 3pt 0; }
+  .contact__rows li { padding: 3pt 0; }
+  .cred__list li { padding: 2pt 0; }
+  .caps__grid,
+  .cred__cols { gap: 8pt; }
+  .contact__lead { margin-bottom: 8pt; }
+
+  a { color: #000; text-decoration: underline; }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    word-break: break-all;
+  }
 }

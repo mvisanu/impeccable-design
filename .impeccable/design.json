@@ -1,231 +1,224 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-05T11:00:00Z",
-  "title": "Design System: Inspection Record",
+  "generatedAt": "2026-08-07T16:05:00Z",
+  "title": "Design System: One Drenched Field",
   "extensions": {
     "colorMeta": {
-      "tag": {
+      "field": {
         "role": "primary",
-        "displayName": "Signal-Red Tag Stock",
-        "canonical": "#D93A1E",
-        "tonalRamp": ["#2B0A04", "#4E1308", "#71200D", "#A82A12", "#D93A1E", "#E97052", "#F2A38F", "#FAD9CF"]
+        "displayName": "Drenched Ultramarine",
+        "canonical": "#1B2ECF",
+        "tonalRamp": ["#080D3E", "#0D1466", "#131E8E", "#1424A6", "#1B2ECF", "#5866E0", "#95A0EE", "#D3D8FA"]
       },
-      "tag-deep": {
+      "field-deep": {
         "role": "primary",
-        "displayName": "Punched-Edge Red",
-        "canonical": "#A82A12",
-        "tonalRamp": ["#210803", "#3D0F06", "#5A1709", "#7F210F", "#A82A12", "#D0492D", "#E58B75", "#F5CCC1"]
-      },
-      "stamp": {
-        "role": "secondary",
-        "displayName": "Conformance Green",
-        "canonical": "#2E6B4F",
-        "tonalRamp": ["#08170F", "#0F2A1D", "#17402C", "#22553B", "#2E6B4F", "#469072", "#7BBBA0", "#C3E2D3"]
+        "displayName": "Deep Ultramarine (reserved, unused in the shipped stylesheet)",
+        "canonical": "#1424A6",
+        "tonalRamp": ["#060A32", "#0A1052", "#0F1A7B", "#1424A6", "#1B2ECF", "#4E5DDD", "#8D99EC", "#CFD5F9"]
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Slate Stamp Ink",
-        "canonical": "#16222B",
-        "tonalRamp": ["#080D11", "#0E161C", "#16222B", "#253945", "#3E4B54", "#66757F", "#9AA6AE", "#D2D9DE"]
+        "displayName": "Near-Black Ink",
+        "canonical": "#0C1017",
+        "tonalRamp": ["#05070A", "#0C1017", "#161D28", "#242E3D", "#3D4855", "#6D7A88", "#A8B2BE", "#E2E7ED"]
       },
-      "ink-soft": {
+      "ink-2": {
         "role": "neutral",
-        "displayName": "Secondary Ink",
-        "canonical": "#3E4B54",
-        "tonalRamp": ["#0C1013", "#161D22", "#232D34", "#303C44", "#3E4B54", "#657480", "#9AA6AF", "#D3D9DE"]
+        "displayName": "Slate Secondary",
+        "canonical": "#3D4855",
+        "tonalRamp": ["#0C1017", "#1B222B", "#2B3440", "#3D4855", "#5A6675", "#8A94A1", "#B8C0CA", "#E6EAEF"]
       },
-      "steel": {
+      "rule": {
         "role": "neutral",
-        "displayName": "Galvanized Steel",
-        "canonical": "#E4E4E1",
-        "tonalRamp": ["#232322", "#3B3B39", "#545451", "#8B8B87", "#B4B4B0", "#CBCAC4", "#E4E4E1", "#F5F5F3"]
+        "displayName": "Hairline",
+        "canonical": "#DCE1E8",
+        "tonalRamp": ["#171A1F", "#2E343C", "#4A525C", "#6B7480", "#98A2AF", "#C2CAD4", "#DCE1E8", "#F4F6F9"]
       },
-      "steel-deep": {
+      "rule-2": {
         "role": "neutral",
-        "displayName": "Steel Hairline",
-        "canonical": "#CBCAC4",
-        "tonalRamp": ["#201F1D", "#373631", "#4E4D47", "#7C7B73", "#A3A29B", "#CBCAC4", "#E0DFDA", "#F2F1EE"]
+        "displayName": "Hairline Strong",
+        "canonical": "#C2CAD4",
+        "tonalRamp": ["#14171B", "#282D34", "#414852", "#5E6672", "#868F9C", "#A5AEBB", "#C2CAD4", "#EDF0F4"]
+      },
+      "tint": {
+        "role": "neutral",
+        "displayName": "Plate Tint",
+        "canonical": "#F2F5F9",
+        "tonalRamp": ["#171A1E", "#2D333A", "#484F58", "#69707A", "#949CA6", "#C0C8D2", "#DFE6EF", "#F2F5F9"]
+      },
+      "tint-2": {
+        "role": "neutral",
+        "displayName": "Plate Tint Deep",
+        "canonical": "#DFE6EF",
+        "tonalRamp": ["#15181C", "#2A3038", "#444C56", "#646D79", "#8F98A4", "#B6BFCB", "#DFE6EF", "#F5F8FB"]
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Record Stock",
-        "canonical": "#F2F1ED",
-        "tonalRamp": ["#26251F", "#3E3D35", "#57564C", "#85847A", "#ADACA3", "#D3D2CB", "#F2F1ED", "#FAFAF7"]
-      },
-      "on-tag": {
-        "role": "neutral",
-        "displayName": "Tag White",
+        "displayName": "Paper White",
         "canonical": "#FFFFFF",
-        "tonalRamp": ["#262626", "#3D3D3D", "#565656", "#7F7F7F", "#A8A8A8", "#D1D1D1", "#EDEDED", "#FFFFFF"]
+        "tonalRamp": ["#1A1A1A", "#333333", "#4D4D4D", "#737373", "#9E9E9E", "#C9C9C9", "#EBEBEB", "#FFFFFF"]
+      },
+      "on-field": {
+        "role": "neutral",
+        "displayName": "On-Field White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["#1A1A1A", "#333333", "#4D4D4D", "#737373", "#9E9E9E", "#C9C9C9", "#EBEBEB", "#FFFFFF"]
+      },
+      "on-field-rule": {
+        "role": "neutral",
+        "displayName": "Field Hairline (34% white)",
+        "canonical": "rgba(255, 255, 255, 0.34)",
+        "tonalRamp": ["#333F97", "#3B47A0", "#4855AC", "#5B67B8", "#7580C7", "#96A0D8", "#BEC5E8", "#E4E7F6"]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The name only. Condensed Archivo (wdth 74 / wght 800) struck in slate on the red tag; narrows to wdth 68 under 24rem." },
-      "headline": { "displayName": "Section Heading", "purpose": "Uppercase section headings under a 3px signal-red stock edge with a punched eyelet." },
-      "title": { "displayName": "Record Title", "purpose": "Work record names, role titles, capability cluster terms." },
+      "display": { "displayName": "Display", "purpose": "The name only. Sub-1 line height (0.86) so the two nowrap lines lock into a block; --name-line derives from it and is what the field's edge is pinned to. opsz 96." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings, text-wrap: balance. opsz 40." },
+      "title-lead": { "displayName": "Title (lead record)", "purpose": "The first work record's name only — the one event that stops six records reading as a repeated block. opsz 32." },
+      "title": { "displayName": "Title", "purpose": "Work-record names, the lens question, contact links. opsz 24 on contact links." },
+      "subtitle": { "displayName": "Subtitle", "purpose": "Job titles in the field, role titles, verify-row links, demoted record names." },
       "lead": { "displayName": "Lead", "purpose": "Hero thesis (46ch) and sign-off lead (48ch)." },
-      "body": { "displayName": "Body", "purpose": "All record and experience prose, capped at the 68ch measure." },
-      "label": { "displayName": "Field Label", "purpose": "Courier Prime printed field names: Inspection record, Role, Stack, Email. Opens to 0.22em tracking on the red field, where tone cannot create hierarchy." },
-      "value": { "displayName": "Field Value", "purpose": "Courier Prime field data: stamps, stack strips, verification links, contact values, actions, lens controls." }
+      "body": { "displayName": "Body", "purpose": "All prose, capped at --measure (66ch)." },
+      "pull": { "displayName": "Pull", "purpose": "The .rec__so 'so what' line — the record's argument. Type-only emphasis: one step above body at 600 weight, isolated by --s4 of space above and below. No rule, no border, no colour." },
+      "inline-strong": { "displayName": "Inline Strong", "purpose": "Credential names promoted to block inside a list row." },
+      "meta": { "displayName": "Meta", "purpose": "Notes, capability definitions, credential rows, location." },
+      "action": { "displayName": "Action", "purpose": "Hero actions and lens buttons, uppercase." },
+      "label": { "displayName": "Label", "purpose": "The .lbl uppercase field label, credential chips, stack line, pending block." },
+      "micro": { "displayName": "Micro", "purpose": "Declared bottom rung of the ramp; unreferenced on screen, re-pointed for print. Do not reach for it on screen." }
     },
-    "shadows": [
-      { "name": "punch-large", "value": "inset 0 1px 3px rgba(22, 34, 43, 0.45)", "purpose": "Inside the hero and sign-off eyelets so the hole reads as pierced through the stock." },
-      { "name": "punch-small", "value": "inset 0 1px 2px rgba(22, 34, 43, 0.4)", "purpose": "Inside the smaller work-record eyelet." },
-      { "name": "strike-ink", "value": "0 0 0 1px var(--steel), 0 0 0 3px var(--ink)", "purpose": "The struck double-rule impression around a slate stamp, with a stock-colored gap between lines." },
-      { "name": "strike-conform", "value": "0 0 0 1px var(--steel), 0 0 0 3px var(--stamp)", "purpose": "The same die in conformance green. Used exactly once, in the sign-off." }
-    ],
+    "shadows": [],
     "motion": [
-      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The single easing curve: all hover, press, and lens transitions plus the settle animation." },
-      { "name": "settle", "value": "@keyframes settle { from { transform: rotate(-1.6deg) translateY(1.1rem); } to { transform: rotate(0deg) translateY(0); } } — 0.9s, transform-origin 8% 0, animation-timeline: view(), animation-range: entry 0% entry 46%, inside @media (prefers-reduced-motion: no-preference)", "purpose": "The one authored moment: a work record hanging on its eyelet and settling like a tag on a wire. Animates from an already-visible state." },
-      { "name": "state-fast", "value": "0.16s var(--ease)", "purpose": "Role-lens button hover and press color change." },
-      { "name": "state", "value": "0.18s var(--ease)", "purpose": "Action inversion on hover and focus." },
-      { "name": "dim", "value": "opacity 0.28s var(--ease) to 0.34", "purpose": "Role-lens de-emphasis. A foregrounding device, never a filter: nothing leaves the DOM." }
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The single easing curve. Every transition and the one keyframe animation use it." },
+      { "name": "transition-colour", "value": "0.18s var(--ease)", "purpose": "Colour, background and border-colour state changes on actions, lens buttons and links." },
+      { "name": "transition-dim", "value": "0.28s var(--ease)", "purpose": "Opacity change on .rec, .role and .caps__cluster when the role lens is applied." },
+      { "name": "field-wipe", "value": "clip-path inset(0 0 100% 0) -> inset(0 0 0 0), 0.72s var(--ease) 0.08s both", "purpose": "The one authored moment: the field drops past the name so its second line appears as it passes. Wrapped in prefers-reduced-motion: no-preference and animated toward the base state." }
     ],
     "breakpoints": [
-      { "name": "narrow", "value": "40rem", "purpose": "Hero compresses so the first viewport still reaches the contact action; title fields collapse to one middot-separated line." },
-      { "name": "tiny", "value": "24rem", "purpose": "The name's width axis narrows to wdth 68." },
-      { "name": "print", "value": "@media print", "purpose": "Clean one-pager: tag stock dropped to white, clip-paths and punches removed, URLs expanded after links." }
-    ],
-    "measures": [
-      { "name": "container", "value": "62rem", "purpose": "Hero body and main column cap." },
-      { "name": "measure", "value": "68ch", "purpose": "Body text measure for records and experience." },
-      { "name": "lead-measure", "value": "46ch / 48ch", "purpose": "Hero thesis and sign-off lead." }
-    ],
-    "geometry": [
-      { "name": "shoulder-hero", "value": "polygon(0 4.5rem, 3.2rem 0, 100% 0, 100% 100%, 0 100%)", "purpose": "The large top-left tag bevel on the hero panel." },
-      { "name": "shoulder-record", "value": "polygon(0 1.6rem, 1.6rem 0, 100% 0, 100% 100%, 0 100%)", "purpose": "The same cut at record scale, so the world holds through the middle of the page." },
-      { "name": "notch-signoff", "value": "polygon(0 0, 100% 0, 100% calc(100% - 3.4rem), calc(100% - 3rem) 100%, 0 100%)", "purpose": "The cut mirrored to the bottom-right, closing the document." }
+      { "name": "figure-unfloat", "value": "54rem" },
+      { "name": "narrow", "value": "40rem" },
+      { "name": "tiny", "value": "24rem" }
     ]
   },
   "components": [
     {
+      "name": "Split Name",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "The signature device: a two-line display name split by the field's top edge, which is pinned to --name-line so it lands between the line boxes. Each line is a solid-coloured span - ink above, white below. An earlier pass painted the split through the glyph bodies with a background-clip gradient; it was flagged as gradient-text and dropped for solid colour on the owner's decision.",
+      "html": "<div class=\"ds-lede\"><h1 class=\"ds-name\"><span>Visanu</span><span>Mongsaithong</span></h1><p class=\"ds-lede-thesis\">I ship production AI inside environments most AI engineers can&rsquo;t touch.</p></div>",
+      "css": ".ds-lede { position: relative; isolation: isolate; padding: 2.8rem 1.8rem 2.8rem; --ds-name-size: clamp(2.2rem, 9vw, 4.6rem); --ds-name-lh: 0.86; --ds-name-line: calc(var(--ds-name-size) * var(--ds-name-lh)); } .ds-lede::before { content: \"\"; position: absolute; left: 0; right: 0; bottom: 0; top: calc(2.8rem + var(--ds-name-line)); background: var(--field, #1B2ECF); z-index: -1; } .ds-name { margin: 0 0 1.8rem; font-family: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif; font-size: var(--ds-name-size); font-weight: 800; font-variation-settings: 'opsz' 96, 'wght' 800; line-height: var(--ds-name-lh); letter-spacing: -0.045em; white-space: nowrap; color: #0C1017; } .ds-name span { display: block; } .ds-name span:first-child { color: #0C1017; } .ds-name span:last-child { color: #FFFFFF; } .ds-lede-thesis { margin: 0; color: #FFFFFF; font-family: 'Public Sans', system-ui, sans-serif; font-size: 1.16rem; line-height: 1.42; max-width: 46ch; }"
+    },
+    {
       "name": "Primary Action",
       "kind": "button",
       "refersTo": "act-primary",
-      "description": "The one filled control on the red tag field: the contact action in the hero disposition block.",
+      "description": "The white block inside the field. One per hero; hovers to ink rather than to a new colour.",
       "html": "<a class=\"ds-act ds-act-primary\" href=\"#contact\">Contact</a>",
-      "css": ".ds-act-primary { display: inline-block; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.7rem 1.8rem; border: 2px solid #16222B; background: #16222B; color: #E4E4E1; text-decoration: none; border-radius: 0; transition: background-color 0.18s cubic-bezier(0.16,1,0.3,1), color 0.18s cubic-bezier(0.16,1,0.3,1); } .ds-act-primary:hover { background: #E4E4E1; color: #16222B; } .ds-act-primary:focus-visible { outline: 3px solid #16222B; outline-offset: 3px; }"
+      "css": ".ds-act-primary { display: inline-block; font-family: 'Public Sans', system-ui, sans-serif; font-size: 0.86rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 0.7rem 1.8rem; border: 2px solid currentColor; border-radius: 6px; background: #FFFFFF; color: #1B2ECF; transition: background-color 0.18s cubic-bezier(0.16,1,0.3,1), color 0.18s cubic-bezier(0.16,1,0.3,1), border-color 0.18s cubic-bezier(0.16,1,0.3,1); } .ds-act-primary:hover, .ds-act-primary:focus-visible { background: #0C1017; border-color: #0C1017; color: #FFFFFF; } .ds-act-primary:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }"
     },
     {
-      "name": "Secondary Action",
+      "name": "Ghost Action",
       "kind": "button",
-      "refersTo": "act",
-      "description": "Outlined action inheriting the foreground of the field it sits on; on the tag that is pure white.",
-      "html": "<div style=\"background:#D93A1E;padding:1.1rem\"><a class=\"ds-act\" href=\"https://github.com/mvisanu\">GitHub — 101 repos</a></div>",
-      "css": ".ds-act { display: inline-block; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.7rem 1.8rem; border: 2px solid currentColor; color: #FFFFFF; text-decoration: none; border-radius: 0; transition: background-color 0.18s cubic-bezier(0.16,1,0.3,1), color 0.18s cubic-bezier(0.16,1,0.3,1); } .ds-act:hover { background: #FFFFFF; color: #D93A1E; } .ds-act:focus-visible { outline: 3px solid #16222B; outline-offset: 3px; }"
+      "refersTo": "act-ghost",
+      "description": "The secondary hero action: currentColor border on the field, inverting to a white block on hover.",
+      "html": "<a class=\"ds-act-ghost\" href=\"https://github.com/mvisanu\">GitHub &mdash; 101 repos</a>",
+      "css": ".ds-act-ghost { display: inline-block; font-family: 'Public Sans', system-ui, sans-serif; font-size: 0.86rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 0.7rem 1.8rem; border: 2px solid currentColor; border-radius: 6px; background: transparent; color: #FFFFFF; transition: background-color 0.18s cubic-bezier(0.16,1,0.3,1), color 0.18s cubic-bezier(0.16,1,0.3,1); } .ds-act-ghost:hover, .ds-act-ghost:focus-visible { background: #FFFFFF; color: #1B2ECF; } .ds-act-ghost:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }"
+    },
+    {
+      "name": "Credential Chip",
+      "kind": "chip",
+      "refersTo": "cred-chip",
+      "description": "A statement, not a control: uppercase qualifier above a display-face value, bordered in 34% white inside the field.",
+      "html": "<ul class=\"ds-creds\"><li class=\"ds-cred-chip\">DoD TS/SCI<b>Cleared</b></li><li class=\"ds-cred-chip\">AWS<b>GovCloud</b></li><li class=\"ds-cred-chip\">Regulated<b>HIPAA</b></li></ul>",
+      "css": ".ds-creds { display: flex; flex-wrap: wrap; gap: 1.1rem; margin: 0; padding: 1.8rem; list-style: none; background: #1B2ECF; } .ds-cred-chip { border: 1.5px solid rgba(255,255,255,0.34); border-radius: 6px; padding: 0.7rem 1.1rem; font-family: 'Public Sans', system-ui, sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.35; color: #FFFFFF; } .ds-cred-chip b { display: block; font-family: 'Bricolage Grotesque', 'Arial Black', sans-serif; font-size: 0.92rem; font-weight: 700; letter-spacing: 0.02em; }"
     },
     {
       "name": "Role Lens Control",
-      "kind": "chip",
+      "kind": "nav",
       "refersTo": "lens-btn",
-      "description": "Progressive-enhancement control that foregrounds matching work. Ships hidden in the markup; JS reveals it. Pressed state stamps conformance green.",
+      "description": "A filter that de-emphasises rather than filters. Pressed selections take ultramarine; 'Show all' presses to ink so the reset never competes with a selection.",
       "html": "<div class=\"ds-lens\"><button type=\"button\" class=\"ds-lens-btn\" aria-pressed=\"false\">AI/ML Engineer</button><button type=\"button\" class=\"ds-lens-btn\" aria-pressed=\"true\">Cloud Solution Architect</button><button type=\"button\" class=\"ds-lens-btn ds-lens-btn-clear\" aria-pressed=\"false\">Show all</button></div>",
-      "css": ".ds-lens { display: flex; flex-wrap: wrap; gap: 0.7rem; } .ds-lens-btn { font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.1rem; background: transparent; color: #16222B; border: 1px solid #16222B; border-radius: 0; cursor: pointer; transition: background-color 0.16s cubic-bezier(0.16,1,0.3,1), color 0.16s cubic-bezier(0.16,1,0.3,1); } .ds-lens-btn:hover { background: #F2F1ED; } .ds-lens-btn[aria-pressed='true'] { background: #2E6B4F; border-color: #2E6B4F; color: #FFFFFF; } .ds-lens-btn-clear[aria-pressed='true'] { background: #16222B; border-color: #16222B; } .ds-lens-btn:focus-visible { outline: 3px solid #16222B; outline-offset: 3px; }"
-    },
-    {
-      "name": "Struck Stamp",
-      "kind": "chip",
-      "refersTo": "stamp",
-      "description": "A patch of steel stock struck onto the red field: double-rule impression, rotated off-square, quiet qualifier over a bold value.",
-      "html": "<div style=\"background:#D93A1E;padding:1.4rem\"><ul class=\"ds-stamps\"><li class=\"ds-stamp\">DoD TS/SCI<br><b>Cleared</b></li><li class=\"ds-stamp ds-stamp-tilt\">AWS<br><b>GovCloud</b></li><li class=\"ds-stamp\">Regulated<br><b>HIPAA</b></li></ul></div>",
-      "css": ".ds-stamps { display: flex; flex-wrap: wrap; gap: 1.1rem; list-style: none; margin: 0; padding: 0; } .ds-stamp { background: #E4E4E1; color: #16222B; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.7rem; line-height: 1.35; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.1rem; border: 2px solid #16222B; border-radius: 0; box-shadow: 0 0 0 1px #E4E4E1, 0 0 0 3px #16222B; transform: rotate(-1.4deg); } .ds-stamp b { font-weight: 700; font-size: 0.86rem; letter-spacing: 0.06em; } .ds-stamp-tilt { transform: rotate(1.1deg); }"
-    },
-    {
-      "name": "Conformance Stamp",
-      "kind": "chip",
-      "refersTo": "stamp-conform",
-      "description": "The single green stamp in the build, struck in the sign-off. Green marks a verified fact and nothing else.",
-      "html": "<div style=\"background:#D93A1E;padding:1.4rem\"><p class=\"ds-stamp-conform\">Status<b>Open to remote</b></p></div>",
-      "css": ".ds-stamp-conform { display: inline-block; background: #E4E4E1; color: #2E6B4F; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.7rem; line-height: 1.35; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.1rem; border: 2px solid #2E6B4F; border-radius: 0; box-shadow: 0 0 0 1px #E4E4E1, 0 0 0 3px #2E6B4F; transform: rotate(-2.2deg); margin: 0; } .ds-stamp-conform b { display: block; font-weight: 700; font-size: 0.86rem; letter-spacing: 0.06em; }"
+      "css": ".ds-lens { display: flex; flex-wrap: wrap; gap: 0.7rem; } .ds-lens-btn { font-family: 'Public Sans', system-ui, sans-serif; font-size: 0.86rem; font-weight: 600; letter-spacing: 0.04em; color: #0C1017; background: transparent; border: 1.5px solid #C2CAD4; border-radius: 6px; padding: 0.7rem 1.1rem; cursor: pointer; transition: background-color 0.18s cubic-bezier(0.16,1,0.3,1), color 0.18s cubic-bezier(0.16,1,0.3,1), border-color 0.18s cubic-bezier(0.16,1,0.3,1); } .ds-lens-btn:hover { background: #F2F5F9; border-color: #3D4855; } .ds-lens-btn:focus-visible { outline: 3px solid #0C1017; outline-offset: 3px; } .ds-lens-btn[aria-pressed=\"true\"] { background: #1B2ECF; border-color: #1B2ECF; color: #FFFFFF; } .ds-lens-btn-clear[aria-pressed=\"true\"] { background: #0C1017; border-color: #0C1017; }"
     },
     {
       "name": "Work Record",
       "kind": "card",
-      "refersTo": "record",
-      "description": "A tag in its own right: clipped shoulder, punched eyelet, red top edge, a so-what line on a slate rule, dashed bullets, and a mono stack strip.",
-      "html": "<article class=\"ds-rec\"><span class=\"ds-rec-punch\" aria-hidden=\"true\"><span class=\"ds-rec-eyelet\"></span></span><div class=\"ds-rec-inner\"><h3 class=\"ds-rec-name\">Enterprise RAG research — Vector RAG vs. GraphRAG</h3><p class=\"ds-rec-thesis\">Comparative study of retrieval architectures validated across aerospace maintenance records and clinical documentation.</p><p class=\"ds-rec-so\">Retrieval architecture decisions backed by a reproducible dual-domain benchmark.</p><ul class=\"ds-rec-points\"><li>Dual-domain evaluation harness with reproducible metrics.</li><li>Compared pgvector, managed HNSW, and property-graph traversal.</li></ul><p class=\"ds-stack\"><span class=\"ds-label\">Stack</span> PostgreSQL/pgvector · OpenSearch Serverless · Neptune/Gremlin · Python</p></div></article>",
-      "css": ".ds-rec { position: relative; display: block; background: #F2F1ED; color: #16222B; font-family: Archivo, system-ui, sans-serif; border-top: 3px solid #D93A1E; border-radius: 0; clip-path: polygon(0 1.6rem, 1.6rem 0, 100% 0, 100% 100%, 0 100%); } .ds-rec-inner { padding: 1.8rem 1.8rem 1.8rem 2.8rem; } .ds-rec-punch { position: absolute; top: 1.5rem; left: 0.85rem; width: 0.95rem; height: 0.95rem; border-radius: 50%; background: #E4E4E1; box-shadow: inset 0 1px 2px rgba(22,34,43,0.4); } .ds-rec-eyelet { position: absolute; inset: -0.28rem; border: 1.5px solid #D93A1E; border-radius: 50%; } .ds-rec-name { margin: 0 0 0.7rem; font-variation-settings: 'wdth' 84, 'wght' 700; font-size: clamp(1.16rem, 1rem + 0.6vw, 1.5rem); letter-spacing: -0.015em; } .ds-rec-thesis { margin: 0 0 0.7rem; max-width: 68ch; line-height: 1.6; } .ds-rec-so { margin: 0 0 1.1rem; max-width: 68ch; font-variation-settings: 'wdth' 100, 'wght' 600; padding-left: 1.1rem; border-left: 1px solid #16222B; line-height: 1.6; } .ds-rec-points { margin: 0 0 1.1rem; padding: 0; list-style: none; } .ds-rec-points li { position: relative; padding-left: 1.1rem; max-width: 68ch; margin-bottom: 0.35rem; color: #3E4B54; line-height: 1.6; } .ds-rec-points li::before { content: ''; position: absolute; left: 0; top: 0.68em; width: 6px; height: 1px; background: #3E4B54; } .ds-stack { margin: 0; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.78rem; color: #3E4B54; padding-top: 0.7rem; border-top: 1px solid #CBCAC4; } .ds-label { display: inline-block; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: #3E4B54; margin-right: 0.7rem; }"
+      "refersTo": "plate",
+      "description": "Not a card: a hairline-separated block with a right-floated tint plate, a 'so what' line emphasised by scale, weight and space alone, and dash-ticked supporting points.",
+      "html": "<article class=\"ds-rec\"><h3 class=\"ds-rec-name\">Enterprise RAG research &mdash; Vector RAG vs. GraphRAG</h3><figure class=\"ds-plate\"><svg viewBox=\"0 0 240 160\" role=\"img\" aria-label=\"Vector neighbours re-expressed as a linked graph, one traversal path crossing between them.\"><circle class=\"ds-hair\" cx=\"58\" cy=\"80\" r=\"46\"/><circle class=\"ds-hair\" cx=\"58\" cy=\"80\" r=\"28\"/><circle class=\"ds-dot\" cx=\"34\" cy=\"58\" r=\"2.6\"/><circle class=\"ds-dot\" cx=\"72\" cy=\"46\" r=\"2.6\"/><circle class=\"ds-dot\" cx=\"46\" cy=\"96\" r=\"2.6\"/><circle class=\"ds-markf\" cx=\"58\" cy=\"80\" r=\"4\"/><path class=\"ds-ink\" d=\"M150 40 L188 56 M150 40 L142 82 M188 56 L196 100 M142 82 L178 108 M196 100 L178 108\"/><circle class=\"ds-dot\" cx=\"150\" cy=\"40\" r=\"3.4\"/><circle class=\"ds-dot\" cx=\"188\" cy=\"56\" r=\"3.4\"/><circle class=\"ds-okf\" cx=\"178\" cy=\"108\" r=\"4\"/><path class=\"ds-mark\" d=\"M58 80 C 96 74, 112 52, 150 40\"/><path class=\"ds-hair\" d=\"M16 142 H224 M16 138v8 M120 138v8 M224 138v8\"/></svg></figure><p class=\"ds-rec-thesis\">Comparative study of retrieval architectures validated across two regulated domains.</p><p class=\"ds-rec-so\">Retrieval architecture decisions backed by a reproducible dual-domain benchmark.</p><ul class=\"ds-rec-points\"><li>Dual-domain evaluation harness with reproducible metrics.</li><li>Compared pgvector, managed HNSW, and property-graph traversal.</li></ul></article>",
+      "css": ".ds-rec { font-family: 'Public Sans', system-ui, sans-serif; color: #0C1017; border-top: 1px solid #DCE1E8; padding-top: 2.8rem; overflow: hidden; } .ds-rec-name { font-family: 'Bricolage Grotesque', 'Arial Black', sans-serif; font-size: 1.55rem; font-weight: 700; font-variation-settings: 'opsz' 32, 'wght' 700; line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 1.1rem; } .ds-plate { float: right; width: 15.5rem; margin: 0 0 1.1rem 1.8rem; background: #F2F5F9; border-radius: 6px; padding: 1.1rem; } .ds-plate svg { display: block; width: 100%; height: auto; } .ds-ink { fill: none; stroke: #0C1017; stroke-width: 1.4; } .ds-hair { fill: none; stroke: #C2CAD4; stroke-width: 1; } .ds-dot { fill: #3D4855; } .ds-mark { fill: none; stroke: #1B2ECF; stroke-width: 2; } .ds-markf { fill: #1B2ECF; } .ds-okf { fill: #1B2ECF; } .ds-rec-thesis { font-size: 1rem; line-height: 1.6; max-width: 66ch; margin: 0 0 1.1rem; } .ds-rec-so { font-size: 1.12rem; font-weight: 600; line-height: 1.45; max-width: 66ch; margin-block: 1.8rem; text-wrap: pretty; } .ds-rec-points { max-width: 66ch; margin: 0; padding: 0; list-style: none; } .ds-rec-points li { position: relative; font-size: 1rem; color: #3D4855; padding-left: 1.1rem; margin-bottom: 0.7rem; } .ds-rec-points li::before { content: \"\"; position: absolute; left: 0; top: 0.72em; width: 0.55rem; height: 1.5px; background: #C2CAD4; }"
     },
     {
-      "name": "Ruled Field Row",
-      "kind": "input",
-      "refersTo": "label",
-      "description": "The system's field vernacular in place of form controls: a mono uppercase label, its value, and a hairline. White-ruled on the tag, steel-ruled on light stock.",
-      "html": "<div style=\"background:#D93A1E;padding:1.4rem\"><ul class=\"ds-rows\"><li><span class=\"ds-label-tag\">Email</span><a class=\"ds-field-link\" href=\"#\">mvisanu@gmail.com</a></li><li><span class=\"ds-label-tag\">Phone</span><a class=\"ds-field-link\" href=\"#\">850-924-1429</a></li></ul></div>",
-      "css": ".ds-rows { list-style: none; margin: 0; padding: 0; } .ds-rows li { padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.4); } .ds-label-tag { display: inline-block; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: #FFFFFF; margin-right: 0.7rem; } .ds-field-link { font-family: 'Courier Prime', ui-monospace, monospace; font-size: 1.02rem; color: #FFFFFF; text-decoration-thickness: 1px; text-underline-offset: 4px; } .ds-field-link:hover { color: #16222B; } .ds-field-link:focus-visible { outline: 3px solid #16222B; outline-offset: 3px; }"
+      "name": "Section Head with Tick",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "The page's only recurring mark of colour outside the field: a 3.2rem x 3px ultramarine tick sitting on the section's hairline. Suppressed on the closing section.",
+      "html": "<section class=\"ds-section\"><h2 class=\"ds-section-h\">Selected work</h2></section>",
+      "css": ".ds-section { position: relative; border-top: 1px solid #DCE1E8; padding-top: 2.8rem; } .ds-section::before { content: \"\"; position: absolute; top: -2px; left: 0; width: 3.2rem; height: 3px; background: #1B2ECF; } .ds-section-h { font-family: 'Bricolage Grotesque', 'Arial Black', sans-serif; font-size: clamp(1.85rem, 1.35rem + 2.1vw, 3.05rem); font-weight: 700; font-variation-settings: 'opsz' 40, 'wght' 700; line-height: 1.02; letter-spacing: -0.038em; text-wrap: balance; margin: 0; color: #0C1017; }"
     },
     {
-      "name": "Verify Strip Row",
-      "kind": "nav",
-      "refersTo": "value",
-      "description": "The verification list: a green mono link with a plain-language note, ruled top and bottom. Green here means a claim someone can go check.",
-      "html": "<ul class=\"ds-verify\"><li class=\"ds-verify-row\"><a href=\"https://github.com/mvisanu\">github.com/mvisanu</a><span class=\"ds-verify-note\">Source, 101 public repositories</span></li><li class=\"ds-verify-row\"><a href=\"#\">nextgenai-rag</a><span class=\"ds-verify-note\">Retrieval pipeline behind the trading research app</span></li></ul>",
-      "css": ".ds-verify { list-style: none; margin: 0; padding: 0; border-top: 1px solid #CBCAC4; font-family: Archivo, system-ui, sans-serif; } .ds-verify-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 1.1rem; padding: 0.7rem 0; border-bottom: 1px solid #CBCAC4; } .ds-verify-row a { font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.92rem; color: #2E6B4F; text-decoration-thickness: 1px; text-underline-offset: 3px; } .ds-verify-row a:hover { color: #16222B; } .ds-verify-row a:focus-visible { outline: 3px solid #16222B; outline-offset: 3px; } .ds-verify-note { color: #3E4B54; font-size: 0.88rem; }"
-    },
-    {
-      "name": "Pending Marker",
+      "name": "Pending Block",
       "kind": "custom",
       "refersTo": "pending",
-      "description": "Deliberately not a control. Marks an artifact that does not exist yet: dashed border, no fill, no href, no hover.",
-      "html": "<div style=\"background:#D93A1E;padding:1.4rem\"><p class=\"ds-pending\">Resume — AI/ML Engineer<b>On request, by email</b></p></div>",
-      "css": ".ds-pending { display: inline-block; font-family: 'Courier Prime', ui-monospace, monospace; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF; padding: 0.7rem 1.1rem; border: 1px dashed rgba(255,255,255,0.65); border-radius: 0; margin: 0; } .ds-pending b { display: block; font-weight: 400; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: none; opacity: 0.9; }"
+      "description": "States an artifact that does not exist yet. Dashed border, no href, no pointer, no hover — deliberately not a control.",
+      "html": "<p class=\"ds-pending\">Resume &mdash; AI/ML Engineer<b>On request, by email</b></p>",
+      "css": ".ds-pending { font-family: 'Public Sans', system-ui, sans-serif; border: 1px dashed #C2CAD4; border-radius: 6px; padding: 0.7rem 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #3D4855; line-height: 1.4; margin: 0; } .ds-pending b { display: block; font-size: 0.92rem; font-weight: 600; letter-spacing: 0.01em; text-transform: none; color: #0C1017; }"
     },
     {
-      "name": "Tag Panel",
-      "kind": "custom",
-      "refersTo": "display",
-      "description": "The signature surface: full-bleed red stock with a clipped shoulder, a punched eyelet, slate display type and white ruled fields. It opens and closes the document; there is no third one.",
-      "html": "<header class=\"ds-tag\"><span class=\"ds-tag-punch\" aria-hidden=\"true\"><span class=\"ds-tag-eyelet\"></span></span><div class=\"ds-tag-body\"><p class=\"ds-tag-head\"><span class=\"ds-label-tag\">Inspection record</span><span class=\"ds-tag-rule\"></span></p><h1 class=\"ds-name\">Visanu<br>Mongsaithong</h1><p class=\"ds-thesis\">I ship production AI inside environments most AI engineers can’t touch.</p></div></header>",
-      "css": ".ds-tag { position: relative; display: block; background: #D93A1E; color: #FFFFFF; font-family: Archivo, system-ui, sans-serif; padding: 7rem 1.8rem 4.4rem; clip-path: polygon(0 4.5rem, 3.2rem 0, 100% 0, 100% 100%, 0 100%); overflow: hidden; } .ds-tag-punch { position: absolute; top: 1.5rem; left: 1.3rem; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: #E4E4E1; box-shadow: inset 0 1px 3px rgba(22,34,43,0.45); } .ds-tag-eyelet { position: absolute; inset: -0.42rem; border: 2px solid #A82A12; border-radius: 50%; } .ds-tag-head { display: flex; align-items: center; gap: 1.1rem; margin: 0 0 1.8rem; } .ds-tag-rule { flex: 1; height: 1px; background: rgba(255,255,255,0.45); } .ds-name { font-family: Archivo, 'Arial Narrow', sans-serif; font-variation-settings: 'wdth' 74, 'wght' 800; font-size: clamp(2.6rem, 12.4vw, 6rem); line-height: 0.87; letter-spacing: -0.035em; text-transform: uppercase; color: #16222B; margin: 0 0 1.8rem; } .ds-thesis { margin: 0; max-width: 46ch; font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem); line-height: 1.45; }"
+      "name": "Status Chip",
+      "kind": "chip",
+      "refersTo": "status",
+      "description": "A control accent alongside the three sanctioned uses of colour outside the field: an inline ultramarine-bordered availability statement above the sign-off lead.",
+      "html": "<p class=\"ds-status\"><span class=\"ds-lbl\">Status</span><b>Open to remote</b></p>",
+      "css": ".ds-status { display: inline-flex; align-items: baseline; gap: 0.7rem; border: 1.5px solid #1B2ECF; border-radius: 6px; padding: 0.35rem 1.1rem; font-family: 'Public Sans', system-ui, sans-serif; font-size: 0.78rem; margin: 0; } .ds-lbl { font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #1B2ECF; line-height: 1.4; } .ds-status b { font-family: 'Bricolage Grotesque', 'Arial Black', sans-serif; font-size: 0.92rem; font-weight: 700; color: #1B2ECF; }"
     }
   ],
   "narrative": {
-    "northStar": "The Conformance Hold Tag",
-    "overview": "This is a record, not a portfolio. The whole world is built from one physical object — the signal-red hold tag wired to a part that has been inspected: punched shoulder, reinforced eyelet, ruled fields, struck stamps, typewriter field values, and a disposition block at the foot where somebody signs off. Every claim on the page is carried in that vocabulary, so the reader is looking at evidence with a disposition attached rather than at a marketing surface.\n\nThe material behavior is flat and printed, not glassy or lit. Red tag stock and galvanized steel are the two grounds; ink is stamped onto them. Nothing floats, nothing glows, nothing has a soft corner except the punched eyelet holes, which are round because holes are round. Density is high and rhythmic: rules and hairlines subdivide the page the way a form does, and body copy holds to a 68ch measure so the record stays readable at record length.\n\nConfirmed rejections: the dark developer-portfolio card grid, and its predictable opposite, the cream editorial personal site. Neither is a fallback here. The build also refuses image-as-atmosphere — it ships with zero raster imagery and carries the world entirely on fill, geometry and type.",
+    "northStar": "The Cut Document",
+    "overview": "This is a white page that behaves like one continuous document rather than a grid of project cards. It spends its entire colour budget in a single place: a full-bleed ultramarine field that opens the page, whose top edge slices horizontally through the name set at display scale. The first line of the name is ink on white; the second is white on ultramarine; one name, two grounds. Everything after that opening is ink, hairlines and air.\n\nThe density is editorial, not dashboard. There are no cards, no tiles, no shadows and no containers-within-containers. Structure comes from hairline rules, one-directional vertical rhythm, and a right-floated figure per work record. The reader is meant to scroll one document from the name to the sign-off without ever hitting a visual restart.\n\nConfirmed rejections, pinned by the owner after two re-rolls of the world: no metaphor world or themed object, no near-black portfolio grid, no cream editorial ground, and no second drenched region anywhere below the hero.",
     "keyCharacteristics": [
-      "Committed color: red tag stock carries whole regions full-bleed, it is not an accent on neutral.",
-      "Two type families only, with Archivo's width axis doing the hierarchy work (68–88).",
-      "Square by default; the only curves are punched holes.",
-      "Flat stock — no drop shadows anywhere; depth is inset punches and struck stamp rings.",
-      "One authored motion moment, and one green stamp, both rationed.",
-      "A complete print stylesheet is a first-class deliverable, not an afterthought."
+      "One saturated ultramarine field; the rest of the page is white, ink and hairline.",
+      "A two-line display name split by the field's edge, one line per ground, at every viewport.",
+      "Two type families only, both self-hosted variable subsets.",
+      "Flat by construction: no shadow token exists.",
+      "Six authored line figures on a shared 240x160 grid, uniform stroke weight.",
+      "One authored motion moment; everything else is a sub-0.3s state transition.",
+      "A print ramp re-pointed to points, shipped in the same pass as the screen ramp."
     ],
     "rules": [
-      { "name": "The Committed Field Rule", "body": "Red is a region, not an accent. If red appears, it fills a whole band of the page and the content sits inside it. Do not sprinkle red onto the steel ground as a highlight, a link color, or an icon tint; its only intrusions on light ground are the 3px top edge of a work record and the record's eyelet ring.", "section": "colors" },
-      { "name": "The White-On-Tag Rule", "body": "On the red field, only pure white clears 4.5:1 (4.59:1) for small text. A tint of the red hue tops out near 3.44:1 and was removed from the build for that reason. Slate ink clears only 3:1 on red and is therefore reserved for display sizes — which is exactly why the name and the sign-off heading are slate while every line of body copy on red is white. There is no third foreground on red.", "section": "colors" },
-      { "name": "The Scale-And-Tracking Rule", "body": "Because there is no legal second tone on red, secondary text on the tag recedes by size and letter-spacing instead: field labels drop to 0.66rem and open to 0.22em tracking while staying pure white. Never invent a muted white or a low-opacity text color to create hierarchy on the tag.", "section": "colors" },
-      { "name": "The One Stamp Rule", "body": "Conformance green marks verification only. A green element must correspond to a fact somebody could check.", "section": "colors" },
-      { "name": "The Two Families Rule", "body": "Archivo and Courier Prime. There is no third face, and no icon font. If something needs to feel different, move the width axis or switch families — do not add one.", "section": "typography" },
-      { "name": "The Width-Axis Rule", "body": "Hierarchy runs 68 → 88 on wdth across the page, tightening as type grows. A new heading level must pick a width consistent with its size: bigger is narrower. Never set display type at wdth 100.", "section": "typography" },
-      { "name": "The Field-Data Rule", "body": "Courier Prime marks something that would be written into a field on the physical tag — a label, a value, a stamp, a link to verify. Prose never runs in mono.", "section": "typography" },
-      { "name": "The Fold-Reaches-Contact Rule", "body": "The hero is compressed at narrow widths rather than allowed to push the contact action below the fold. Any hero addition must be paid for out of the same budget.", "section": "layout" },
-      { "name": "The Flat-Stock Rule", "body": "No box-shadow that casts outward and blurred. Shadows are either inset (a hole) or hard-offset rings (a stamp). If a surface needs to separate, change its tone or rule it, do not lift it.", "section": "elevation" },
-      { "name": "The Three-Scale Shoulder Rule", "body": "The cut corner is the world's signature and appears at exactly three scales. A new panel either takes one of those three cuts or stays square. The \"also-ran\" record variant proves the inverse: dropping the clip and the red edge is how a record is demoted.", "section": "shapes" },
-      { "name": "The One Authored Moment Rule", "body": "The page gets one motion idea. New motion must be either a state transition under 0.3s or a reuse of settle.", "section": "components" }
+      { "name": "The One Region Rule", "body": "The page gets exactly one drenched region, and it is the hero field. Colour outside it survives in exactly three places: link colour, the 3px section tick, and the traced stroke inside a figure. Everything else earns its emphasis from scale, weight and space. The sign-off closes on a 3px ink edge, not a second coloured band, and .contact explicitly suppresses its tick — a 3px blue segment inside a 3px black rule reads as a smudge. A fourth colour use — an ultramarine left rule on the .rec__so line — was built and then removed: it read as the generic accent-bar tell, and the emphasis it was doing is carried by type instead.", "section": "colors" },
+      { "name": "The Only-White-On-Field Rule", "body": "White is the sole foreground on ultramarine (9.0:1). Ink on the field is 2.1:1 and is never used; there is no second foreground colour, no tinted-blue text, and no lowered-opacity white below the 0.82 used on the location label. Separation inside the field is achieved by scale, weight and tracking.", "section": "colors" },
+      { "name": "The Dim-Never-Delete Rule", "body": "The role lens de-emphasises to opacity: 0.55 and never hides. 0.55 is a floor, not a starting point: at that value ink body copy still composites to about 4.2:1 on white. Secondary ink-2 copy composites to roughly 2.8:1, which is below the small-text threshold and is accepted only because the state is user-initiated, reversible in one click, announced in a live region, and never the page's default. Do not lower it, and do not introduce a second dim level.", "section": "colors" },
+      { "name": "The Two Families Rule", "body": "Bricolage Grotesque and Public Sans. There is no third face — in particular, no monospace. Small uppercase labels are Public Sans at 600 with 0.1em tracking, never a mono costume.", "section": "typography" },
+      { "name": "The Explicit Optical Size Rule", "body": "opsz is driven explicitly at four steps — 96 (name), 40 (section heading), 32 (lead record name), 24 (contact links) — and every font-variation-settings declaration pairs its opsz with an explicit wght, because the shorthand otherwise clobbers the font-weight property.", "section": "typography" },
+      { "name": "The Every-Size-Is-A-Token Rule", "body": "Six fixed steps (--t-3xs…--t-lg) and seven fluid steps (--d-name, --d-section, --d-record-lead, --d-record, --d-title, --d-lead, --d-body). A literal font-size on screen is a defect. The only literal sizes in the build are inside @media print, where the whole ramp is re-pointed.", "section": "typography" },
+      { "name": "The Print Is A Deliverable Rule", "body": "Screen type and space steps are viewport-fluid; paper has no viewport. @media print re-points every colour, type and space token to paper values (pt) and sets @page { margin: 12mm 14mm }. Without it the document sets to ten pages; with it, four. Any new component ships with its print behaviour in the same pass, or the deliverable regresses.", "section": "layout" },
+      { "name": "The Flat-By-Rule Rule", "body": "Separation is a line or a colour change, never a lift. If a surface needs to feel distinct, give it the tint ground and a 6px radius — the figure plate is the only example, and it is the pattern to copy.", "section": "elevation" },
+      { "name": "The Scoped Lens Rule", "body": "The lens target selector is .rec[data-lens], .role[data-lens], .caps__cluster[data-lens]. A bare [data-lens] sweep also matches the lens buttons themselves and would dim the reader's way back to \"Show all\".", "section": "components" }
     ],
     "dos": [
-      "Do let red carry whole regions full-bleed, with content sitting inside the field.",
-      "Do use pure white for every piece of small text on red, and reserve slate on red for display sizes only.",
-      "Do create hierarchy on the tag with size and tracking (0.66rem / +0.22em labels), since tone is unavailable there.",
-      "Do drive Archivo's width axis (68–88) as the hierarchy control, narrowing as type grows.",
-      "Do reserve Courier Prime for labels, values, stamps and actions — the things a form would actually have printed.",
-      "Do take one of the three established clip-path shoulders, or stay square.",
-      "Do separate surfaces tonally (paper on steel) and with ruled weights (3px red / 2px slate / 1px hairline).",
-      "Do ship interactive enhancements hidden in the markup and reveal them from JS, so the page reads in full with JS off.",
-      "Do dim to foreground (0.34 opacity, 0.28s) and keep every element in the DOM.",
-      "Do write the print rules for any new component in the same pass."
+      "Do keep the field's edge derived from --name-line, and confirm the name still sets to exactly two lines - one per ground - at 320px, 768px and 1440px after any change to --d-name, --name-lh or the name markup.",
+      "Do ration colour outside the hero field to link colour, the 3px section tick, and one traced stroke per figure.",
+      "Do make in-prose emphasis out of scale, weight and space — the .rec__so line is the pattern.",
+      "Do use white as the only foreground on ultramarine.",
+      "Do pair every opsz with an explicit wght in font-variation-settings.",
+      "Do ship every new component's @media print behaviour in the same pass, and re-check the page count.",
+      "Do separate with a hairline and a spacing step; 1px --rule is the default answer.",
+      "Do give any new figure the 240x160 viewBox, the four stroke classes, a real <title>, and one ultramarine trace.",
+      "Do keep the page fully readable with JavaScript off: reveal enhancements, never depend on them."
     ],
     "donts": [
-      "Don't use a tint of the red hue for text on the tag; it tops out near 3.44:1 and was removed from the build for that reason.",
-      "Don't add a third font family, an icon font, or an icon package.",
-      "Don't use conformance green for anything that isn't a verified, checkable fact.",
-      "Don't add outward drop shadows or lift a surface to separate it; inset punches and struck rings are the only shadows.",
-      "Don't round a corner. The only curves are the punched eyelets.",
-      "Don't filter, hide or remove content in response to the role lens.",
-      "Don't style an unavailable artifact so it reads as a control — dashed border, no pointer, no hover.",
-      "Don't add a third full-bleed tag panel; the hero and the sign-off are the pair.",
-      "Don't add a second motion idea, or gate content visibility behind a scroll animation.",
-      "Don't grow the hero at narrow widths in a way that pushes the contact action past the first viewport."
+      "Don't add a second drenched region, a coloured section band, or a tick on .contact. The document closes on ink.",
+      "Don't put a thick coloured border on one side of anything. The accent bar is the most recognisable AI-generated tell; the .rec__so line had one and it was removed.",
+      "Don't put ink, tinted blue, or any non-white foreground on the field (2.1:1).",
+      "Don't lower .is-dimmed below 0.55, add a second dim level, or let the lens hide anything — including \"Show all\".",
+      "Don't target [data-lens] unscoped; always .rec, .role, .caps__cluster.",
+      "Don't write a literal font-size outside @media print; add a token instead.",
+      "Don't introduce a third font family, a monospace face, or a wdth axis — the shipped Bricolage subset has only opsz and wght.",
+      "Don't add a box-shadow, a card, or a third radius value. Square by default, 6px for controls.",
+      "Don't use background-clip: text or gradient fills on type anywhere, including the name. The through-the-glyphs version was built and dropped; there is no standing exception left in this system.",
+      "Don't give .pending an href, a pointer cursor, or a hover state.",
+      "Don't animate anything outside prefers-reduced-motion: no-preference, or animate away from the base state."
     ]
   }
 }

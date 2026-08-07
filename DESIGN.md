@@ -1,55 +1,99 @@
 ---
-name: Inspection Record
-description: Signal-red tag stock on cool galvanized steel — a candidate page built as a conformance hold tag.
+name: One Drenched Field
+description: A white candidate document split once by a full-bleed ultramarine field whose edge runs between the two lines of the name.
 colors:
-  tag: "#D93A1E"
-  tag-deep: "#A82A12"
-  ink: "#16222B"
-  ink-soft: "#3E4B54"
-  steel: "#E4E4E1"
-  steel-deep: "#CBCAC4"
-  paper: "#F2F1ED"
-  stamp: "#2E6B4F"
-  on-tag: "#FFFFFF"
+  paper: "#FFFFFF"
+  ink: "#0C1017"
+  ink-2: "#3D4855"
+  rule: "#DCE1E8"
+  rule-2: "#C2CAD4"
+  tint: "#F2F5F9"
+  tint-2: "#DFE6EF"
+  field: "#1B2ECF"
+  field-deep: "#1424A6"
+  on-field: "#FFFFFF"
+  on-field-rule: "rgba(255, 255, 255, 0.34)"
+  print-ink: "#000000"
+  print-ink-2: "#333333"
+  print-rule: "#BBBBBB"
+  print-rule-2: "#999999"
+  print-tint-2: "#EEEEEE"
 typography:
   display:
-    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
-    fontSize: "clamp(2.6rem, 12.4vw, 6rem)"
-    fontVariation: "'wdth' 74, 'wght' 800"
-    lineHeight: 0.87
-    letterSpacing: "-0.035em"
+    fontFamily: "'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif"
+    fontSize: "clamp(2.55rem, 11.6vw, 8.2rem)"
+    fontWeight: 800
+    lineHeight: 0.86
+    letterSpacing: "-0.045em"
+    fontVariation: "'opsz' 96, 'wght' 800"
   headline:
-    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
-    fontSize: "clamp(1.5rem, 1.2rem + 1.4vw, 2.2rem)"
-    fontVariation: "'wdth' 78, 'wght' 700"
-    letterSpacing: "-0.02em"
+    fontFamily: "{typography.display.fontFamily}"
+    fontSize: "clamp(1.85rem, 1.35rem + 2.1vw, 3.05rem)"
+    fontWeight: 700
+    lineHeight: 1.02
+    letterSpacing: "-0.038em"
+    fontVariation: "'opsz' 40, 'wght' 700"
+  title-lead:
+    fontFamily: "{typography.display.fontFamily}"
+    fontSize: "clamp(1.55rem, 1.28rem + 1.3vw, 2.35rem)"
+    fontWeight: 700
+    lineHeight: 1.08
+    letterSpacing: "-0.03em"
+    fontVariation: "'opsz' 32, 'wght' 700"
   title:
-    fontFamily: "Archivo, Arial Narrow, system-ui, sans-serif"
-    fontSize: "clamp(1.16rem, 1rem + 0.6vw, 1.5rem)"
-    fontVariation: "'wdth' 84, 'wght' 700"
+    fontFamily: "{typography.display.fontFamily}"
+    fontSize: "clamp(1.3rem, 1.12rem + 0.9vw, 1.8rem)"
+    fontWeight: 700
+    lineHeight: 1.08
+    letterSpacing: "-0.03em"
+    fontVariation: "'opsz' 24, 'wght' 700"
+  subtitle:
+    fontFamily: "{typography.display.fontFamily}"
+    fontSize: "clamp(1.05rem, 0.99rem + 0.36vw, 1.28rem)"
+    fontWeight: 700
     letterSpacing: "-0.015em"
   lead:
-    fontFamily: "Archivo, system-ui, -apple-system, sans-serif"
-    fontSize: "clamp(1.1rem, 1rem + 0.5vw, 1.4rem)"
-    lineHeight: 1.45
+    fontFamily: "'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontSize: "clamp(1.16rem, 1.04rem + 0.6vw, 1.5rem)"
+    fontWeight: 400
+    lineHeight: 1.42
   body:
-    fontFamily: "Archivo, system-ui, -apple-system, sans-serif"
-    fontSize: "clamp(1rem, 0.96rem + 0.2vw, 1.09rem)"
-    fontVariation: "'wdth' 100, 'wght' 400"
+    fontFamily: "{typography.lead.fontFamily}"
+    fontSize: "clamp(1rem, 0.97rem + 0.18vw, 1.08rem)"
+    fontWeight: 400
     lineHeight: 1.6
+  pull:
+    fontFamily: "{typography.lead.fontFamily}"
+    fontSize: "1.12rem"
+    fontWeight: 600
+    lineHeight: 1.45
+  inline-strong:
+    fontFamily: "{typography.lead.fontFamily}"
+    fontSize: "1rem"
+    fontWeight: 600
+  meta:
+    fontFamily: "{typography.lead.fontFamily}"
+    fontSize: "0.92rem"
+    fontWeight: 400
+    lineHeight: 1.55
+  action:
+    fontFamily: "{typography.lead.fontFamily}"
+    fontSize: "0.86rem"
+    fontWeight: 700
+    letterSpacing: "0.06em"
   label:
-    fontFamily: "Courier Prime, ui-monospace, Courier New, monospace"
-    fontSize: "0.66rem"
-    fontWeight: 400
-    letterSpacing: "0.14em"
-  value:
-    fontFamily: "Courier Prime, ui-monospace, Courier New, monospace"
+    fontFamily: "{typography.lead.fontFamily}"
     fontSize: "0.78rem"
-    fontWeight: 400
+    fontWeight: 600
+    lineHeight: 1.4
     letterSpacing: "0.1em"
+  micro:
+    fontFamily: "{typography.lead.fontFamily}"
+    fontSize: "0.7rem"
+    fontWeight: 500
 rounded:
-  none: "0"
-  full: "50%"
+  r-0: "0"
+  r-1: "6px"
 spacing:
   s1: "0.35rem"
   s2: "0.7rem"
@@ -60,279 +104,413 @@ spacing:
   s7: "7rem"
 components:
   act-primary:
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.steel}"
-    typography: "{typography.value}"
-    rounded: "{rounded.none}"
+    backgroundColor: "{colors.on-field}"
+    textColor: "{colors.field}"
+    typography: "{typography.action}"
+    rounded: "{rounded.r-1}"
     padding: "0.7rem 1.8rem"
   act-primary-hover:
-    backgroundColor: "{colors.steel}"
-    textColor: "{colors.ink}"
-  act:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+  act-ghost:
     backgroundColor: "transparent"
-    textColor: "{colors.on-tag}"
-    typography: "{typography.value}"
-    rounded: "{rounded.none}"
+    textColor: "{colors.on-field}"
+    typography: "{typography.action}"
+    rounded: "{rounded.r-1}"
     padding: "0.7rem 1.8rem"
-  act-hover:
-    backgroundColor: "{colors.on-tag}"
-    textColor: "{colors.tag}"
+  act-ghost-hover:
+    backgroundColor: "{colors.on-field}"
+    textColor: "{colors.field}"
+  cred-chip:
+    backgroundColor: "transparent"
+    textColor: "{colors.on-field}"
+    typography: "{typography.label}"
+    rounded: "{rounded.r-1}"
+    padding: "0.7rem 1.1rem"
   lens-btn:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    typography: "{typography.value}"
-    rounded: "{rounded.none}"
+    typography: "{typography.action}"
+    rounded: "{rounded.r-1}"
     padding: "0.7rem 1.1rem"
   lens-btn-hover:
-    backgroundColor: "{colors.paper}"
+    backgroundColor: "{colors.tint}"
     textColor: "{colors.ink}"
   lens-btn-pressed:
-    backgroundColor: "{colors.stamp}"
-    textColor: "{colors.on-tag}"
-  stamp:
-    backgroundColor: "{colors.steel}"
-    textColor: "{colors.ink}"
-    typography: "{typography.value}"
-    rounded: "{rounded.none}"
-    padding: "0.7rem 1.1rem"
-  stamp-conform:
-    backgroundColor: "{colors.steel}"
-    textColor: "{colors.stamp}"
-    typography: "{typography.value}"
-    rounded: "{rounded.none}"
-    padding: "0.7rem 1.1rem"
-  record:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
-    padding: "1.8rem 1.8rem 1.8rem 2.8rem"
+    backgroundColor: "{colors.field}"
+    textColor: "{colors.on-field}"
+  lens-btn-clear-pressed:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.on-field}"
+  plate:
+    backgroundColor: "{colors.tint}"
+    rounded: "{rounded.r-1}"
+    padding: "1.1rem"
+    width: "15.5rem"
+  plate-lead:
+    backgroundColor: "{colors.tint}"
+    rounded: "{rounded.r-1}"
+    padding: "1.1rem"
+    width: "21rem"
+  status:
+    backgroundColor: "transparent"
+    textColor: "{colors.field}"
+    typography: "{typography.label}"
+    rounded: "{rounded.r-1}"
+    padding: "0.35rem 1.1rem"
   pending:
     backgroundColor: "transparent"
-    textColor: "{colors.on-tag}"
-    typography: "{typography.value}"
-    rounded: "{rounded.none}"
+    textColor: "{colors.ink-2}"
+    typography: "{typography.label}"
+    rounded: "{rounded.r-1}"
     padding: "0.7rem 1.1rem"
-  punch:
-    backgroundColor: "{colors.steel}"
-    rounded: "{rounded.full}"
-    size: "2.1rem"
+  skip-link:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    typography: "{typography.action}"
+    rounded: "{rounded.r-1}"
+    padding: "0.7rem 1.1rem"
 ---
 
-# Design System: Inspection Record
+# Design System: One Drenched Field
 
 ## Overview
 
-**Creative North Star: "The Conformance Hold Tag"**
+**Creative North Star: "The Cut Document"**
 
-This is a record, not a portfolio. The whole world is built from one physical object — the signal-red hold tag wired to a part that has been inspected: punched shoulder, reinforced eyelet, ruled fields, struck stamps, typewriter field values, and a disposition block at the foot where somebody signs off. Every claim on the page is carried in that vocabulary, so the reader is looking at evidence with a disposition attached rather than at a marketing surface.
+This is a white page that behaves like one continuous document rather than a grid of
+project cards. It spends its entire colour budget in a single place: a full-bleed
+ultramarine field that opens the page, whose top edge slices horizontally through the
+name set at display scale. The first line of the name is ink on white; the second is
+white on ultramarine; one name, two grounds. Everything after that opening is ink,
+hairlines and air.
 
-The material behavior is flat and printed, not glassy or lit. Red tag stock and galvanized steel are the two grounds; ink is stamped onto them. Nothing floats, nothing glows, nothing has a soft corner except the punched eyelet holes, which are round because holes are round. Density is high and rhythmic: rules and hairlines subdivide the page the way a form does, and body copy holds to a 68ch measure so the record stays readable at record length.
+The density is editorial, not dashboard. There are no cards, no tiles, no shadows and no
+containers-within-containers. Structure comes from hairline rules, one-directional
+vertical rhythm, and a right-floated figure per work record. The reader is meant to scroll
+one document from the name to the sign-off without ever hitting a visual restart.
 
-Confirmed rejections: the dark developer-portfolio card grid, and its predictable opposite, the cream editorial personal site. Neither is a fallback here. The build also refuses image-as-atmosphere — it ships with zero raster imagery and carries the world entirely on fill, geometry and type.
+Confirmed rejections, pinned by the owner after two re-rolls of the world: no metaphor
+world or themed object, no near-black portfolio grid, no cream editorial ground, and no
+second drenched region anywhere below the hero.
 
 **Key Characteristics:**
-- Committed color: red tag stock carries whole regions full-bleed, it is not an accent on neutral.
-- Two type families only, with Archivo's width axis doing the hierarchy work (68–88).
-- Square by default; the only curves are punched holes.
-- Flat stock — no drop shadows anywhere; depth is inset punches and struck stamp rings.
-- One authored motion moment, and one green stamp, both rationed.
-- A complete print stylesheet is a first-class deliverable, not an afterthought.
+- One saturated ultramarine field; the rest of the page is white, ink and hairline.
+- A two-line display name split by the field's edge, one line per ground, at every viewport.
+- Two type families only, both self-hosted variable subsets.
+- Flat by construction: no shadow token exists.
+- Six authored line figures on a shared 240×160 grid, uniform stroke weight.
+- One authored motion moment; everything else is a sub-0.3s state transition.
+- A print ramp re-pointed to points, shipped in the same pass as the screen ramp.
 
 ## Colors
 
-A three-material palette — red tag stock, cool galvanized steel, slate stamp ink — plus a single green reserved for conformance.
+A near-monochrome document with one violent exception: the palette is white, near-black
+ink and four greys, plus a single ultramarine that carries all the saturation the page
+owns.
 
 ### Primary
-- **Signal-Red Tag Stock** (`{colors.tag}`): The committed field. It fills the hero header and the sign-off section edge-to-edge, top and tail of the document. It is never used as a small highlight on a neutral ground, and never as a text color except on white print output.
-- **Punched-Edge Red** (`{colors.tag-deep}`): The darker cut edge. Used only for the hero eyelet ring, where the stock is shown in section.
-
-### Secondary
-- **Conformance Green** (`{colors.stamp}`): The verified state, and only that. It appears in exactly three places: the struck conformance stamp in the sign-off, the verification links in the "Verify it" strip, and the pressed state of a role-lens button. Green means something has been checked.
+- **Drenched Ultramarine** (`{colors.field}`): The hero field, and the only saturated
+  colour in the system. Outside the field it is rationed to exactly three uses: link
+  colour, the 3px section tick, and the traced/verified strokes inside the figures. The
+  pressed lens button and the status chip's border take it as a control accent.
+- **Deep Ultramarine** (`{colors.field-deep}`): Reserved shade of the field. Declared in
+  `:root` and currently unreferenced by the shipped stylesheet; it is the sanctioned
+  darker step if a pressed or active field state is ever needed, not an in-use token.
 
 ### Neutral
-- **Galvanized Steel** (`{colors.steel}`): The page ground, the punched-hole fill, and the light-on-dark text color inside the primary action.
-- **Steel Hairline** (`{colors.steel-deep}`): Every 1px rule, list divider and section hairline on the light ground (`--rule: 1px solid`).
-- **Record Stock** (`{colors.paper}`): The slightly warmer sheet each work record is printed on, separating it from the steel bench behind it.
-- **Slate Stamp Ink** (`{colors.ink}`): Body text, headings, 2px structural rules, focus outlines, and the display type struck into the red field.
-- **Secondary Ink** (`{colors.ink-soft}`): Supporting copy on light stock — bullet points, stack strips, org lines, notes, field labels.
-- **Tag White** (`{colors.on-tag}`): The only foreground for small text on red.
+- **Paper White** (`{colors.paper}`): The page ground, and the same value as the on-field
+  foreground. There is no off-white, no cream, no tinted body background.
+- **Near-Black Ink** (`{colors.ink}`): All body and display type on white (19.1:1). Also
+  the focus-ring colour, the skip-link ground, the capability cluster's 2px top rule, and
+  the 3px rule that closes the document.
+- **Slate Secondary** (`{colors.ink-2}`): Secondary copy — record bullets, summaries,
+  field labels, notes, the footer (9.3:1 on white). It is a demotion, never a decoration.
+- **Hairline** (`{colors.rule}`): The default 1px separator between sections, records,
+  roles, and list rows. This rule does the work cards would otherwise do.
+- **Hairline Strong** (`{colors.rule-2}`): The heavier hairline — list-item ticks, the
+  lens button's resting border, the `.pending` dashed border, and `.hair` guide strokes
+  inside figures.
+- **Plate Tint** (`{colors.tint}`): The figure plate's ground, and the lens button's hover
+  ground. The only fill that is neither white nor ink.
+- **Plate Tint Deep** (`{colors.tint-2}`): One use — the `.soft` fill inside figures, for
+  a body that must read as filled but not as ink.
+- **Field Hairline** (`{colors.on-field-rule}`): The 34% white rule and chip border used
+  *inside* the field, where the neutral hairlines would disappear.
+
+### Print
+The paper palette is a real, separate set of tokens, not a fallback. `@media print`
+re-points the whole `:root` colour set: ink and the field both collapse to
+`{colors.print-ink}`, secondary copy to `{colors.print-ink-2}`, hairlines to
+`{colors.print-rule}` / `{colors.print-rule-2}`, the plate ground to white and the plate
+fill to `{colors.print-tint-2}`. Ultramarine does not survive to paper at all — the field
+prints as a black-on-white heading block, so the document does not depend on a colour
+printer.
 
 ### Named Rules
 
-**The Committed Field Rule.** Red is a region, not an accent. If red appears, it fills a whole band of the page and the content sits inside it. Do not sprinkle red onto the steel ground as a highlight, a link color, or an icon tint; its only intrusions on light ground are the 3px top edge of a work record and the record's eyelet ring.
+**The One Region Rule.** The page gets exactly one drenched region, and it is the hero
+field. Colour outside it survives in exactly three places: link colour, the 3px section
+tick, and the traced stroke inside a figure. Everything else earns its emphasis from scale,
+weight and space. The sign-off closes on a 3px **ink** edge, not a second coloured band,
+and `.contact` explicitly suppresses its tick — a 3px blue segment inside a 3px black rule
+reads as a smudge. A fourth colour use — an ultramarine left rule on the `.rec__so` line —
+was built and then removed: it read as the generic accent-bar tell, and the emphasis it was
+doing is carried by type instead.
 
-**The White-On-Tag Rule.** On the red field, only pure white clears 4.5:1 (4.59:1) for small text. A tint of the red hue tops out near 3.44:1 and was removed from the build for that reason. Slate ink clears only 3:1 on red and is therefore reserved for display sizes — which is exactly why the name and the sign-off heading are slate while every line of body copy on red is white. There is no third foreground on red.
+**The Only-White-On-Field Rule.** White is the sole foreground on ultramarine (9.0:1).
+Ink on the field is 2.1:1 and is never used; there is no second foreground colour, no
+tinted-blue text, and no lowered-opacity white below the 0.82 used on the location label.
+Separation inside the field is achieved by scale, weight and tracking.
 
-**The Scale-And-Tracking Rule.** Because there is no legal second tone on red, secondary text on the tag recedes by size and letter-spacing instead: field labels drop to 0.66rem and open to 0.22em tracking while staying pure white. Never invent a muted white or a low-opacity text color to create hierarchy on the tag.
-
-**The One Stamp Rule.** Conformance green marks verification only. A green element must correspond to a fact somebody could check.
+**The Dim-Never-Delete Rule.** The role lens de-emphasises to `opacity: 0.55` and never
+hides. 0.55 is a floor, not a starting point: at that value ink body copy still composites
+to about 4.2:1 on white. Secondary `{colors.ink-2}` copy composites to roughly 2.8:1, which
+is below the small-text threshold and is accepted **only** because the state is
+user-initiated, reversible in one click, announced in a live region, and never the page's
+default. Do not lower it, and do not introduce a second dim level.
 
 ## Typography
 
-**Display Font:** Archivo variable (with Arial Narrow, system-ui)
-**Body Font:** Archivo variable (with system-ui, -apple-system)
-**Label/Mono Font:** Courier Prime 400/700 (with ui-monospace, Courier New)
+**Display Font:** Bricolage Grotesque (fallback `'Arial Black', system-ui, sans-serif`)
+**Body Font:** Public Sans (fallback `system-ui, -apple-system, 'Segoe UI', sans-serif`)
 
-Both families are self-hosted latin woff2 under OFL 1.1, with `font-display: swap`; the Archivo variable face and Courier Prime 400 are preloaded.
+Both are self-hosted latin variable subsets under OFL 1.1, both `<link rel=preload>`ed,
+both `font-display: swap`, `font-synthesis-weight: none`. The shipped Bricolage subset
+carries `opsz` and `wght` axes **only** — there is no `wdth` axis in the file, so never
+write one.
 
-**Character:** Archivo's width axis is genuinely driven, not decorated — condensed and heavy for the struck-in name, progressively wider and lighter as the type gets smaller, so hierarchy reads as pressure rather than as size alone. Courier Prime is the form's typewriter: it appears where a field label or a field value would appear on a real tag, never as a generic "technical" costume.
+**Character:** A wide, slightly eccentric grotesque cut very large against a quiet,
+highly legible civic sans. The display face never sets prose and the body face never sets
+the name; the contrast between them is the page's only ornament.
 
 ### Hierarchy
-- **Display** (`wdth` 74 / `wght` 800, clamp 2.6–6rem, line-height 0.87, tracking −0.035em, uppercase, slate on red): The name, and only the name. Below 24rem viewport the width axis narrows to 68 so it still fits on two lines.
-- **Sign-off Display** (`wdth` 76 / `wght` 800, clamp 2.6–3.2rem, tracking −0.03em, uppercase, slate on red — sharing the Display step's floor so both display voices sit on one scale): The closing "Sign off" heading — the display voice returning at the tail.
-- **Headline** (`wdth` 78 / `wght` 700, clamp 1.5–2.2rem, tracking −0.02em, uppercase): Section headings, each sitting under a 3px signal-red stock edge with a punched eyelet at its left end and `--s7` of air above it — the record's tag shoulder repeated at section scale, so the world runs the whole spine rather than stopping below the work stack.
-- **Title** (`wdth` 84 / `wght` 700, clamp 1.16–1.5rem, tracking −0.015em): Work record names, role titles, capability cluster terms (0.94rem, uppercase, +0.04em).
-- **Sub-title** (`wdth` 86–88 / `wght` 600, 1.02–1.15rem): The ruled title fields in the hero and the role-lens prompt — the widest, lightest step in the Archivo ramp.
-- **Lead** (400, clamp 1.1–1.4rem, line-height 1.45): The hero thesis (max 46ch) and the sign-off lead (max 48ch).
-- **Body** (`wdth` 100 / `wght` 400, clamp 1–1.09rem, line-height 1.6, max 68ch): All record prose and experience copy.
-- **Label** (Courier Prime 400, 0.66rem, +0.14em, uppercase; +0.22em on the tag): "Inspection record", "Role", "Stack", "Email" — the printed field names.
-- **Value** (Courier Prime 400/700, 0.70–1.02rem, +0.06em to +0.16em): Stamp text, stack strips, verification links, contact values, actions, and the role-lens controls.
+- **Display** (`{typography.display}`, opsz 96): The name, and only the name. Line height
+  is sub-1 (0.86) so the two lines lock into a single block, and `--name-line`
+  (`--d-name × --name-lh`) is what the field's edge is pinned to.
+- **Headline** (`{typography.headline}`, opsz 40): Section headings. `text-wrap: balance`.
+- **Title (lead)** (`{typography.title-lead}`, opsz 32): The first work record's name only.
+- **Title** (`{typography.title}`, opsz 24 on contact links): Work-record names, the lens
+  question, and the contact links.
+- **Subtitle** (`{typography.subtitle}`): Job titles in the field, role titles, verify-row
+  links, and the demoted record's name.
+- **Lead** (`{typography.lead}`): The hero thesis (max 46ch) and the sign-off lead (48ch).
+- **Body** (`{typography.body}`): All prose, capped at `--measure` (66ch).
+- **Pull** (`{typography.pull}`): The `.rec__so` "so what" line — the record's argument.
+  Emphasis is type-only: one step above body at 600 weight, isolated by `--s4` of space
+  above and below. It carries no rule, no border and no colour. The demoted record sets the
+  same line at 500.
+- **Meta** (`{typography.meta}`): Notes, capability definitions, credential rows.
+- **Action** (`{typography.action}`): Buttons and hero actions, uppercase.
+- **Label** (`{typography.label}`): The `.lbl` uppercase field label and the chips.
+- **Micro** (`{typography.micro}`): Declared step, currently unreferenced on screen; it
+  exists so the print ramp has a bottom rung. Do not reach for it on screen.
 
 ### Named Rules
 
-**The Two Families Rule.** Archivo and Courier Prime. There is no third face, and no icon font. If something needs to feel different, move the width axis or switch families — do not add one.
+**The Two Families Rule.** Bricolage Grotesque and Public Sans. There is no third face —
+in particular, no monospace. Small uppercase labels are Public Sans at 600 with 0.1em
+tracking, never a mono costume.
 
-**The Width-Axis Rule.** Hierarchy runs 68 → 88 on `wdth` across the page, tightening as type grows. A new heading level must pick a width consistent with its size: bigger is narrower. Never set display type at `wdth` 100.
+**The Explicit Optical Size Rule.** `opsz` is driven explicitly at four steps — 96 (name),
+40 (section heading), 32 (lead record name), 24 (contact links) — and every
+`font-variation-settings` declaration pairs its `opsz` with an explicit `wght`, because
+the shorthand otherwise clobbers the `font-weight` property.
 
-**The Field-Data Rule.** Courier Prime marks something that would be written into a field on the physical tag — a label, a value, a stamp, a link to verify. Prose never runs in mono.
+**The Every-Size-Is-A-Token Rule.** Six fixed steps (`--t-3xs`…`--t-lg`) and seven fluid
+steps (`--d-name`, `--d-section`, `--d-record-lead`, `--d-record`, `--d-title`,
+`--d-lead`, `--d-body`). A literal `font-size` on screen is a defect. The only literal
+sizes in the build are inside `@media print`, where the whole ramp is re-pointed.
 
 ## Layout
 
-A single centered column: `main` and the hero body both cap at 62rem with `--s4` (1.8rem) side padding, dropping to `--s3` under 40rem. Text measure is separately constrained at `--measure` (68ch) for records and experience, and tighter at 46–48ch for the two lead paragraphs on red.
+A single centred column: `--wrap` 64rem, `--gut` `--s4` (1.8rem), dropping to `--s3`
+(1.1rem) below 40rem. Prose is additionally capped at `--measure` (66ch); the two lead
+paragraphs run tighter at 46ch and 48ch.
 
-Vertical rhythm runs on a seven-step scale (`--s1` 0.35rem through `--s7` 7rem, roughly a 1.6 ratio). Section headings claim `--s7` of top padding, sub-blocks open at `--s6`, and intra-record spacing lives in `--s1`–`--s4`. Rules do the rest of the work: a 3px signal-red stock edge with a punched eyelet above each section heading, a 2px slate rule above each capability cluster, a 1px `--steel-deep` hairline between list rows, and 1px white 40% rules on the red field.
+Spacing is a seven-step ramp at roughly a 1.6 ratio (`--s1` 0.35rem → `--s7` 7rem).
+`--s7` is declared but unused on screen; it exists as the ramp's top rung and is
+re-pointed for print. Sections separate on `--s6` above / `--s5` below a 1px hairline;
+records and roles separate on `--s5` and `--s4` respectively.
 
-Only two grids exist, both intrinsic and unbreakpointed: capabilities at `repeat(auto-fit, minmax(15rem, 1fr))` and education at `minmax(16rem, 1fr)`, each gapped at `--s4`. Everything else is flex with wrapping.
+Two grids exist, both `auto-fit`: capabilities at `minmax(15rem, 1fr)` and credentials at
+`minmax(16rem, 1fr)`, each on `--s4` gap. The contact rows are a `7rem 1fr` two-column
+grid that collapses to one column below 40rem. Everything else is flow or flex-wrap.
 
-Two breakpoints, both narrow-side only. At 40rem the hero compresses hard so the first viewport still reaches the contact action: padding drops, the three ruled title fields collapse into one line with middot separators and their labels hidden, stamps shrink to 0.62rem, and the two disposition actions go full-width and split the row. At 24rem only the name's width axis narrows.
+Three breakpoints, all max-width and all rem-based:
+- **54rem** — figure plates unfloat, go full width to a 21rem cap.
+- **40rem** — gutter and hero top tighten, hero actions become a 2-up grid, contact rows
+  and the hero foot go single-column. The split needs no re-point at any width — it is
+  derived from `--name-line`, so it follows the type ramp automatically.
+- **24rem** — hero actions stack 1-up and the hero pays for the extra row out of its own
+  vertical budget so the contact action stays in the first viewport.
 
-**The Fold-Reaches-Contact Rule.** The hero is compressed at narrow widths rather than allowed to push the contact action below the fold. Any hero addition must be paid for out of the same budget.
+**The Print Is A Deliverable Rule.** Screen type and space steps are viewport-fluid; paper
+has no viewport. `@media print` re-points every colour, type and space token to paper
+values (`pt`) and sets `@page { margin: 12mm 14mm }`. Without it the document sets to ten
+pages; with it, four. The field flattens to black-on-white, the lead record and contact
+links set back down to the ramp, records and roles get `break-inside: avoid`, dimming is
+forced off with `opacity: 1 !important`, and external links print their URL. **Any new
+component ships with its print behaviour in the same pass**, or the deliverable regresses.
 
 ## Elevation & Depth
 
-Flat stock, no elevation. There is not a single drop shadow in the build, and nothing is layered by lift. Depth is entirely physical-print: an *inset* shadow inside each punched hole so the hole reads as pierced, and hard offset rings on stamps so the ink reads as struck through a die. Separation between the record sheets and the page ground is done tonally (`{colors.paper}` on `{colors.steel}`) plus a 3px red top edge — never by shadow.
+There are no shadows. Not one `box-shadow` exists in the build, and no shadow token should
+be added. Depth is entirely a matter of ink weight and hairline hierarchy: 1px `--rule`
+for ordinary separation, 1.5px for control borders, 2px for a capability cluster's top
+edge, and 3px for the document's closing rule. The hero field reads as "in front" only
+because it is saturated and full-bleed, and it is placed with `z-index: -1` under an
+`isolation: isolate` context — it sits *behind* its own text, not above the page.
 
-### Shadow Vocabulary
-- **Punched hole, large** (`box-shadow: inset 0 1px 3px rgba(22, 34, 43, 0.45)`): The hero and sign-off eyelets.
-- **Punched hole, small** (`box-shadow: inset 0 1px 2px rgba(22, 34, 43, 0.4)`): The work-record eyelet.
-- **Struck stamp, ink** (`box-shadow: 0 0 0 1px var(--steel), 0 0 0 3px var(--ink)`): The double-rule impression around a stamp, with a stock-colored gap between the two lines.
-- **Struck stamp, conformance** (`box-shadow: 0 0 0 1px var(--steel), 0 0 0 3px var(--stamp)`): The same die in green, used once.
-
-### Named Rules
-
-**The Flat-Stock Rule.** No `box-shadow` that casts outward and blurred. Shadows are either inset (a hole) or hard-offset rings (a stamp). If a surface needs to separate, change its tone or rule it, do not lift it.
+**The Flat-By-Rule Rule.** Separation is a line or a colour change, never a lift. If a
+surface needs to feel distinct, give it the `{colors.tint}` ground and a 6px radius — the
+figure plate is the only example, and it is the pattern to copy.
 
 ## Shapes
 
-Square by default: zero border-radius on every panel, button, stamp, record and field. The only round things are the punched eyelets, which are true circles (`50%`) filled with the steel of the bench behind, ringed by a 2px `--tag-deep` (hero) or 1.5px `--tag` (record) reinforcing eyelet drawn on an inset of −0.42rem / −0.28rem.
+Square by default. `--r-0` (0) is the page's shape: every rule, edge, section and figure
+corner is unrounded. `--r-1` (6px) is the single radius and it is reserved for things you
+can act on or that are boxed as a unit — hero actions, lens buttons, credential chips, the
+status chip, the `.pending` block, the figure plate, and the skip link. No other radius
+value exists; do not introduce one.
 
-The tag silhouette is the recurring geometry, and it repeats at three scales via `clip-path`, always as a cut corner:
-1. **Hero shoulder** — `polygon(0 4.5rem, 3.2rem 0, 100% 0, 100% 100%, 0 100%)`, a large top-left bevel.
-2. **Record shoulder** — the same cut at 1.6rem on every work record, so the world holds through the middle of the page and not only at the bookends.
-3. **Sign-off notch** — the cut inverted to the bottom-right (`calc(100% - 3rem)` / `100% - 3.4rem`), closing the document with the opposite corner.
-
-Borders are structural and carry meaning by weight: 3px red = a record's top edge; 2px slate = a section or cluster boundary; 2px currentColor = an action; 1px `--steel-deep` = a row divider on light; 1px white 40–50% = a ruled field on red; 1px dashed white 65% = deliberately not a control.
-
-**The Three-Scale Shoulder Rule.** The cut corner is the world's signature and appears at exactly three scales. A new panel either takes one of those three cuts or stays square. The "also-ran" record variant (`.rec--also`) proves the inverse: dropping the clip and the red edge is how a record is demoted.
-
-## Imagery
-
-Two kinds, and they do different jobs. Neither is decoration.
-
-**Stock grain (generated).** `texture-substrate.webp` on the page ground and
-`texture-tagstock.webp` on the two red panels, both Higgsfield-generated photographs of
-blank card stock. They are applied as `background-image` blended with `soft-light` over
-`background-color`, never as the background itself.
-
-**The White-On-Tag Rule extends to imagery.** The generated red stock is lighter than
-`--tag`, and white small text clears 4.5:1 on `#D93A1E` by only 0.09. Letting a texture
-become the background would fail the contrast audit. The token colour stays the authority;
-grain is layered over it, and the computed background must remain `rgb(217, 58, 30)`.
-Textures are dropped entirely in print.
-
-**Record plates (authored SVG).** Each work record carries a figure diagramming that
-project's mechanism, drawn inline in the page's own tokens: `.ink` 1.4px slate strokes,
-`.hair` 1px `--steel-deep` for guides and scales, `.mark` 2px `--tag` for the one thing
-being traced, `.ok` 1.8px `--stamp` for a verified state. Uniform stroke weight across the
-series, a 240×160 viewBox, a measurement scale along one edge, and a `<title>` carrying
-real alt text. The plate floats right at ≥54rem and leads the record below it.
-
-**The Authored-Plate Rule.** A new figure is drawn, not generated, and uses only these four
-stroke classes. Generation was tried and rejected on evidence: the available model could not
-hold the palette, defaulted to centred starbursts, and inserted stray lettering into work
-whose whole argument is that nothing is fabricated. Anything with type in it is authored.
+Borders carry the form language: 1px hairlines to separate, 1.5px to bound a control,
+2px on a hero action (so it holds its own against the field), 2px above a capability
+cluster, and 3px for exactly two things — the section tick and the document's closing edge.
+1px **dashed** is reserved for the one thing that is deliberately not a control. No
+component carries a left or side border; emphasis inside prose is type and space.
 
 ## Components
 
-### Buttons (Actions)
-Field-stamped rectangles: uppercase Courier Prime, 0.78rem, +0.12em tracking, `--s2 --s4` padding, hard square, 2px border.
-- **Shape:** Square (0 radius), 2px solid border.
-- **Primary:** Slate fill, steel text, slate border — the one filled control on the red field.
-- **Secondary:** Transparent with a 2px `currentColor` border, inheriting white on the tag.
-- **Hover / Focus:** Both invert on a 0.18s `--ease` (`cubic-bezier(0.16, 1, 0.3, 1)`) background/color transition — secondary goes white-on-red-text, primary goes steel fill with slate text. Focus is the global 3px slate outline at 3px offset.
-- **Disabled:** `aria-disabled="true"` renders at 0.62 opacity with `cursor: not-allowed`.
+### Buttons and Actions
+- **Shape:** Small rounded rectangle (6px), 2px border on hero actions, 1.5px on lens
+  buttons.
+- **Primary (`act-primary`):** White ground, ultramarine text — a white block inside the
+  field. Hovers to ink ground / paper text, borrowing the page's ink rather than a new
+  colour.
+- **Ghost (`act-ghost`):** `border: 2px solid currentColor` in white on the field,
+  inverting to white ground / ultramarine text on hover and focus.
+- **Focus:** A global 3px ink outline at 3px offset, overridden to white inside the field
+  so the ring never disappears against ultramarine.
+- **Transitions:** 0.18s on colour properties with `--ease`
+  (`cubic-bezier(0.16, 1, 0.3, 1)`). Nothing moves position.
 
-### Chips (Role-lens buttons)
-- **Style:** Transparent with a 1px slate border, uppercase mono at 0.74rem/+0.1em, `--s2 --s3` padding.
-- **State:** Hover fills `--paper`. `aria-pressed="true"` fills conformance green with a white label; the "Show all" clear variant fills slate instead, so the way back is visually distinct from a selection.
+### Chips
+- **Credential chip:** Transparent, bordered 1.5px in 34%-white, uppercase label above a
+  display-face value on its own line. Static — it is a statement, not a control.
+- **Status chip:** Inline-flex, 1.5px ultramarine border with ultramarine label and value.
+  The only chip that takes the accent, alongside the three sanctioned colour uses outside
+  the field.
 
-### Cards (Work records)
-- **Corner Style:** Square, with the 1.6rem clipped shoulder at top-left.
-- **Background:** Record stock on the steel ground, with a 3px signal-red top edge.
-- **Shadow Strategy:** None — see Elevation & Depth. The punched eyelet's inset shadow is the only depth cue.
-- **Internal Padding:** `--s4` on three sides, `--s5` on the left to clear the punched shoulder.
-- **Structure:** Title, one-line thesis, then a **so-what** line set apart by a 1px slate left rule and `wght` 600 at `wdth` 100, then dashed-bullet points (a 6px × 1px `--ink-soft` bar, not a disc), then a mono stack strip above a hairline.
-- **Demoted variant:** Transparent background, `--steel-deep` top border, no clip, no eyelet.
+### Containers
+There are no cards. The one boxed surface is the **figure plate**: `{colors.tint}` ground,
+6px radius, `--s3` padding, right-floated at 15.5rem (21rem for the lead record),
+unfloating to full width at 54rem.
 
-### Stamps
-- **Style:** A patch of steel stock on the red field, 2px slate border plus the struck double-rule ring, uppercase mono 0.7rem, `--s2 --s3` padding, and rotated off-square (−1.4deg, alternating +1.1deg) so the impression looks hand-struck.
-- **Composition:** A quiet qualifier line above a bold value (`<b>`, 700, 0.86rem, +0.06em) — the pattern every stamp follows.
-- **Conformance variant:** Green ink and green ring, rotated −2.2deg, used exactly once in the sign-off.
+### Navigation
+There is none. A skip link (ink ground, revealed on focus) and in-page anchors are the
+entire navigation model. Do not add a header bar.
 
-### Fields (Label + value rows)
-- **Style:** No boxes. A field is a mono uppercase label followed by its value, sitting on a 1px hairline — `--steel-deep` on light stock, white 40% on the tag. The hero's head field ends in a `field__rule` flex spacer that runs the line out to the margin.
-- **Focus:** Links inside fields carry 1px underline at 3–4px offset; hover flips a verification link from green to slate and a contact link from white to slate.
+### Role Lens
+A four-button filter that de-emphasises rather than filters. Buttons carry
+`aria-pressed`; the pressed state is ultramarine ground, except "Show all" which presses
+to **ink** ground so the reset never competes with a selection. A live region announces
+the change. Controls ship `hidden` and JS reveals them, so the page reads in full with JS
+off.
 
-### Pending marker
-Not a control, deliberately: dashed 1px white border, no fill, no hover, no href, on the sign-off field. It states an artifact that does not exist yet and must never acquire the solid border, the pointer, or the hover inversion that would make it look clickable.
+**The Scoped Lens Rule.** The lens target selector is
+`.rec[data-lens], .role[data-lens], .caps__cluster[data-lens]`. A bare `[data-lens]`
+sweep also matches the lens buttons themselves and would dim the reader's way back to
+"Show all".
 
-### Signature: the tag panel
-A full-bleed red region with a clipped shoulder, a punched eyelet in the corner, slate display type, white body copy, ruled fields, and struck stamps. It opens the document (hero) and closes it (sign-off, with the cut mirrored to the opposite corner). These are the only two of them; a third would spend the device.
+### The Split Name (signature)
+The page's defining device. The name is two block-level spans inside one `<h1>`, each
+filled with a **solid** colour: the first `{colors.ink}`, the second `{colors.on-field}`.
+The field's top edge (`.lede::before`) is pinned to
+`calc(var(--lede-top) + var(--name-line))`, which lands on the boundary between the two
+line boxes — so the name is split by a ground change, one line per ground, with no
+per-line colour ever set by hand.
+
+- `--name-line` is `--d-name × --name-lh` (0.86). It is the only arithmetic in the device:
+  change `--d-name` or `--name-lh` and the edge follows on its own. There is no ratio and
+  no breakpoint override.
+- `white-space: nowrap` on `.name` is load-bearing. It guarantees exactly two lines, which
+  is the assumption `--name-line` encodes; a third line would put the edge in the wrong
+  place at every width.
+- The colour lives on the spans, not on `.name`. `.name` itself keeps `color: var(--ink)`
+  as the fallback for any text not inside a span.
+- `forced-colors: active` sets `.name span { color: CanvasText }` and hides the field.
+  Print sets the name to 26pt and both spans to black, since the field does not print.
+- History, so nobody reinstates it: an earlier pass painted the split *through the glyph
+  bodies* with a two-stop `background-clip: text` gradient driven by a `--name-cut` token.
+  It was flagged as `gradient-text` and dropped for solid colour on the owner's explicit
+  decision. `--name-cut`, the gradient, and its `@supports` fallback are gone. Do not
+  bring them back.
+
+### Record Figures
+Six authored SVG plates on a shared **240×160** viewBox, each with a `<title>` carrying
+real alt text and `role="img"` + `aria-labelledby`. Exactly four stroke classes plus two
+fills:
+- `.ink` — 1.4px ink, structure.
+- `.hair` — 1px `--rule-2`, guides, grids and the shared baseline scale.
+- `.mark` / `.markf` — 2px ultramarine, for the *one* thing the figure traces.
+- `.ok` / `.okf` — 1.8px ultramarine, for a verified state.
+- `.dot` (`--ink-2` fill) and `.soft` (`--tint-2` fill, 1px `--ink-2` stroke) for bodies.
+
+Stroke weight is uniform across the series. The lead record's plate is larger (21rem vs
+15.5rem) but stays a right float so the weight stays consistent; it is never scaled up as
+an image. Generation was tried and rejected on evidence — the model could not hold the
+palette and inserted stray lettering.
+
+### Pending Block
+- **Style:** 1px dashed `--rule-2`, 6px radius, uppercase label with an ink value.
+- **Behaviour:** No `href`, no pointer, no hover, no focus. It states an artifact that does
+  not exist yet. Making it look interactive is the defect.
 
 ### Motion
-One authored moment. `settle` rotates and translates each work record from −1.6deg / +1.1rem into place over 0.9s on `--ease`, scroll-linked with `animation-timeline: view()` over `entry 0% → entry 46%`, `transform-origin: 8% 0` — the record hanging on its eyelet and settling like a tag on a wire. It is wrapped in `@media (prefers-reduced-motion: no-preference)` and animates from an already-visible state, so nothing is hidden waiting for scroll. Everything else that moves is a 0.16–0.28s color or opacity transition on hover, press, or lens change.
-
-**The One Authored Moment Rule.** The page gets one motion idea. New motion must be either a state transition under 0.3s or a reuse of `settle`.
-
-### Print
-The print stylesheet is a real deliverable and must stay one: tag stock drops to white, all red and green go to black, `clip-path` and punches and eyelets are removed, the role lens / skip link / footer / field rules are hidden, `is-dimmed` resets to full opacity, records get `break-inside: avoid` with a 1pt rule, type resets to a 10.5pt/1.35 body with 26pt display, and external URLs are expanded after their links via `a[href^='http']::after`. Any new component ships with its print behavior.
+One authored moment: `field-wipe`, a `clip-path` inset on `.lede::before` running
+0.72s with a 0.08s delay on `--ease`, dropping the field past the name so the second line
+appears as it passes. It is wrapped in `prefers-reduced-motion: no-preference` and
+animates *toward* the base state, so nothing is hidden if the animation never runs.
+Everything else that moves is a 0.18s (colour) or 0.28s (opacity) transition.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** let red carry whole regions full-bleed, with content sitting inside the field.
-- **Do** use pure white for every piece of small text on red, and reserve slate on red for display sizes only.
-- **Do** create hierarchy on the tag with size and tracking (0.66rem / +0.22em labels), since tone is unavailable there.
-- **Do** drive Archivo's width axis (68–88) as the hierarchy control, narrowing as type grows.
-- **Do** reserve Courier Prime for labels, values, stamps and actions — the things a form would actually have printed.
-- **Do** take one of the three established clip-path shoulders, or stay square.
-- **Do** separate surfaces tonally (`paper` on `steel`) and with ruled weights (3px red / 2px slate / 1px hairline).
-- **Do** ship interactive enhancements `hidden` in the markup and reveal them from JS, so the page reads in full with JS off.
-- **Do** dim to foreground (0.34 opacity, 0.28s) and keep every element in the DOM.
-- **Do** write the print rules for any new component in the same pass.
+- **Do** keep the field's edge derived from `--name-line`, and confirm the name still sets
+  to exactly two lines — one per ground — at 320px, 768px and 1440px after any change to
+  `--d-name`, `--name-lh` or the name markup.
+- **Do** ration colour outside the hero field to link colour, the 3px section tick, and
+  one traced stroke per figure.
+- **Do** make in-prose emphasis out of scale, weight and space — the `.rec__so` line is the
+  pattern.
+- **Do** use white as the only foreground on ultramarine.
+- **Do** pair every `opsz` with an explicit `wght` in `font-variation-settings`.
+- **Do** ship every new component's `@media print` behaviour in the same pass, and re-check
+  the page count.
+- **Do** separate with a hairline and a spacing step; 1px `--rule` is the default answer.
+- **Do** give any new figure the 240×160 viewBox, the four stroke classes, a real `<title>`,
+  and one ultramarine trace.
+- **Do** keep the page fully readable with JavaScript off: reveal enhancements, never
+  depend on them.
 
 ### Don't:
-- **Don't** use a tint of the red hue for text on the tag; it tops out near 3.44:1 and was removed from the build for that reason.
-- **Don't** add a third font family, an icon font, or an icon package.
-- **Don't** use conformance green for anything that isn't a verified, checkable fact.
-- **Don't** add outward drop shadows or lift a surface to separate it; inset punches and struck rings are the only shadows.
-- **Don't** round a corner. The only curves are the punched eyelets.
-- **Don't** filter, hide or remove content in response to the role lens.
-- **Don't** style an unavailable artifact so it reads as a control — dashed border, no pointer, no hover.
-- **Don't** add a third full-bleed tag panel; the hero and the sign-off are the pair.
-- **Don't** add a second motion idea, or gate content visibility behind a scroll animation.
-- **Don't** grow the hero at narrow widths in a way that pushes the contact action past the first viewport.
-
-### Unfulfilled: imagery
-
-The shipped page contains no raster imagery. Its only image asset is the 1200×630 Open Graph card; the favicon is SVG. The world is currently carried entirely by CSS fill, geometry and type, and it holds — image is an addition here, never a rescue. If the planned asset set (hero-primary, texture-substrate, work-01..06, divider-detail) is ever produced, the attachment points in the built system are: `texture-substrate` as a low-contrast overlay inside `.tag` / `.contact` (both already `position: relative; overflow: hidden`), which must not reduce white-on-red text contrast below 4.5:1; `hero-primary` as a right-hand element inside `.tag__body`, subject to the Fold-Reaches-Contact Rule; `work-01..06` as a fixed-ratio block at the head of `.rec__inner`, inside the record's clip and above the title; `divider-detail` as a repeating strip in place of a `--rule` hairline between sections. Any such image inherits the palette — it does not introduce a new hue.
+- **Don't** add a second drenched region, a coloured section band, or a tick on `.contact`.
+  The document closes on ink.
+- **Don't** put a thick coloured border on one side of anything. The accent bar is the most
+  recognisable AI-generated tell; the `.rec__so` line had one and it was removed.
+- **Don't** put ink, tinted blue, or any non-white foreground on the field (2.1:1).
+- **Don't** lower `.is-dimmed` below 0.55, add a second dim level, or let the lens hide
+  anything — including "Show all".
+- **Don't** target `[data-lens]` unscoped; always `.rec, .role, .caps__cluster`.
+- **Don't** write a literal `font-size` outside `@media print`; add a token instead.
+- **Don't** introduce a third font family, a monospace face, or a `wdth` axis — the shipped
+  Bricolage subset has only `opsz` and `wght`.
+- **Don't** add a `box-shadow`, a card, or a third radius value. Square by default, 6px for
+  controls.
+- **Don't** use `background-clip: text` or gradient fills on type anywhere, including the
+  name. The through-the-glyphs version was built and dropped; there is no standing
+  exception left in this system.
+- **Don't** give `.pending` an href, a pointer cursor, or a hover state.
+- **Don't** animate anything outside `prefers-reduced-motion: no-preference`, or animate
+  away from the base state.
