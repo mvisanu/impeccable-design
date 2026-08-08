@@ -53,7 +53,7 @@ npx playwright pdf http://127.0.0.1:8899/ print.pdf
 
 # OG card, 1200x630, composited from the page's own tokens
 npx playwright screenshot --viewport-size="1200,630" \
-  http://127.0.0.1:8899/tools/og-card.html public/assets/og-image-v2.png
+  http://127.0.0.1:8899/tools/og-card.html public/assets/og-image-v3.png
 ```
 
 ## Authoritative files, in order
@@ -103,8 +103,8 @@ npx playwright screenshot --viewport-size="1200,630" \
   generated interface, which is the exact failure the owner asked this build to avoid.
   In-prose emphasis comes from scale, weight and space.
 - **Every font size is a token.** `--t-3xs` … `--t-lg` for fixed steps, `--d-name`,
-  `--d-section`, `--d-record`, `--d-record-lead`, `--d-title`, `--d-lead`, `--d-body` for
-  fluid ones. A literal `font-size` will trip `design-system-font-size` and fail the gate.
+  `--d-section`, `--d-record`, `--d-record-lead`, `--d-close`, `--d-title`, `--d-lead`,
+  `--d-body` for fluid ones. A literal `font-size` will trip `design-system-font-size` and fail the gate.
 - **The print ramp is re-pointed, not inherited.** The screen steps are `vw`-fluid and paper
   has no viewport, so `@media print` re-points every type and space token to `pt`. Skip that
   and the document sets to ten pages instead of five. Any new component ships with its print
@@ -118,14 +118,21 @@ npx playwright screenshot --viewport-size="1200,630" \
   becomes default-on, this stops being acceptable and the mechanism has to change.
 - **The page must read in full with JavaScript off.** Lens controls ship `hidden` and JS
   reveals them; the email anchor has no `href` until JS assembles the `mailto:`.
-- **Two families only.** Bricolage Grotesque (display) and Public Sans (body/UI), self-hosted
-  latin variable subsets under OFL 1.1. The shipped Bricolage subset carries `opsz` and
-  `wght` only — there is no `wdth` axis in the file, so do not write `font-stretch` or a
-  `'wdth'` variation and expect it to do anything.
+- **Two families only.** Anybody (display) and Public Sans (body/UI), self-hosted latin
+  variable subsets under OFL 1.1. Anybody carries `wdth` 50–150 and `wght` 100–900; there is
+  no `opsz` axis, so an `'opsz'` variation does nothing.
+- **The width axis works at the small end, not the large one.** Every display step sits at
+  `wdth` 100–102; the only places width is driven are `.caps__cluster dt` (110) and
+  `.cred-chip b` (108), where opening the face out keeps tracked uppercase and light-on-field
+  labels legible. Hierarchy is size and weight. Do not build a "wider as it grows" ramp.
+- **`--d-name` is tuned to Anybody's set width and has almost no headroom.** Anybody is ~30%
+  wider than the face it replaced. At `clamp(2.1rem, 10.5vw, 7.1rem)` the name runs 88–94% of
+  the available measure from 320px to 1600px. Raise the coefficient or the cap and it breaks
+  out of the content column — measure before changing it, do not eyeball at one width.
 - `vercel.json` pins `outputDirectory` to `.`. Without it, Vercel's zero-config static
   detection treats `public/` as the output root and stops serving `index.html`.
 - `/public/assets/*` is cached `immutable` — **a changed asset needs a changed filename.**
-  That is why the card is `og-image-v2.png`.
+  That is why the card is `og-image-v3.png`.
 
 ## Known-open work
 

@@ -54,7 +54,7 @@ viewBox, and a `<title>` carrying real alt text.
 
 ### Regenerating the Open Graph card
 
-`public/assets/og-image-v2.png` is composited from the page's own tokens rather than
+`public/assets/og-image-v3.png` is composited from the page's own tokens rather than
 generated. Its source is `tools/og-card.html`, which links the site's real `styles.css` and
 reuses its real classes, so the card cannot drift from the page. It is a fixed 1200×630
 raster, so the whole rem ramp is scaled from the root (`--og-canvas-scale`) instead of any
@@ -63,13 +63,13 @@ individual size being overridden.
 ```bash
 python -m http.server 8899 --bind 127.0.0.1     # or any static server
 npx playwright screenshot --viewport-size="1200,630" \
-  http://127.0.0.1:8899/tools/og-card.html public/assets/og-image-v2.png
+  http://127.0.0.1:8899/tools/og-card.html public/assets/og-image-v3.png
 ```
 
 Serve it over HTTP rather than opening the file directly — the self-hosted fonts will not
 load over `file://`. Because `/public/assets/*` is served `immutable`, **a changed asset
 needs a changed filename** or browsers will keep the stale one; that is why the card carries
-a `-v2` suffix. Bump it again on the next change and update both `og:image` and
+a `-v3` suffix. Bump it again on the next change and update both `og:image` and
 `twitter:image` in `index.html`.
 
 `tools/og-card.html` links the site's own `styles.css` and reuses its real classes rather
@@ -93,16 +93,29 @@ never matched anything.
 The design gate (`impeccable detect`) returns **zero findings**. The print stylesheet
 produces **5 pages**. Zero dead links, zero date leaks.
 
-**Lighthouse has not been re-run since the visual world was replaced.** The previous build
-measured performance 98, accessibility 100, best practices 100, SEO 100, with FCP 1.0s,
-LCP 1.6s, CLS 0. The font budget is unchanged at ~101KB, so those numbers should hold, but
-treat them as stale until someone measures the current deploy.
+Lighthouse 13.4.1 against the live deploy:
 
-Fonts (Bricolage Grotesque variable for display, Public Sans variable for body and UI) are
-self-hosted latin subsets under `public/assets/fonts/`, both SIL Open Font License 1.1, both
-preloaded. They are self-hosted rather than pulled from Google Fonts because the third-party
-stylesheet was render-blocking and cost ~2.3s. The Bricolage subset carries the `opsz` and
-`wght` axes only — the width axis was dropped to hold the file at 75KB.
+| | Performance | Accessibility | Best practices | SEO |
+| --- | --- | --- | --- | --- |
+| Mobile | 99 | 100 | 100 | 100 |
+| Desktop | 100 | 100 | 100 | 100 |
+
+Mobile FCP 0.9s · LCP 1.5s · CLS 0 · TBT 0ms · Speed Index 3.6s.
+Desktop FCP 0.3s · LCP 0.4s · CLS 0 · TBT 0ms · Speed Index 0.4s.
+
+Speed Index is the only soft number, and it is the display face swapping in above the fold.
+With TBT and CLS both at zero it is not worth trading the type for.
+
+These numbers were measured before the display face changed. That swap cut the font payload
+from ~101KB to ~82KB and touched no other asset, so they should hold or improve; re-measure
+on the next deploy to be sure.
+
+Fonts (Anybody variable for display, Public Sans variable for body and UI) are self-hosted
+latin subsets under `public/assets/fonts/`, both SIL Open Font License 1.1, both preloaded.
+They are self-hosted rather than pulled from Google Fonts because the third-party stylesheet
+was render-blocking and cost ~2.3s. Anybody carries `wdth` 50–150 and `wght` 100–900 in
+55.6KB; the width axis is driven only at the small end, where opening the face out keeps
+tracked uppercase legible.
 
 ## Repo layout
 

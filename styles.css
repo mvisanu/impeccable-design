@@ -4,15 +4,16 @@
    The world: a single continuous document on white, cut once by a full-bleed
    ultramarine field that the name itself crosses. Colour survives outside that
    field only as links, a 3px section tick, and one traced stroke per figure.
-   Two families: Bricolage Grotesque cut large, Public Sans for everything read.
+   Two families: Anybody cut large, Public Sans for everything read.
    ========================================================================== */
 
 /* ---- Fonts ------------------------------------------------------------- */
 
 @font-face {
-  font-family: 'Bricolage Grotesque';
-  src: url('public/assets/fonts/bricolage-var-latin.woff2') format('woff2');
-  font-weight: 400 800;
+  font-family: 'Anybody';
+  src: url('public/assets/fonts/anybody-var-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
   font-style: normal;
   font-display: swap;
 }
@@ -42,7 +43,7 @@
   --on-field-rule: rgba(255, 255, 255, 0.34);
 
   /* Type families. There is no third face. */
-  --f-display: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+  --f-display: 'Anybody', 'Arial Black', system-ui, sans-serif;
   --f-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Fixed type steps. */
@@ -54,10 +55,16 @@
   --t-lg: 1.12rem;
 
   /* Fluid type steps. */
-  --d-name: clamp(2.55rem, 11.6vw, 8.2rem);
+  /* Tuned to Anybody's set width, which is ~30% wider than the face this
+     replaced. The name runs to ~93% of the measure at every width; push the
+     coefficient or the cap higher and it breaks out of the column. */
+  --d-name: clamp(2.1rem, 10.5vw, 7.1rem);
   --d-section: clamp(1.85rem, 1.35rem + 2.1vw, 3.05rem);
   --d-record: clamp(1.3rem, 1.12rem + 0.9vw, 1.8rem);
   --d-record-lead: clamp(1.55rem, 1.28rem + 1.3vw, 2.35rem);
+  /* The closing step. The email is the conversion target, so the last screen
+     gets a display voice of its own rather than another record-sized line. */
+  --d-close: clamp(1.45rem, 1.15rem + 1.5vw, 2.4rem);
   --d-title: clamp(1.05rem, 0.99rem + 0.36vw, 1.28rem);
   --d-lead: clamp(1.16rem, 1.04rem + 0.6vw, 1.5rem);
   --d-body: clamp(1rem, 0.97rem + 0.18vw, 1.08rem);
@@ -174,10 +181,10 @@ a { color: var(--field); }
 .name {
   font-family: var(--f-display);
   font-size: var(--d-name);
-  font-weight: 800;
-  font-variation-settings: 'opsz' 96, 'wght' 800;
+  font-weight: 900;
+  font-variation-settings: 'wdth' 100, 'wght' 900;
   line-height: var(--name-lh);
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
   white-space: nowrap;
   margin-bottom: var(--s4);
   color: var(--ink);
@@ -243,6 +250,8 @@ a { color: var(--field); }
   font-family: var(--f-display);
   font-size: var(--t-sm);
   font-weight: 700;
+  /* Light on a saturated field: one notch wider and heavier to hold up. */
+  font-variation-settings: 'wdth' 108, 'wght' 750;
   letter-spacing: 0.02em;
 }
 
@@ -330,8 +339,8 @@ main > section::before {
 .section-h {
   font-family: var(--f-display);
   font-size: var(--d-section);
-  font-weight: 700;
-  font-variation-settings: 'opsz' 40, 'wght' 700;
+  font-weight: 800;
+  font-variation-settings: 'wdth' 100, 'wght' 800;
   line-height: 1.02;
   letter-spacing: -0.038em;
   margin-bottom: var(--s5);
@@ -536,7 +545,7 @@ main > section::before {
    stops six records reading as one repeated block. */
 .work .rec:first-of-type .rec__name {
   font-size: var(--d-record-lead);
-  font-variation-settings: 'opsz' 32, 'wght' 700;
+  font-variation-settings: 'wdth' 100, 'wght' 750;
   margin-bottom: var(--s4);
 }
 
@@ -607,10 +616,13 @@ main > section::before {
   padding-top: var(--s2);
 }
 
+/* The width axis earns its keep at the small end: opening the face out keeps
+   tracked uppercase legible where a display cut would otherwise close up. */
 .caps__cluster dt {
   font-family: var(--f-display);
   font-size: var(--t-2xs);
   font-weight: 700;
+  font-variation-settings: 'wdth' 110, 'wght' 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
   margin-bottom: var(--s1);
@@ -699,14 +711,20 @@ main > section.contact::before { display: none; }
 .contact__link,
 .contact__plain {
   font-family: var(--f-display);
-  font-size: var(--d-record);
-  font-variation-settings: 'opsz' 24, 'wght' 700;
+  font-size: var(--d-close);
+  font-variation-settings: 'wdth' 102, 'wght' 700;
   font-weight: 700;
   letter-spacing: -0.015em;
   word-break: break-word;
 }
 
-.contact__plain { color: var(--ink); }
+/* The closing display step belongs to the two things a reader can act on.
+   The location is context, so it sits a step down and does not compete. */
+.contact__plain {
+  color: var(--ink);
+  font-size: var(--d-title);
+  font-variation-settings: 'wdth' 100, 'wght' 600;
+}
 
 .contact__link {
   text-decoration-thickness: 1px;
@@ -778,7 +796,10 @@ main > section.contact::before { display: none; }
    ========================================================================== */
 
 @media (max-width: 54rem) {
-  .plate {
+  .plate,
+  /* The lead plate's fixed width outranks `.plate` on specificity, so it has
+     to be reset by name or it breaks its column on small screens. */
+  .work .rec:first-of-type .plate {
     float: none;
     width: 100%;
     max-width: 21rem;
@@ -860,6 +881,8 @@ main > section.contact::before { display: none; }
     --t-lg: 10pt;
     --d-section: 14pt;
     --d-record: 12pt;
+    --d-record-lead: 12pt;
+    --d-close: 11pt;
     --d-title: 11pt;
     --d-lead: 11pt;
     --d-body: 9.5pt;
@@ -940,11 +963,9 @@ main > section.contact::before { display: none; }
   .plate,
   .work .rec:first-of-type .plate { width: 28mm; padding: 3pt; }
 
-  /* Screen hierarchy costs paper. On the page the lead record and the contact
-     rows set back down to the ramp. */
-  .work .rec:first-of-type .rec__name { font-size: 12pt; margin-bottom: 5pt; }
-  .contact__link,
-  .contact__plain { font-size: 11pt; }
+  /* Screen hierarchy costs paper. The lead record and the closing step come
+     back down through the ramp above, so only spacing needs saying here. */
+  .work .rec:first-of-type .rec__name { margin-bottom: 5pt; }
   main > section.contact { border-top-width: 1pt; }
 
   .rec__so { font-size: 9.5pt; margin-block: 5pt; }

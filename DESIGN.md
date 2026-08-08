@@ -20,38 +20,49 @@ colors:
   print-tint-2: "#EEEEEE"
 typography:
   display:
-    fontFamily: "'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif"
-    fontSize: "clamp(2.55rem, 11.6vw, 8.2rem)"
-    fontWeight: 800
+    fontFamily: "'Anybody', 'Arial Black', system-ui, sans-serif"
+    fontSize: "clamp(2.1rem, 10.5vw, 7.1rem)"
+    fontWeight: 900
     lineHeight: 0.86
-    letterSpacing: "-0.045em"
-    fontVariation: "'opsz' 96, 'wght' 800"
+    letterSpacing: "-0.04em"
+    fontVariation: "'wdth' 100, 'wght' 900"
   headline:
     fontFamily: "{typography.display.fontFamily}"
     fontSize: "clamp(1.85rem, 1.35rem + 2.1vw, 3.05rem)"
-    fontWeight: 700
+    fontWeight: 800
     lineHeight: 1.02
     letterSpacing: "-0.038em"
-    fontVariation: "'opsz' 40, 'wght' 700"
+    fontVariation: "'wdth' 100, 'wght' 800"
   title-lead:
     fontFamily: "{typography.display.fontFamily}"
     fontSize: "clamp(1.55rem, 1.28rem + 1.3vw, 2.35rem)"
     fontWeight: 700
     lineHeight: 1.08
     letterSpacing: "-0.03em"
-    fontVariation: "'opsz' 32, 'wght' 700"
+    fontVariation: "'wdth' 100, 'wght' 750"
   title:
     fontFamily: "{typography.display.fontFamily}"
     fontSize: "clamp(1.3rem, 1.12rem + 0.9vw, 1.8rem)"
     fontWeight: 700
     lineHeight: 1.08
     letterSpacing: "-0.03em"
-    fontVariation: "'opsz' 24, 'wght' 700"
+  close:
+    fontFamily: "{typography.display.fontFamily}"
+    fontSize: "clamp(1.45rem, 1.15rem + 1.5vw, 2.4rem)"
+    fontWeight: 700
+    letterSpacing: "-0.015em"
+    fontVariation: "'wdth' 102, 'wght' 700"
   subtitle:
     fontFamily: "{typography.display.fontFamily}"
     fontSize: "clamp(1.05rem, 0.99rem + 0.36vw, 1.28rem)"
     fontWeight: 700
     letterSpacing: "-0.015em"
+  label-display:
+    fontFamily: "{typography.display.fontFamily}"
+    fontSize: "0.78rem"
+    fontWeight: 700
+    letterSpacing: "0.09em"
+    fontVariation: "'wdth' 110, 'wght' 700"
   lead:
     fontFamily: "'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "clamp(1.16rem, 1.04rem + 0.6vw, 1.5rem)"
@@ -272,28 +283,42 @@ default. Do not lower it, and do not introduce a second dim level.
 
 ## Typography
 
-**Display Font:** Bricolage Grotesque (fallback `'Arial Black', system-ui, sans-serif`)
+**Display Font:** Anybody (fallback `'Arial Black', system-ui, sans-serif`)
 **Body Font:** Public Sans (fallback `system-ui, -apple-system, 'Segoe UI', sans-serif`)
 
 Both are self-hosted latin variable subsets under OFL 1.1, both `<link rel=preload>`ed,
-both `font-display: swap`, `font-synthesis-weight: none`. The shipped Bricolage subset
-carries `opsz` and `wght` axes **only** — there is no `wdth` axis in the file, so never
+both `font-display: swap`, `font-synthesis-weight: none`. Total font payload is about
+82KB — Anybody at 55.6KB, Public Sans at 26.2KB. The shipped Anybody subset carries
+`wdth` (50–150) and `wght` (100–900); there is **no** `opsz` axis in the file, so never
 write one.
 
-**Character:** A wide, slightly eccentric grotesque cut very large against a quiet,
-highly legible civic sans. The display face never sets prose and the body face never sets
-the name; the contrast between them is the page's only ornament.
+**Character:** A squarish, mechanically-drawn display face with visible width behaviour,
+set against a quiet, highly legible civic sans. Anybody replaced a heavier neutral
+grotesque because that face read as generic at hero scale no matter how it was tuned; the
+choice was made by rendering the real hero treatment in six candidates at true size. The
+display face never sets prose and the body face never sets the name; the contrast between
+them is the page's only ornament.
 
 ### Hierarchy
-- **Display** (`{typography.display}`, opsz 96): The name, and only the name. Line height
-  is sub-1 (0.86) so the two lines lock into a single block, and `--name-line`
+- **Display** (`{typography.display}`, wdth 100 / wght 900): The name, and only the name.
+  Line height is sub-1 (0.86) so the two lines lock into a single block, and `--name-line`
   (`--d-name × --name-lh`) is what the field's edge is pinned to.
-- **Headline** (`{typography.headline}`, opsz 40): Section headings. `text-wrap: balance`.
-- **Title (lead)** (`{typography.title-lead}`, opsz 32): The first work record's name only.
-- **Title** (`{typography.title}`, opsz 24 on contact links): Work-record names, the lens
-  question, and the contact links.
+- **Headline** (`{typography.headline}`, wdth 100 / wght 800): Section headings.
+  `text-wrap: balance`.
+- **Title (lead)** (`{typography.title-lead}`, wdth 100 / wght 750): The first work
+  record's name only.
+- **Title** (`{typography.title}`): Work-record names and the lens question. It sets no
+  `font-variation-settings`, so it inherits the face's default width at weight 700.
+- **Close** (`{typography.close}`, wdth 102 / wght 700): The sign-off's email and phone —
+  the two things a reader can act on. This step exists so the closing screen has a display
+  voice of its own rather than repeating the record step.
 - **Subtitle** (`{typography.subtitle}`): Job titles in the field, role titles, verify-row
-  links, and the demoted record's name.
+  links, and the demoted record's name. The sign-off's location line also sets here, at
+  wdth 100 / wght 600 — deliberately one step below Close so context does not compete with
+  the actionable rows.
+- **Label (display)** (`{typography.label-display}`, wdth 110 / wght 700): The capability
+  cluster's uppercase term. The credential chip's value is the same idea one size up
+  (`--t-sm`, wdth 108 / wght 750).
 - **Lead** (`{typography.lead}`): The hero thesis (max 46ch) and the sign-off lead (48ch).
 - **Body** (`{typography.body}`): All prose, capped at `--measure` (66ch).
 - **Pull** (`{typography.pull}`): The `.rec__so` "so what" line — the record's argument.
@@ -308,18 +333,25 @@ the name; the contrast between them is the page's only ornament.
 
 ### Named Rules
 
-**The Two Families Rule.** Bricolage Grotesque and Public Sans. There is no third face —
-in particular, no monospace. Small uppercase labels are Public Sans at 600 with 0.1em
-tracking, never a mono costume.
+**The Two Families Rule.** Anybody and Public Sans. There is no third face — in
+particular, no monospace. The `.lbl` uppercase field label is Public Sans at 600 with
+0.1em tracking, never a mono costume.
 
-**The Explicit Optical Size Rule.** `opsz` is driven explicitly at four steps — 96 (name),
-40 (section heading), 32 (lead record name), 24 (contact links) — and every
-`font-variation-settings` declaration pairs its `opsz` with an explicit `wght`, because
-the shorthand otherwise clobbers the `font-weight` property.
+**The Width-Works-Small Rule.** `wdth` does its job at the *small* end of the ramp, not
+the large one. Every display step sits at `wdth` 100–102; the widened settings are all
+small type — the capability term at 110 and the credential chip's value at 108 — because
+opening the face out is what keeps tracked uppercase and light-on-field labels legible
+where a display cut closes up. Hierarchy is carried by size and weight. Do not build a
+"wider as it grows" ramp; the face does not need one and the build does not have one.
+
+**The Explicit Weight Pairing Rule.** Every `font-variation-settings` declaration pairs
+its `wdth` with an explicit `wght`, because the shorthand otherwise clobbers the
+`font-weight` property. Where a rule sets `font-variation-settings`, it also sets a
+matching `font-weight` for the fallback face.
 
 **The Every-Size-Is-A-Token Rule.** Six fixed steps (`--t-3xs`…`--t-lg`) and seven fluid
-steps (`--d-name`, `--d-section`, `--d-record-lead`, `--d-record`, `--d-title`,
-`--d-lead`, `--d-body`). A literal `font-size` on screen is a defect. The only literal
+steps (`--d-name`, `--d-section`, `--d-record-lead`, `--d-record`, `--d-close`,
+`--d-title`, `--d-lead`, `--d-body`). A literal `font-size` on screen is a defect. The only literal
 sizes in the build are inside `@media print`, where the whole ramp is re-pointed.
 
 ## Layout
@@ -348,10 +380,13 @@ Three breakpoints, all max-width and all rem-based:
 **The Print Is A Deliverable Rule.** Screen type and space steps are viewport-fluid; paper
 has no viewport. `@media print` re-points every colour, type and space token to paper
 values (`pt`) and sets `@page { margin: 12mm 14mm }`. Without it the document sets to ten
-pages; with it, four. The field flattens to black-on-white, the lead record and contact
+pages; with it, five. The field flattens to black-on-white, the lead record and contact
 links set back down to the ramp, records and roles get `break-inside: avoid`, dimming is
-forced off with `opacity: 1 !important`, and external links print their URL. **Any new
-component ships with its print behaviour in the same pass**, or the deliverable regresses.
+forced off with `opacity: 1 !important`, and external links print their URL. Every fluid
+step is re-pointed in the print `:root`, `--d-record-lead` and `--d-close` included, so the
+paper set never diverges from the ramp; the per-component print rules that remain carry
+spacing and borders only, never a size. **Any new component ships with its print behaviour
+in the same pass**, or the deliverable regresses.
 
 ## Elevation & Depth
 
@@ -437,6 +472,15 @@ per-line colour ever set by hand.
 - `white-space: nowrap` on `.name` is load-bearing. It guarantees exactly two lines, which
   is the assumption `--name-line` encodes; a third line would put the edge in the wrong
   place at every width.
+- **The Name Fits The Column Rule.** `--d-name` is `clamp(2.1rem, 10.5vw, 7.1rem)`, tuned
+  to Anybody's set width — about 30% wider than the face it replaced. Measured after the
+  change, the name runs 88–94% of the available measure at every width from 320 to 1600px,
+  with no column overflow and no horizontal scroll. Raising the coefficient or the cap
+  breaks the name out of the column: the previous ramp overflowed at ≥1200px and broke to a
+  third line between roughly 430–710px. Re-measure at 320, 430, 710, 1200 and 1600 after
+  any change to `--d-name`, `--name-lh`, `--wrap` or the display face.
+- Tracking is `-0.04em`. That is the tightest the craft floor allows at this scale; do not
+  go further to buy width.
 - The colour lives on the spans, not on `.name`. `.name` itself keeps `color: var(--ink)`
   as the fallback for any text not inside a span.
 - `forced-colors: active` sets `.name span { color: CanvasText }` and hides the field.
@@ -485,7 +529,10 @@ Everything else that moves is a 0.18s (colour) or 0.28s (opacity) transition.
 - **Do** make in-prose emphasis out of scale, weight and space — the `.rec__so` line is the
   pattern.
 - **Do** use white as the only foreground on ultramarine.
-- **Do** pair every `opsz` with an explicit `wght` in `font-variation-settings`.
+- **Do** pair every `wdth` with an explicit `wght` in `font-variation-settings`, and set a
+  matching `font-weight` alongside it for the fallback face.
+- **Do** re-measure the name against the column at 320, 430, 710, 1200 and 1600px after
+  any change to `--d-name` or the display face.
 - **Do** ship every new component's `@media print` behaviour in the same pass, and re-check
   the page count.
 - **Do** separate with a hairline and a spacing step; 1px `--rule` is the default answer.
@@ -504,8 +551,9 @@ Everything else that moves is a 0.18s (colour) or 0.28s (opacity) transition.
   anything — including "Show all".
 - **Don't** target `[data-lens]` unscoped; always `.rec, .role, .caps__cluster`.
 - **Don't** write a literal `font-size` outside `@media print`; add a token instead.
-- **Don't** introduce a third font family, a monospace face, or a `wdth` axis — the shipped
-  Bricolage subset has only `opsz` and `wght`.
+- **Don't** introduce a third font family, a monospace face, or an `opsz` axis — the
+  shipped Anybody subset has only `wdth` and `wght`.
+- **Don't** widen the display steps. `wdth` above 102 is for small tracked type only.
 - **Don't** add a `box-shadow`, a card, or a third radius value. Square by default, 6px for
   controls.
 - **Don't** use `background-clip: text` or gradient fills on type anywhere, including the
