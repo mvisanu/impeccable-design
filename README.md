@@ -100,15 +100,14 @@ Lighthouse 13.4.1 against the live deploy:
 | Mobile | 99 | 100 | 100 | 100 |
 | Desktop | 100 | 100 | 100 | 100 |
 
-Mobile FCP 0.9s · LCP 1.5s · CLS 0 · TBT 0ms · Speed Index 3.6s.
+Mobile FCP 1.0s · LCP 1.5s · CLS 0 · TBT 0ms · Speed Index 3.5s.
 Desktop FCP 0.3s · LCP 0.4s · CLS 0 · TBT 0ms · Speed Index 0.4s.
 
 Speed Index is the only soft number, and it is the display face swapping in above the fold.
 With TBT and CLS both at zero it is not worth trading the type for.
 
-These numbers were measured before the display face changed. That swap cut the font payload
-from ~101KB to ~82KB and touched no other asset, so they should hold or improve; re-measure
-on the next deploy to be sure.
+Re-measure after any change to the font payload or the first viewport, and replace this
+block rather than adding to it.
 
 Fonts (Anybody variable for display, Public Sans variable for body and UI) are self-hosted
 latin subsets under `public/assets/fonts/`, both SIL Open Font License 1.1, both preloaded.
